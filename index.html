@@ -129,6 +129,77 @@
   .toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--gold);color:#0a0d09;padding:14px 26px;border-radius:999px;font-weight:800;opacity:0;transition:.3s;z-index:200;box-shadow:0 10px 30px rgba(0,0,0,.4);}
   .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 
+  /* ---------- welcome modal (Mashhad-only notice) ---------- */
+  #welcomeGate{position:fixed;inset:0;z-index:480;background:var(--bg);display:flex;align-items:center;justify-content:center;padding:24px;}
+  #welcomeGate.hidden{display:none;}
+  .welcome-box{max-width:420px;width:100%;background:var(--card);border:1px solid var(--gold);border-radius:var(--radius);padding:34px 28px;text-align:center;direction:rtl;font-family:'Vazirmatn',Tahoma,sans-serif;box-shadow:0 20px 60px rgba(0,0,0,.5);animation:pop .4s ease;}
+  .welcome-box .icn{font-size:38px;margin-bottom:10px;}
+  .welcome-box h2{color:var(--gold-light);font-size:21px;margin-bottom:14px;}
+  .welcome-box p{color:var(--muted);font-size:14.5px;line-height:1.9;}
+  .welcome-box .highlight{color:var(--green-light);font-weight:800;}
+  .welcome-box button{margin-top:22px;padding:14px 36px;border-radius:999px;background:var(--gold);color:#0a0d09;font-weight:800;font-size:15px;}
+  .welcome-box button:hover{background:var(--gold-light);}
+
+  /* ---------- zone search box (customer side) ---------- */
+  .zone-wrap{position:relative;direction:rtl;}
+  .zone-wrap input{width:100%;}
+  .zone-results{position:absolute;top:calc(100% + 4px);right:0;left:0;background:var(--card);border:1px solid var(--line);border-radius:10px;max-height:220px;overflow:auto;z-index:20;display:none;box-shadow:0 10px 24px rgba(0,0,0,.5);}
+  .zone-results.open{display:block;}
+  .zone-opt{padding:10px 14px;font-size:13.5px;display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid var(--line);cursor:pointer;}
+  .zone-opt:last-child{border-bottom:none;}
+  .zone-opt:hover{background:var(--green);}
+  .zone-opt small{color:var(--muted);}
+  .zone-selected{margin-top:8px;font-size:13px;color:var(--gold-light);display:none;background:var(--bg-alt);border:1px solid var(--line);border-radius:8px;padding:8px 12px;}
+  .zone-selected.show{display:block;}
+  .delivery-row{display:flex;justify-content:space-between;font-size:13.5px;color:var(--muted);padding-top:4px;}
+
+  /* ---------- invoice modal ---------- */
+  .invoice-overlay{position:fixed;inset:0;background:rgba(4,5,3,0.8);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;z-index:300;padding:20px;}
+  .invoice-overlay.open{display:flex;}
+  .invoice-card{background:#fdfaf2;color:#20241d;width:100%;max-width:420px;max-height:90vh;overflow:auto;border-radius:14px;position:relative;direction:rtl;font-family:'Vazirmatn',Tahoma,sans-serif;animation:pop .35s ease;}
+  .invoice-head{background:linear-gradient(135deg,#1f5c3f,#12160f);color:#eecd80;padding:26px 26px 20px;text-align:center;border-radius:14px 14px 0 0;}
+  .invoice-head .biz{font-size:24px;font-weight:800;letter-spacing:2px;}
+  .invoice-head .tag{font-size:11.5px;letter-spacing:3px;opacity:.75;margin-top:4px;}
+  .invoice-body{padding:22px 26px;}
+  .invoice-meta{display:flex;justify-content:space-between;font-size:12px;color:#6b6355;border-bottom:1px dashed #d8cfae;padding-bottom:12px;margin-bottom:12px;}
+  .invoice-items{display:flex;flex-direction:column;gap:8px;margin-bottom:14px;}
+  .invoice-item{display:flex;justify-content:space-between;font-size:13.5px;border-bottom:1px dotted #e2dabf;padding-bottom:6px;}
+  .invoice-item small{color:#8a8065;display:block;}
+  .invoice-totals{border-top:1px solid #d8cfae;padding-top:12px;display:flex;flex-direction:column;gap:6px;font-size:13.5px;}
+  .invoice-totals .grand{font-weight:800;font-size:16px;color:#12160f;border-top:1px dashed #d8cfae;padding-top:8px;margin-top:4px;}
+  .invoice-note{margin-top:18px;background:#12160f;color:#eecd80;padding:14px 16px;border-radius:10px;font-size:13px;text-align:center;line-height:1.8;}
+  .invoice-note b{color:#fff;}
+  .invoice-close{position:absolute;top:12px;left:12px;width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.25);color:#fff;font-size:14px;}
+  .invoice-actions{padding:0 26px 24px;display:flex;gap:10px;}
+  .invoice-actions button{flex:1;padding:12px;border-radius:10px;font-weight:800;font-size:13.5px;}
+  .invoice-actions .print-btn{background:#12160f;color:#eecd80;}
+  .invoice-actions .close-btn{background:#e5ddc4;color:#3a3626;}
+
+  /* ---------- dashboard: stats / orders / accounting ---------- */
+  .stat-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-bottom:24px;}
+  .stat-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;}
+  .stat-card .num{font-size:24px;font-weight:800;color:var(--gold-light);}
+  .stat-card .lbl{font-size:12.5px;color:var(--muted);margin-top:4px;}
+  .dash-tabs{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;}
+  .dash-tab{padding:9px 18px;border-radius:999px;background:var(--card);border:1px solid var(--line);color:var(--muted);font-weight:700;font-size:13.5px;}
+  .dash-tab.active{background:var(--green);color:var(--ivory);border-color:var(--gold);}
+  .dash-panel-section{display:none;}
+  .dash-panel-section.active{display:block;}
+  .order-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:14px;}
+  .order-card .oc-head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:10px;}
+  .order-card .oc-id{font-size:12px;color:var(--muted);}
+  .order-status{font-size:11.5px;padding:4px 12px;border-radius:999px;font-weight:800;}
+  .order-status.pending{background:rgba(205,164,73,.18);color:var(--gold-light);}
+  .order-status.confirmed{background:rgba(63,148,104,.25);color:var(--green-light);}
+  .oc-items{font-size:13px;color:var(--muted);margin-bottom:8px;line-height:1.8;}
+  .oc-meta{font-size:12.5px;color:var(--muted);display:flex;flex-wrap:wrap;gap:12px;margin-bottom:10px;}
+  .oc-total{font-weight:800;color:var(--gold-light);font-size:14.5px;}
+  .confirm-btn{margin-top:8px;padding:9px 18px;border-radius:8px;background:var(--gold);color:#0a0d09;font-weight:800;font-size:13px;}
+  .confirm-btn:disabled{opacity:.4;}
+  .accounting-total{background:var(--card);border:1px solid var(--gold);border-radius:16px;padding:22px;text-align:center;margin-bottom:22px;}
+  .accounting-total .num{font-size:30px;font-weight:800;color:var(--gold-light);}
+  .accounting-total .lbl{color:var(--muted);font-size:13px;margin-top:6px;}
+
   /* ---------- dashboard (Persian, admin only) ---------- */
   #dashboard{display:none;min-height:100vh;padding:30px 5vw 80px;direction:rtl;font-family:'Vazirmatn',Tahoma,sans-serif;}
   #dashboard.open{display:block;}
@@ -151,6 +222,10 @@
   .prod-row .meta h4{font-size:15px;}
   .prod-row .meta small{color:var(--muted);}
   .hint{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.6;}
+  .field input[type="file"]{width:100%;background:var(--bg-alt);border:1px solid var(--line);border-radius:10px;padding:10px;color:var(--muted);font-family:inherit;font-size:12.5px;}
+  .img-preview-wrap{margin-top:10px;display:flex;align-items:center;gap:12px;}
+  .img-preview-wrap img{width:70px;height:70px;border-radius:10px;object-fit:cover;border:1px solid var(--line);}
+  .rm-img-btn{padding:7px 14px;border-radius:8px;background:transparent;border:1px solid #a24c4c;color:#d38080;font-size:12px;}
   .config-warning{background:rgba(180,80,80,.12);border:1px solid rgba(180,80,80,.4);color:#e0a0a0;padding:14px 18px;border-radius:12px;margin-bottom:20px;font-size:13.5px;}
 
   /* ---------- hacker-style dashboard login gate ---------- */
@@ -223,6 +298,15 @@
   </div>
 </div>
 
+<div id="welcomeGate" class="hidden">
+  <div class="welcome-box">
+    <div class="icn">🚚</div>
+    <h2>خوش آمدید!</h2>
+    <p>ارسال سفارش‌ها <span class="highlight">فقط در سطح شهر مشهد</span> و <span class="highlight">زیر ۳ ساعت</span> انجام می‌شود.<br>هزینه ارسال بسته به منطقه شما متفاوت است و در سبد خرید محاسبه می‌شود.</p>
+    <button onclick="confirmWelcome()">متوجه شدم، ورود به فروشگاه</button>
+  </div>
+</div>
+
 <!-- ============ STOREFRONT ============ -->
 <div id="storefront">
   <header>
@@ -289,12 +373,44 @@
     <div class="total"><span id="totalLbl">Toplam</span><span id="cartTotal">0</span></div>
     <input type="text" id="custName" placeholder="Adınız (opsiyonel)">
     <input type="text" id="custPhone" placeholder="Telefon (opsiyonel)">
+    <input type="text" id="custTelegram" placeholder="آیدی تلگرام (مثلا Benjamin_BAH@)">
+    <div class="zone-wrap">
+      <input type="text" id="zoneSearch" placeholder="جستجوی محله (مثلا وکیل‌آباد، سناباد...)" autocomplete="off" oninput="onZoneSearch()" onfocus="onZoneSearch()">
+      <div class="zone-results" id="zoneResults"></div>
+      <div class="zone-selected" id="zoneSelected"></div>
+    </div>
+    <div class="delivery-row"><span>هزینه ارسال</span><span id="deliveryFee">-</span></div>
     <textarea id="custNote" placeholder="Sipariş notu (opsiyonel)"></textarea>
     <button class="checkout-btn" id="checkoutBtn" onclick="sendOrder()">Siparişi Onayla (Telegram)</button>
   </div>
 </div>
 
 <div class="toast" id="toast"></div>
+
+<!-- ============ INVOICE MODAL ============ -->
+<div class="invoice-overlay" id="invoiceOverlay">
+  <div class="invoice-card">
+    <button class="invoice-close" onclick="closeInvoice()">✕</button>
+    <div class="invoice-head">
+      <div class="biz">Benjamin</div>
+      <div class="tag">FINE SPIRITS &amp; WINE — MASHHAD</div>
+    </div>
+    <div class="invoice-body">
+      <div class="invoice-meta"><span id="invOrderId">#000000</span><span id="invDate"></span></div>
+      <div class="invoice-items" id="invItems"></div>
+      <div class="invoice-totals">
+        <div style="display:flex;justify-content:space-between;"><span>جمع محصولات</span><span id="invSubtotal">0</span></div>
+        <div style="display:flex;justify-content:space-between;"><span id="invZoneLbl">هزینه ارسال</span><span id="invDelivery">0</span></div>
+        <div class="grand" style="display:flex;justify-content:space-between;"><span>مبلغ نهایی</span><span id="invTotal">0</span></div>
+      </div>
+      <div class="invoice-note">این فاکتور را جهت پیگیری و تسویه به آیدی تلگرام <b>@Benjamin_BAH</b> ارسال کنید.</div>
+    </div>
+    <div class="invoice-actions">
+      <button class="print-btn" onclick="window.print()">چاپ فاکتور</button>
+      <button class="close-btn" onclick="closeInvoice()">بستن</button>
+    </div>
+  </div>
+</div>
 
 <!-- ============ DASHBOARD (Persian - admin) ============ -->
 <div id="dashboard">
@@ -307,27 +423,69 @@
     آدرس بک‌اند (SCRIPT_URL) داخل فایل تنظیم نشده. ابتدا Apps Script را دیپلوی کنید و لینک آن را داخل کد در قسمت SCRIPT_URL بگذارید.
   </div>
 
-  <div class="dash-grid">
-    <div class="panel">
-      <h3>تنظیمات کلی</h3>
-      <div class="field"><label>نام سایت</label><input type="text" id="setSiteName" placeholder="مثلا: Mağaza"></div>
-      <div class="field"><label>توکن ربات تلگرام</label><input type="text" id="setBotToken" placeholder="123456:ABC-DEF..."></div>
-      <div class="field"><label>آیدی عددی چت تلگرام</label><input type="text" id="setChatId" placeholder="123456789"></div>
-      <div class="field"><label>رمز عبور جدید داشبورد (اختیاری)</label><input type="text" id="setPassword" placeholder="فقط اگر می‌خواهید رمز عوض شود"></div>
-      <button class="btn-primary" onclick="saveSettings()">ذخیره تنظیمات</button>
-      <p class="hint">توکن ربات و رمز فقط سمت سرور (گوگل‌شیت شما) ذخیره می‌شوند و هیچ‌وقت برای بازدیدکننده‌ها ارسال نمی‌شوند.</p>
+  <div class="stat-cards">
+    <div class="stat-card"><div class="num" id="statVisitsToday">-</div><div class="lbl">بازدید امروز</div></div>
+    <div class="stat-card"><div class="num" id="statVisitsTotal">-</div><div class="lbl">بازدید کل</div></div>
+    <div class="stat-card"><div class="num" id="statPending">-</div><div class="lbl">سفارش در انتظار تایید</div></div>
+    <div class="stat-card"><div class="num" id="statConfirmed">-</div><div class="lbl">سفارش نهایی‌شده</div></div>
+  </div>
+
+  <div class="dash-tabs">
+    <button class="dash-tab active" data-tab="tab-settings" onclick="switchDashTab('tab-settings')">تنظیمات و محصولات</button>
+    <button class="dash-tab" data-tab="tab-orders" onclick="switchDashTab('tab-orders')">سفارش‌ها</button>
+    <button class="dash-tab" data-tab="tab-accounting" onclick="switchDashTab('tab-accounting')">حسابداری</button>
+  </div>
+
+  <div class="dash-panel-section active" id="tab-settings">
+    <div class="dash-grid">
+      <div class="panel">
+        <h3>تنظیمات کلی</h3>
+        <div class="field"><label>نام سایت</label><input type="text" id="setSiteName" placeholder="مثلا: Mağaza"></div>
+        <div class="field"><label>توکن ربات تلگرام</label><input type="text" id="setBotToken" placeholder="123456:ABC-DEF..."></div>
+        <div class="field"><label>آیدی عددی چت تلگرام</label><input type="text" id="setChatId" placeholder="123456789"></div>
+        <div class="field"><label>رمز عبور جدید داشبورد (اختیاری)</label><input type="text" id="setPassword" placeholder="فقط اگر می‌خواهید رمز عوض شود"></div>
+        <button class="btn-primary" onclick="saveSettings()">ذخیره تنظیمات</button>
+        <p class="hint">توکن ربات و رمز فقط سمت سرور (گوگل‌شیت شما) ذخیره می‌شوند و هیچ‌وقت برای بازدیدکننده‌ها ارسال نمی‌شوند.</p>
+      </div>
+
+      <div class="panel">
+        <h3>افزودن محصول جدید</h3>
+        <div class="field"><label>نام محصول</label><input type="text" id="newName" placeholder="مثلا: شیشه ی 1"></div>
+        <div class="field"><label>قیمت</label><input type="text" id="newPrice" placeholder="مثلا: 450"></div>
+        <div class="field">
+          <label>عکس محصول</label>
+          <input type="file" id="newImgFile" accept="image/*" onchange="onProductImageSelected(event)">
+          <div class="img-preview-wrap" id="imgPreviewWrap" style="display:none;">
+            <img id="imgPreview" src="">
+            <button type="button" class="rm-img-btn" onclick="clearProductImage()">حذف عکس</button>
+          </div>
+          <p class="hint" id="imgUploadHint"></p>
+        </div>
+        <div class="field"><label>جزییات محصول</label><textarea id="newDesc" placeholder="توضیحات، حجم و ..."></textarea></div>
+        <button class="btn-primary" onclick="addProduct()">افزودن محصول</button>
+
+        <h3 style="margin-top:26px;">لیست محصولات</h3>
+        <div id="prodList"></div>
+      </div>
     </div>
+  </div>
 
+  <div class="dash-panel-section" id="tab-orders">
     <div class="panel">
-      <h3>افزودن محصول جدید</h3>
-      <div class="field"><label>نام محصول</label><input type="text" id="newName" placeholder="مثلا: شیشه ی 1"></div>
-      <div class="field"><label>قیمت</label><input type="text" id="newPrice" placeholder="مثلا: 450"></div>
-      <div class="field"><label>لینک عکس محصول</label><input type="text" id="newImg" placeholder="https://..."></div>
-      <div class="field"><label>جزییات محصول</label><textarea id="newDesc" placeholder="توضیحات، حجم و ..."></textarea></div>
-      <button class="btn-primary" onclick="addProduct()">افزودن محصول</button>
+      <h3>سفارش‌های ثبت‌شده</h3>
+      <p class="hint" style="margin-bottom:16px;">سفارش‌ها ابتدا «در انتظار تایید» هستند. تا وقتی شما دستی تایید نکنید، جزو فروش نهایی و حسابداری محسوب نمی‌شوند.</p>
+      <div id="ordersList"></div>
+    </div>
+  </div>
 
-      <h3 style="margin-top:26px;">لیست محصولات</h3>
-      <div id="prodList"></div>
+  <div class="dash-panel-section" id="tab-accounting">
+    <div class="accounting-total">
+      <div class="num" id="acctRevenue">0</div>
+      <div class="lbl">مجموع فروش نهایی‌شده (تومان)</div>
+    </div>
+    <div class="panel">
+      <h3>سفارش‌های تایید و نهایی‌شده</h3>
+      <div id="acctList"></div>
     </div>
   </div>
 </div>
@@ -401,6 +559,55 @@ let cart = [];
 let currentProduct = null;
 let currentQty = 1;
 let adminToken = null; // فقط در حافظه - هرگز ذخیره دائمی نمی‌شود
+let selectedZone = null; // { name, tier, price }
+
+/* ---------------- Mashhad delivery zones ----------------
+   این لیست یک نقطه شروع منطقی است؛ هر محله را می‌توانید بعدا
+   با ویرایش همین آرایه (اسم محله و tier) جابه‌جا یا اضافه کنید. */
+const ZONE_TIERS = { center: 95000, other: 150000, upscale: 200000 };
+const ZONE_TIER_LABEL = { center: 'مرکز شهر', other: 'مناطق دیگر', upscale: 'بالاشهر' };
+const MASHHAD_ZONES = [
+  {name:'حرم مطهر رضوی', tier:'center'}, {name:'سناباد', tier:'center'}, {name:'ارگ', tier:'center'},
+  {name:'راهنمایی', tier:'center'}, {name:'خیام', tier:'center'}, {name:'تقی‌آباد', tier:'center'},
+  {name:'میدان شهدا', tier:'center'}, {name:'بازار رضا', tier:'center'}, {name:'نواب', tier:'center'},
+  {name:'جنت', tier:'center'}, {name:'آزادی', tier:'center'}, {name:'پنج‌تن', tier:'center'},
+  {name:'کوی دانشجو', tier:'center'}, {name:'بلوار توس (پایین)', tier:'center'},
+
+  {name:'قاسم‌آباد', tier:'other'}, {name:'الهیه', tier:'other'}, {name:'فرامرز عباسی', tier:'other'},
+  {name:'هاشمیه', tier:'other'}, {name:'سجاد (پایین)', tier:'other'}, {name:'رسالت', tier:'other'},
+  {name:'ابوطالب', tier:'other'}, {name:'وحدت', tier:'other'}, {name:'پیروزی', tier:'other'},
+  {name:'طبرسی', tier:'other'}, {name:'معلم', tier:'other'}, {name:'عبدالمطلب', tier:'other'},
+  {name:'امامیه', tier:'other'}, {name:'هفت‌تیر', tier:'other'}, {name:'بلوار فردوسی', tier:'other'},
+  {name:'راه‌آهن', tier:'other'}, {name:'شهرک غرب', tier:'other'}, {name:'بلوار وکیل‌آباد (پایین)', tier:'other'},
+  {name:'الند', tier:'other'}, {name:'آب‌وبرق', tier:'other'}, {name:'کوی امام رضا', tier:'other'},
+
+  {name:'وکیل‌آباد بالا', tier:'upscale'}, {name:'احمدآباد', tier:'upscale'}, {name:'فلسطین', tier:'upscale'},
+  {name:'سجاد بالا', tier:'upscale'}, {name:'حرعاملی', tier:'upscale'}, {name:'کوهسنگی', tier:'upscale'},
+  {name:'بلوار پیام', tier:'upscale'}, {name:'صیاد شیرازی', tier:'upscale'}, {name:'بلوار سناباد بالا', tier:'upscale'},
+  {name:'هنرستان', tier:'upscale'}, {name:'پارک ملت (اطراف)', tier:'upscale'}
+];
+function onZoneSearch(){
+  const q = document.getElementById('zoneSearch').value.trim();
+  const box = document.getElementById('zoneResults');
+  if(!q){ box.classList.remove('open'); box.innerHTML=''; return; }
+  const matches = MASHHAD_ZONES.filter(z => z.name.indexOf(q) > -1).slice(0, 12);
+  if(!matches.length){ box.innerHTML = `<div class="zone-opt">موردی پیدا نشد</div>`; box.classList.add('open'); return; }
+  box.innerHTML = matches.map(z => `
+    <div class="zone-opt" onclick="selectZone('${z.name}','${z.tier}')">
+      <span>${z.name}</span><small>${fmt(ZONE_TIERS[z.tier])} تومان</small>
+    </div>
+  `).join('');
+  box.classList.add('open');
+}
+function selectZone(name, tier){
+  selectedZone = { name, tier, price: ZONE_TIERS[tier] };
+  document.getElementById('zoneSearch').value = '';
+  document.getElementById('zoneResults').classList.remove('open');
+  const sel = document.getElementById('zoneSelected');
+  sel.textContent = `📍 ${name} (${ZONE_TIER_LABEL[tier]}) — هزینه ارسال: ${fmt(ZONE_TIERS[tier])} تومان`;
+  sel.classList.add('show');
+  updateCartUI();
+}
 
 const fmt = n => Number(n||0).toLocaleString(lang==='fa' ? 'fa-IR' : 'tr-TR');
 
@@ -425,6 +632,7 @@ async function api(action, payload, method){
 async function loadData(){
   try{ products = await api('products', null, 'GET'); }catch(e){ products = []; }
   try{ const s = await api('settings', null, 'GET'); if(s && s.siteName) settings = s; }catch(e){ /* keep default */ }
+  try{ await api('visit', null, 'GET'); }catch(e){ /* ignore - stats are non-critical */ }
   document.getElementById('siteNameDisplay').firstChild.textContent = settings.siteName;
   document.getElementById('siteNameFooter').textContent = settings.siteName;
   document.title = settings.siteName;
@@ -505,36 +713,46 @@ function updateCartUI(){
       </div>
     `).join('');
   }
-  const total = cart.reduce((s,c)=>s + c.qty*Number(c.price||0), 0);
-  document.getElementById('cartTotal').textContent = fmt(total);
-  document.getElementById('checkoutBtn').disabled = cart.length===0;
+  const subtotal = cart.reduce((s,c)=>s + c.qty*Number(c.price||0), 0);
+  const deliveryFee = selectedZone ? selectedZone.price : 0;
+  document.getElementById('deliveryFee').textContent = selectedZone ? (fmt(deliveryFee) + ' تومان') : 'ابتدا محله را انتخاب کنید';
+  document.getElementById('cartTotal').textContent = fmt(subtotal + deliveryFee);
+  document.getElementById('checkoutBtn').disabled = cart.length===0 || !selectedZone;
 }
 function removeFromCart(i){ cart.splice(i,1); updateCartUI(); }
 
 /* ---------------- send order (server sends Telegram - token never touches browser) ---------------- */
 async function sendOrder(){
   if(!cart.length) return;
+  if(!selectedZone){ showToast('لطفا ابتدا محله خود در مشهد را انتخاب کنید'); return; }
   const name = document.getElementById('custName').value.trim();
   const phone = document.getElementById('custPhone').value.trim();
+  const telegramId = document.getElementById('custTelegram').value.trim();
   const note = document.getElementById('custNote').value.trim();
 
-  let text = `🧴 Yeni sipariş - ${settings.siteName}\n——————————\n`;
-  cart.forEach(c=>{ text += `▪️ ${c.name}\n   Adet: ${c.qty} | Birim fiyat: ${fmt(c.price)}\n`; });
-  const total = cart.reduce((s,c)=>s + c.qty*Number(c.price||0), 0);
-  text += `——————————\nToplam: ${fmt(total)}\n`;
-  if(name) text += `👤 Müşteri: ${name}\n`;
-  if(phone) text += `📞 Telefon: ${phone}\n`;
-  if(note) text += `📝 Not: ${note}\n`;
+  const subtotal = cart.reduce((s,c)=>s + c.qty*Number(c.price||0), 0);
+  const deliveryPrice = selectedZone.price;
+  const total = subtotal + deliveryPrice;
+  const order = {
+    name, phone, telegramId, note,
+    zoneName: selectedZone.name, zoneTier: selectedZone.tier, deliveryPrice,
+    items: cart.map(c=>({ name:c.name, qty:c.qty, price:Number(c.price||0) })),
+    subtotal, total
+  };
 
   const btn = document.getElementById('checkoutBtn');
   btn.disabled = true; const oldTxt = btn.textContent; btn.textContent = '...';
 
   try{
-    const data = await api('sendOrder', { text }, 'POST');
+    const data = await api('sendOrder', { order }, 'POST');
     if(data.ok){
       showToast(lang==='fa' ? 'سفارش شما ثبت شد!' : 'Siparişiniz alındı!');
-      cart = []; updateCartUI();
-      document.getElementById('custName').value=''; document.getElementById('custPhone').value=''; document.getElementById('custNote').value='';
+      showInvoice(order, data.id);
+      cart = []; selectedZone = null;
+      document.getElementById('zoneSelected').classList.remove('show');
+      updateCartUI();
+      document.getElementById('custName').value=''; document.getElementById('custPhone').value='';
+      document.getElementById('custTelegram').value=''; document.getElementById('custNote').value='';
       closeCart();
     }else{
       showToast(lang==='fa' ? 'خطا - تنظیمات تلگرام را بررسی کنید' : 'Hata - Telegram ayarlarını kontrol edin');
@@ -544,6 +762,24 @@ async function sendOrder(){
   }
   btn.disabled = false; btn.textContent = oldTxt;
 }
+
+/* ---------------- invoice (Benjamin letterhead) ---------------- */
+function showInvoice(order, id){
+  document.getElementById('invOrderId').textContent = '#' + (id || '------');
+  document.getElementById('invDate').textContent = new Date().toLocaleDateString('fa-IR');
+  document.getElementById('invItems').innerHTML = order.items.map(it => `
+    <div class="invoice-item">
+      <span>${escapeHtml(it.name)}<small>${it.qty} عدد × ${fmt(it.price)}</small></span>
+      <span>${fmt(it.qty*it.price)}</span>
+    </div>
+  `).join('');
+  document.getElementById('invSubtotal').textContent = fmt(order.subtotal) + ' تومان';
+  document.getElementById('invZoneLbl').textContent = `هزینه ارسال (${order.zoneName})`;
+  document.getElementById('invDelivery').textContent = fmt(order.deliveryPrice) + ' تومان';
+  document.getElementById('invTotal').textContent = fmt(order.total) + ' تومان';
+  document.getElementById('invoiceOverlay').classList.add('open');
+}
+function closeInvoice(){ document.getElementById('invoiceOverlay').classList.remove('open'); }
 
 /* ---------------- toast ---------------- */
 let toastTimer;
@@ -558,10 +794,14 @@ function showToast(msg){
 function confirmAge(isAdult){
   if(isAdult){
     document.getElementById('ageGate').classList.add('hidden');
-    document.body.classList.remove('gated');
+    document.getElementById('welcomeGate').classList.remove('hidden');
   }else{
     document.body.innerHTML = '<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;color:#8d9587;font-family:sans-serif;text-align:center;padding:20px;">Access denied.</div>';
   }
+}
+function confirmWelcome(){
+  document.getElementById('welcomeGate').classList.add('hidden');
+  document.body.classList.remove('gated');
 }
 
 /* ---------------- dashboard (secure: server-verified password + session token) ---------------- */
@@ -660,6 +900,75 @@ function loadDashboardFields(){
   document.getElementById('setBotToken').value = '';
   document.getElementById('setChatId').value = '';
   document.getElementById('setPassword').value = '';
+  loadStats();
+  loadOrders();
+}
+function switchDashTab(id){
+  document.querySelectorAll('.dash-tab').forEach(b=>b.classList.toggle('active', b.dataset.tab===id));
+  document.querySelectorAll('.dash-panel-section').forEach(s=>s.classList.toggle('active', s.id===id));
+}
+async function loadStats(){
+  if(!adminToken) return;
+  try{
+    const s = await api('getStats', { token: adminToken }, 'POST');
+    document.getElementById('statVisitsToday').textContent = fmt(s.visitsToday||0);
+    document.getElementById('statVisitsTotal').textContent = fmt(s.visitsTotal||0);
+    document.getElementById('statPending').textContent = fmt(s.pendingCount||0);
+    document.getElementById('statConfirmed').textContent = fmt(s.confirmedCount||0);
+    document.getElementById('acctRevenue').textContent = fmt(s.confirmedRevenue||0) + ' تومان';
+  }catch(e){ /* ignore */ }
+}
+let allOrders = [];
+async function loadOrders(){
+  if(!adminToken) return;
+  try{
+    allOrders = await api('getOrders', { token: adminToken }, 'POST');
+    renderOrdersList();
+  }catch(e){ allOrders = []; renderOrdersList(); }
+}
+function orderCardHtml(o, showConfirm){
+  const itemsTxt = o.items.map(it => `${escapeHtml(it.name)} × ${it.qty}`).join('، ');
+  return `
+    <div class="order-card">
+      <div class="oc-head">
+        <span class="oc-id">${o.id}</span>
+        <span class="order-status ${o.status}">${o.status==='confirmed' ? 'تایید شده' : 'در انتظار تایید'}</span>
+      </div>
+      <div class="oc-items">${itemsTxt}</div>
+      <div class="oc-meta">
+        ${o.name ? `<span>👤 ${escapeHtml(o.name)}</span>` : ''}
+        ${o.phone ? `<span>📞 ${escapeHtml(o.phone)}</span>` : ''}
+        ${o.telegramId ? `<span>💬 ${escapeHtml(o.telegramId)}</span>` : ''}
+        <span>📍 ${escapeHtml(o.zoneName||'-')}</span>
+      </div>
+      <div class="oc-total">جمع: ${fmt(o.subtotal)} + ارسال ${fmt(o.deliveryPrice)} = ${fmt(o.total)} تومان</div>
+      ${showConfirm && o.status==='pending' ? `<button class="confirm-btn" onclick="confirmOrderAdmin('${o.id}')">تایید نهایی سفارش (ثبت در حسابداری)</button>` : ''}
+    </div>
+  `;
+}
+function renderOrdersList(){
+  const wrap = document.getElementById('ordersList');
+  if(!wrap) return;
+  if(!allOrders.length){ wrap.innerHTML = `<p class="hint">هنوز سفارشی ثبت نشده.</p>`; return; }
+  wrap.innerHTML = allOrders.map(o => orderCardHtml(o, true)).join('');
+  const confirmed = allOrders.filter(o=>o.status==='confirmed');
+  const acctList = document.getElementById('acctList');
+  if(acctList){
+    acctList.innerHTML = confirmed.length ? confirmed.map(o => orderCardHtml(o, false)).join('') : `<p class="hint">هنوز سفارش تایید‌شده‌ای وجود ندارد.</p>`;
+  }
+}
+async function confirmOrderAdmin(id){
+  if(!confirm('این سفارش را به‌عنوان خرید نهایی‌شده تایید می‌کنید؟ این عملیات آن را وارد بخش حسابداری می‌کند.')) return;
+  try{
+    const data = await api('confirmOrder', { token: adminToken, id }, 'POST');
+    if(data.ok){
+      showToast('سفارش تایید شد و در حسابداری ثبت شد');
+      await loadOrders();
+      await loadStats();
+    }else{
+      showToast(data.error || 'خطا در تایید سفارش');
+    }
+  }catch(e){ showToast('خطا در اتصال به سرور'); }
 }
 async function saveSettings(){
   const payload = {
@@ -680,6 +989,63 @@ async function saveSettings(){
     showToast(data.error || 'خطا - دوباره وارد شوید');
   }
 }
+let newImgData = '';
+async function compressImageToDataURL(file, maxDim, quality){
+  const dataUrl = await new Promise((res, rej) => {
+    const r = new FileReader();
+    r.onload = () => res(r.result);
+    r.onerror = rej;
+    r.readAsDataURL(file);
+  });
+  const img = await new Promise((res, rej) => {
+    const im = new Image();
+    im.onload = () => res(im);
+    im.onerror = rej;
+    im.src = dataUrl;
+  });
+  let w = img.width, h = img.height;
+  if(w > h && w > maxDim){ h = Math.round(h * maxDim / w); w = maxDim; }
+  else if(h > maxDim){ w = Math.round(w * maxDim / h); h = maxDim; }
+  const canvas = document.createElement('canvas');
+  canvas.width = w; canvas.height = h;
+  canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+  return canvas.toDataURL('image/jpeg', quality);
+}
+async function onProductImageSelected(e){
+  const file = e.target.files[0];
+  if(!file) return;
+  const hint = document.getElementById('imgUploadHint');
+  hint.textContent = 'در حال فشرده‌سازی عکس...';
+  try{
+    // شیت گوگل محدودیت حجمی داره، پس عکس رو خودکار کوچک و فشرده می‌کنیم
+    let dims = [900, 700, 500, 380];
+    let qualities = [0.75, 0.6, 0.5, 0.4];
+    let result = '';
+    outer:
+    for(const dim of dims){
+      for(const q of qualities){
+        result = await compressImageToDataURL(file, dim, q);
+        if(result.length < 45000) break outer;
+      }
+    }
+    if(result.length >= 45000){
+      hint.textContent = 'این عکس حتی بعد از فشرده‌سازی زیاد بزرگه؛ لطفا عکس ساده‌تر/کوچک‌تری انتخاب کنید.';
+      return;
+    }
+    newImgData = result;
+    document.getElementById('imgPreview').src = newImgData;
+    document.getElementById('imgPreviewWrap').style.display = 'flex';
+    hint.textContent = 'عکس آماده آپلوده.';
+  }catch(err){
+    hint.textContent = 'خطا در پردازش عکس، دوباره امتحان کنید.';
+  }
+}
+function clearProductImage(){
+  newImgData = '';
+  document.getElementById('newImgFile').value = '';
+  document.getElementById('imgPreviewWrap').style.display = 'none';
+  document.getElementById('imgUploadHint').textContent = '';
+}
 function renderDashboardList(){
   const wrap = document.getElementById('prodList');
   if(!wrap) return;
@@ -696,12 +1062,13 @@ async function addProduct(){
   const name = document.getElementById('newName').value.trim();
   const price = document.getElementById('newPrice').value.trim();
   const desc = document.getElementById('newDesc').value.trim();
-  const img = document.getElementById('newImg').value.trim();
+  const img = newImgData;
   if(!name || !price){ showToast('نام و قیمت الزامی است'); return; }
   const data = await api('addProduct', { token: adminToken, product:{ name, price, img, desc } }, 'POST');
   if(data.ok){
     document.getElementById('newName').value=''; document.getElementById('newPrice').value='';
-    document.getElementById('newDesc').value=''; document.getElementById('newImg').value='';
+    document.getElementById('newDesc').value='';
+    clearProductImage();
     await loadData();
     document.getElementById('dashboard').classList.add('open');
     showToast('محصول اضافه شد');
