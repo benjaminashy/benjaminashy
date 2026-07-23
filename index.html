@@ -5,145 +5,190 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Benjamin — Fine Spirits & Wine</title>
 <style>
-:root{--gold:#c9a84c;--gold-light:#e8c96a;--dark:#0d0d0d;--dark2:#141414;--dark3:#1a1a1a;--dark4:#222;--text:#f0ead6;--text2:#a89880;--border:#2a2a2a;}
+:root{--gold:#c9a84c;--gold-light:#e8c96a;--dark:#0d0d0d;--dark2:#0a1a0a;--dark3:#111811;--dark4:#1a2a1a;--text:#f0ead6;--text2:#a89880;--border:#1e2e1e;}
 *{margin:0;padding:0;box-sizing:border-box;}
 body{background:var(--dark);color:var(--text);font-family:'Segoe UI',Tahoma,sans-serif;min-height:100vh;}
 .hidden{display:none!important;}
 /* AGE GATE */
-#age-gate{position:fixed;inset:0;background:#0d0d0d;display:flex;align-items:center;justify-content:center;z-index:9999;}
-.age-box{text-align:center;padding:40px;max-width:400px;border:1px solid var(--gold);border-radius:12px;background:var(--dark2);}
+#age-gate{position:fixed;inset:0;background:#050e05;display:flex;align-items:center;justify-content:center;z-index:9999;}
+.age-box{text-align:center;padding:40px;max-width:400px;border:1px solid var(--gold);border-radius:14px;background:var(--dark2);}
 .age-box h2{font-size:2rem;color:var(--gold);margin-bottom:12px;}
 .age-box p{color:var(--text2);margin-bottom:28px;line-height:1.7;}
-.age-btns{display:flex;gap:12px;justify-content:center;}
+.age-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
 /* WELCOME */
-#welcome-modal{position:fixed;inset:0;background:rgba(0,0,0,.85);display:flex;align-items:center;justify-content:center;z-index:9998;}
-.welcome-box{background:var(--dark3);border:1px solid var(--gold);border-radius:14px;padding:36px;max-width:420px;width:90%;text-align:center;}
-.welcome-box h3{color:var(--gold);font-size:1.4rem;margin-bottom:14px;}
-.welcome-box p{color:var(--text2);line-height:1.8;margin-bottom:24px;}
+#welcome-modal{position:fixed;inset:0;background:rgba(0,10,0,.9);display:flex;align-items:center;justify-content:center;z-index:9998;}
+.welcome-box{background:var(--dark3);border:1px solid var(--gold);border-radius:16px;padding:36px;max-width:440px;width:90%;text-align:center;}
+.welcome-box h3{color:var(--gold);font-size:1.5rem;margin-bottom:14px;}
+.welcome-box p{color:var(--text2);line-height:1.9;margin-bottom:24px;font-size:.95rem;}
 /* HEADER */
-header{background:var(--dark2);border-bottom:1px solid var(--border);padding:0 20px;position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;height:60px;}
-.logo{display:flex;align-items:center;gap:10px;}
-.logo-icon{width:40px;height:40px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.1rem;color:#000;}
-.logo-text{font-size:1.2rem;font-weight:700;color:var(--gold);}
-.header-actions{display:flex;align-items:center;gap:12px;}
+header{background:rgba(5,20,5,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:0 20px;position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;height:62px;}
+.logo{display:flex;align-items:center;gap:12px;}
+.logo-icon{width:42px;height:42px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.2rem;color:#000;box-shadow:0 0 12px rgba(201,168,76,.4);}
+.logo-text{font-size:1.2rem;font-weight:800;color:var(--gold);}
+.logo-sub{font-size:.6rem;color:var(--text2);letter-spacing:1px;}
+.header-actions{display:flex;align-items:center;gap:10px;}
 /* BUTTONS */
-.btn-gold{background:var(--gold);color:#000;border:none;padding:10px 22px;border-radius:8px;font-size:.95rem;cursor:pointer;font-weight:700;transition:.2s;}
-.btn-gold:hover{background:var(--gold-light);}
+.btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:#000;border:none;padding:11px 24px;border-radius:10px;font-size:.95rem;cursor:pointer;font-weight:800;transition:.2s;letter-spacing:.5px;}
+.btn-gold:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(201,168,76,.4);}
 .btn-outline{background:transparent;color:var(--text2);border:1px solid var(--border);padding:9px 20px;border-radius:8px;font-size:.9rem;cursor:pointer;transition:.2s;}
 .btn-outline:hover{border-color:var(--gold);color:var(--gold);}
-.btn-danger{background:#c62828;color:#fff;border:none;padding:8px 16px;border-radius:8px;cursor:pointer;font-size:.85rem;}
-.cart-btn{background:var(--gold);color:#000;border:none;padding:8px 16px;border-radius:8px;cursor:pointer;font-weight:700;font-size:.9rem;display:flex;align-items:center;gap:6px;}
-.cart-count{background:#000;color:var(--gold);border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:900;}
-.admin-btn{background:transparent;color:var(--text2);border:1px solid var(--border);padding:7px 12px;border-radius:8px;cursor:pointer;font-size:.8rem;}
+.cart-btn{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:#000;border:none;padding:8px 18px;border-radius:10px;cursor:pointer;font-weight:800;font-size:.9rem;display:flex;align-items:center;gap:7px;transition:.2s;}
+.cart-btn:hover{transform:translateY(-1px);}
+.cart-count{background:#000;color:var(--gold);border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:900;}
 </style>
 <style>
 /* HERO */
-.hero{background:linear-gradient(135deg,#0d1a0d 0%,#0d0d0d 50%,#1a150a 100%);padding:70px 20px;text-align:center;position:relative;overflow:hidden;}
-.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(201,168,76,.08) 0%,transparent 70%);}
-.hero h1{font-size:2.2rem;font-weight:900;line-height:1.4;margin-bottom:14px;position:relative;}
+.hero{background:linear-gradient(160deg,#050e05 0%,#0a1a0a 40%,#111811 70%,#0d1400 100%);padding:80px 20px 60px;text-align:center;position:relative;overflow:hidden;min-height:380px;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(201,168,76,.06) 0%,transparent 70%);}
+.hero-badge{display:inline-block;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.3);color:var(--gold);font-size:.78rem;padding:4px 14px;border-radius:20px;margin-bottom:18px;letter-spacing:1px;}
+.hero h1{font-size:2.6rem;font-weight:900;line-height:1.35;margin-bottom:16px;position:relative;}
 .hero h1 span{color:var(--gold);}
-.hero p{color:var(--text2);font-size:1rem;max-width:480px;margin:0 auto 28px;line-height:1.8;position:relative;}
-.dots{display:flex;justify-content:center;gap:8px;margin-top:20px;}
+.hero p{color:var(--text2);font-size:.98rem;max-width:500px;margin:0 auto 32px;line-height:1.9;position:relative;}
+.dots{display:flex;justify-content:center;gap:8px;margin-top:24px;}
 .dot{width:8px;height:8px;border-radius:50%;background:var(--border);cursor:pointer;transition:.3s;}
-.dot.active{background:var(--gold);width:20px;border-radius:4px;}
+.dot.active{background:var(--gold);width:24px;border-radius:4px;}
+/* SEC TITLE */
+.sec-title{text-align:center;padding:40px 20px 20px;}
+.sec-title h2{font-size:1.45rem;margin-bottom:8px;font-weight:800;}
+.sec-title p{color:var(--text2);font-size:.88rem;}
 /* CATEGORIES */
-.sec-title{text-align:center;padding:36px 20px 18px;}
-.sec-title h2{font-size:1.4rem;margin-bottom:6px;}
-.sec-title p{color:var(--text2);font-size:.9rem;}
-.cats{display:flex;gap:14px;padding:0 16px 28px;justify-content:center;flex-wrap:wrap;}
-.cat-card{background:var(--dark3);border:2px solid var(--border);border-radius:14px;padding:20px 28px;text-align:center;cursor:pointer;transition:.25s;min-width:110px;}
-.cat-card:hover,.cat-card.active{border-color:var(--gold);background:#1e1a0f;}
+.cats{display:flex;gap:14px;padding:0 16px 32px;justify-content:center;flex-wrap:wrap;}
+.cat-card{background:var(--dark3);border:2px solid var(--border);border-radius:16px;padding:22px 30px;text-align:center;cursor:pointer;transition:.25s;min-width:115px;}
+.cat-card:hover,.cat-card.active{border-color:var(--gold);background:#0f2010;box-shadow:0 0 20px rgba(201,168,76,.1);}
 .cat-card.active .cat-label{color:var(--gold);}
-.cat-icon{font-size:2rem;margin-bottom:6px;}
+.cat-icon{font-size:2.2rem;margin-bottom:8px;}
 .cat-label{font-size:.85rem;font-weight:700;}
-.cat-sub{font-size:.75rem;color:#666;margin-top:4px;}
+.cat-sub{font-size:.73rem;color:#556655;margin-top:4px;}
 /* PRODUCTS */
-.products-section{padding:0 16px 40px;max-width:1100px;margin:0 auto;}
-.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:16px;}
-.product-card{background:var(--dark3);border:1px solid var(--border);border-radius:14px;overflow:hidden;cursor:pointer;transition:.25s;}
-.product-card:hover{border-color:var(--gold);transform:translateY(-3px);}
-.product-img{width:100%;height:170px;background:var(--dark4);display:flex;align-items:center;justify-content:center;font-size:3.5rem;overflow:hidden;}
+.products-section{padding:0 16px 48px;max-width:1100px;margin:0 auto;}
+.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(195px,1fr));gap:18px;}
+.product-card{background:var(--dark3);border:1px solid var(--border);border-radius:16px;overflow:hidden;cursor:pointer;transition:.25s;}
+.product-card:hover{border-color:var(--gold);transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.4);}
+.product-img{width:100%;height:180px;background:var(--dark4);display:flex;align-items:center;justify-content:center;font-size:3.8rem;overflow:hidden;}
 .product-img img{width:100%;height:100%;object-fit:cover;}
 .product-info{padding:14px;}
-.product-name{font-size:.95rem;font-weight:700;margin-bottom:5px;}
-.cat-badge{display:inline-block;background:rgba(201,168,76,.15);color:var(--gold);font-size:.72rem;padding:2px 8px;border-radius:20px;margin-bottom:7px;}
-.product-price{color:var(--gold);font-weight:700;font-size:.95rem;margin-bottom:3px;}
-.product-inquiry{font-size:.73rem;color:var(--text2);margin-bottom:10px;line-height:1.5;}
-.btn-add{width:100%;background:var(--gold);color:#000;border:none;padding:9px;border-radius:8px;font-weight:700;cursor:pointer;font-size:.88rem;}
-.btn-add:hover{background:var(--gold-light);}
+.product-name{font-size:.95rem;font-weight:700;margin-bottom:6px;}
+.cat-badge{display:inline-block;background:rgba(201,168,76,.12);color:var(--gold);font-size:.7rem;padding:2px 9px;border-radius:20px;margin-bottom:8px;border:1px solid rgba(201,168,76,.2);}
+.product-price{color:var(--gold);font-weight:800;font-size:.95rem;margin-bottom:4px;}
+.product-inquiry{font-size:.72rem;color:var(--text2);margin-bottom:10px;line-height:1.5;}
+.btn-add{width:100%;background:linear-gradient(135deg,var(--gold),var(--gold-light));color:#000;border:none;padding:9px;border-radius:8px;font-weight:800;cursor:pointer;font-size:.88rem;transition:.2s;}
+.btn-add:hover{transform:translateY(-1px);}
 /* FEATURED */
-.featured-section{padding:0 16px 40px;max-width:1100px;margin:0 auto;}
-.featured-card{background:linear-gradient(135deg,#1a1500,#0d1a0d);border:1px solid var(--gold);border-radius:16px;padding:24px;display:flex;gap:20px;align-items:center;flex-wrap:wrap;}
-.featured-text h3{font-size:1.2rem;margin-bottom:8px;color:var(--gold);}
-.featured-text p{color:var(--text2);font-size:.88rem;line-height:1.7;}
-.featured-price{background:rgba(201,168,76,.12);border:1px solid var(--gold);border-radius:10px;padding:14px 22px;text-align:center;min-width:150px;}
+.featured-section{padding:0 16px 48px;max-width:1100px;margin:0 auto;}
+.featured-card{background:linear-gradient(135deg,#1a1500 0%,#0a1a0a 60%,#0d1a08 100%);border:1px solid var(--gold);border-radius:18px;padding:28px;display:flex;gap:24px;align-items:center;flex-wrap:wrap;box-shadow:0 0 30px rgba(201,168,76,.08);}
+.featured-text h3{font-size:1.3rem;margin-bottom:10px;color:var(--gold);}
+.featured-text p{color:var(--text2);font-size:.88rem;line-height:1.8;}
+.featured-price{background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.4);border-radius:12px;padding:16px 24px;text-align:center;min-width:155px;}
 .featured-price .lbl{font-size:.72rem;color:var(--text2);}
-.featured-price .amt{font-size:1.3rem;font-weight:900;color:var(--gold);}
-</style>
-<style>
+.featured-price .amt{font-size:1.35rem;font-weight:900;color:var(--gold);}
 /* MODAL */
-.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);display:flex;align-items:center;justify-content:center;z-index:500;padding:16px;}
-.modal-box{background:var(--dark3);border:1px solid var(--border);border-radius:16px;width:100%;max-width:480px;max-height:90vh;overflow-y:auto;}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,5,0,.88);display:flex;align-items:center;justify-content:center;z-index:500;padding:16px;}
+.modal-box{background:var(--dark3);border:1px solid var(--border);border-radius:18px;width:100%;max-width:500px;max-height:92vh;overflow-y:auto;}
 .modal-header{padding:20px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
 .modal-header h3{font-size:1.1rem;color:var(--gold);}
 .modal-close{background:none;border:none;color:var(--text2);font-size:1.4rem;cursor:pointer;}
 .modal-body{padding:24px;}
+</style>
+<style>
 /* CART */
 .cart-item{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);}
-.cart-item-img{width:50px;height:50px;background:var(--dark4);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;overflow:hidden;flex-shrink:0;}
+.cart-item-img{width:52px;height:52px;background:var(--dark4);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;overflow:hidden;flex-shrink:0;}
 .cart-item-img img{width:100%;height:100%;object-fit:cover;}
 .cart-item-info{flex:1;}
 .cart-item-name{font-size:.9rem;font-weight:600;}
-.cart-item-price{font-size:.85rem;color:var(--gold);}
+.cart-item-price{font-size:.82rem;color:var(--gold);}
 .qty-ctrl{display:flex;align-items:center;gap:8px;}
-.qty-btn{background:var(--dark4);border:1px solid var(--border);color:var(--text);width:28px;height:28px;border-radius:6px;cursor:pointer;font-size:1rem;}
-.qty-num{min-width:24px;text-align:center;font-weight:700;}
+.qty-btn{background:var(--dark4);border:1px solid var(--border);color:var(--text);width:30px;height:30px;border-radius:7px;cursor:pointer;font-size:1rem;}
+.qty-num{min-width:26px;text-align:center;font-weight:700;}
 .remove-item{background:none;border:none;color:#e53935;cursor:pointer;font-size:1.1rem;}
 .cart-total-row{display:flex;justify-content:space-between;padding:10px 0;font-size:.9rem;color:var(--text2);}
-.cart-total-row.main{font-size:1rem;font-weight:700;color:var(--text);}
-.delivery-info{background:var(--dark4);border-radius:10px;padding:14px;margin:12px 0;font-size:.82rem;color:var(--text2);line-height:1.7;}
-/* CHECKOUT FORM */
+.cart-total-row.main{font-size:1.05rem;font-weight:800;color:var(--text);border-top:1px solid var(--border);margin-top:4px;}
+/* FORM */
 .form-group{margin-bottom:16px;}
-.form-group label{display:block;font-size:.85rem;color:var(--text2);margin-bottom:6px;}
-.form-group input,.form-group textarea,.form-group select{
-  width:100%;background:var(--dark4);border:1px solid var(--border);color:var(--text);
-  padding:10px 14px;border-radius:8px;font-size:.9rem;outline:none;
-}
-.form-group input:focus,.form-group textarea:focus{border-color:var(--gold);}
-.form-group textarea{resize:vertical;min-height:70px;}
+.form-group label{display:block;font-size:.83rem;color:var(--text2);margin-bottom:6px;}
+.form-group input,.form-group textarea,.form-group select{width:100%;background:var(--dark4);border:1px solid var(--border);color:var(--text);padding:10px 14px;border-radius:10px;font-size:.9rem;outline:none;direction:rtl;}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--gold);}
+.form-group textarea{resize:vertical;min-height:72px;}
+/* DELIVERY SEARCH */
+.delivery-search-box{position:relative;margin-top:10px;}
+.delivery-input{width:100%;background:var(--dark4);border:1px solid var(--border);color:var(--text);padding:10px 14px;border-radius:10px;font-size:.88rem;outline:none;direction:rtl;}
+.delivery-input:focus{border-color:var(--gold);}
+.delivery-dropdown{position:absolute;top:100%;right:0;left:0;background:#0a1a0a;border:1px solid var(--gold);border-radius:10px;max-height:210px;overflow-y:auto;z-index:300;display:none;margin-top:4px;box-shadow:0 8px 24px rgba(0,0,0,.6);}
+.delivery-dropdown.open{display:block;}
+.delivery-option{padding:10px 14px;cursor:pointer;font-size:.86rem;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);}
+.delivery-option:last-child{border-bottom:none;}
+.delivery-option:hover{background:rgba(201,168,76,.1);color:var(--gold);}
+.zone-pill{font-size:.7rem;padding:2px 8px;border-radius:20px;font-weight:700;}
+.zone-low{background:rgba(76,175,80,.15);color:#4caf50;}
+.zone-mid{background:rgba(255,193,7,.15);color:#ffc107;}
+.zone-high{background:rgba(229,57,53,.15);color:#ef5350;}
+.selected-zone-box{margin-top:10px;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.3);border-radius:8px;padding:10px 14px;font-size:.84rem;color:var(--gold);display:none;}
 /* INVOICE */
 .invoice{background:#fff;color:#000;padding:28px;border-radius:8px;font-family:Tahoma,sans-serif;}
-.inv-header{text-align:center;border-bottom:2px solid #c9a84c;padding-bottom:16px;margin-bottom:20px;}
-.inv-logo{font-size:1.6rem;font-weight:900;color:#c9a84c;letter-spacing:2px;}
-.inv-sub{font-size:.85rem;color:#666;margin-top:4px;}
-.inv-meta{display:flex;justify-content:space-between;font-size:.82rem;color:#555;margin-bottom:16px;flex-wrap:wrap;gap:8px;}
-.inv-table{width:100%;border-collapse:collapse;font-size:.85rem;margin-bottom:16px;}
+.inv-header{text-align:center;border-bottom:2px solid #c9a84c;padding-bottom:16px;margin-bottom:18px;}
+.inv-logo{font-size:1.7rem;font-weight:900;color:#c9a84c;letter-spacing:3px;}
+.inv-sub{font-size:.82rem;color:#666;margin-top:5px;}
+.inv-meta{display:flex;justify-content:space-between;font-size:.8rem;color:#555;margin-bottom:14px;flex-wrap:wrap;gap:6px;}
+.inv-table{width:100%;border-collapse:collapse;font-size:.83rem;margin-bottom:14px;}
 .inv-table th{background:#f5f0e8;padding:8px;text-align:right;border:1px solid #ddd;color:#333;}
 .inv-table td{padding:8px;border:1px solid #ddd;color:#444;}
-.inv-totals{text-align:left;font-size:.88rem;}
-.inv-totals div{display:flex;justify-content:space-between;padding:4px 0;}
+.inv-totals div{display:flex;justify-content:space-between;padding:4px 0;font-size:.85rem;}
 .inv-totals .final{font-weight:700;font-size:1rem;color:#c9a84c;border-top:1px solid #ddd;padding-top:8px;margin-top:4px;}
-.inv-footer{text-align:center;margin-top:18px;font-size:.78rem;color:#888;border-top:1px solid #eee;padding-top:12px;}
+.inv-footer{text-align:center;margin-top:16px;font-size:.76rem;color:#888;border-top:1px solid #eee;padding-top:12px;}
 .inv-tg{color:#c9a84c;font-weight:700;}
-/* ADMIN */
-#admin-section{background:var(--dark);min-height:100vh;}
-.admin-nav{background:var(--dark2);border-bottom:1px solid var(--border);padding:0 20px;display:flex;align-items:center;gap:20px;height:56px;}
-.admin-nav h2{color:var(--gold);font-size:1.1rem;margin-left:auto;}
-.admin-tab{background:none;border:none;color:var(--text2);padding:8px 16px;border-radius:8px;cursor:pointer;font-size:.9rem;}
-.admin-tab.active{background:rgba(201,168,76,.15);color:var(--gold);}
-.admin-content{padding:24px;max-width:1000px;margin:0 auto;}
-.stats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px;margin-bottom:28px;}
-.stat-card{background:var(--dark3);border:1px solid var(--border);border-radius:12px;padding:18px;text-align:center;}
-.stat-val{font-size:1.8rem;font-weight:900;color:var(--gold);}
-.stat-lbl{font-size:.8rem;color:var(--text2);margin-top:4px;}
-.admin-table{width:100%;border-collapse:collapse;font-size:.85rem;}
-.admin-table th{background:var(--dark4);padding:10px;text-align:right;border-bottom:1px solid var(--border);color:var(--text2);}
-.admin-table td{padding:10px;border-bottom:1px solid var(--border);}
-.badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:.75rem;font-weight:700;}
+/* BADGE */
+.badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:.74rem;font-weight:700;}
 .badge-pending{background:rgba(255,193,7,.15);color:#ffc107;}
 .badge-done{background:rgba(76,175,80,.15);color:#4caf50;}
 .badge-cancel{background:rgba(229,57,53,.15);color:#e53935;}
+/* FOOTER GEAR */
+.site-footer{text-align:center;padding:24px 20px 6px;color:var(--text2);font-size:.78rem;border-top:1px solid var(--border);}
+.footer-gear-btn{display:block;margin:0 auto;background:none;border:none;cursor:pointer;opacity:.25;font-size:1.2rem;padding:10px;transition:opacity .3s;color:var(--text2);}
+.footer-gear-btn:hover{opacity:.6;}
+</style>
+<style>
+/* HACKER LOGIN */
+#hacker-login{position:fixed;inset:0;background:#000;display:flex;align-items:center;justify-content:center;z-index:8000;direction:ltr;}
+.hacker-wrap{position:relative;width:100%;max-width:380px;padding:16px;}
+.hacker-box{border:1px solid #00ff41;border-radius:3px;padding:40px 36px;background:#000;box-shadow:0 0 40px rgba(0,255,65,.12),inset 0 0 40px rgba(0,255,65,.02);}
+.hacker-title{font-family:'Courier New',monospace;font-size:1.2rem;color:#00ff41;margin-bottom:6px;letter-spacing:3px;min-height:1.5em;}
+.hacker-cursor{animation:blink .8s infinite;color:#00ff41;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0;}}
+.hacker-sub{font-family:'Courier New',monospace;font-size:.72rem;color:#004d15;margin-bottom:30px;letter-spacing:1px;}
+.hacker-line{font-family:'Courier New',monospace;font-size:.75rem;color:#003d10;margin-bottom:20px;}
+.hacker-input{width:100%;background:#000;border:none;border-bottom:1px solid #00ff41;color:#00ff41;font-family:'Courier New',monospace;font-size:1rem;padding:8px 0;outline:none;letter-spacing:2px;margin-bottom:24px;}
+.hacker-input::placeholder{color:#003d10;}
+.hacker-err{color:#ff3333;font-family:'Courier New',monospace;font-size:.78rem;margin-bottom:14px;display:none;}
+.hacker-btn{width:100%;background:transparent;border:1px solid #00ff41;color:#00ff41;font-family:'Courier New',monospace;font-size:.95rem;padding:12px;cursor:pointer;letter-spacing:4px;transition:.2s;}
+.hacker-btn:hover{background:#00ff41;color:#000;}
+.hacker-close{position:absolute;top:20px;left:20px;background:none;border:none;color:#003d10;font-size:1rem;cursor:pointer;font-family:'Courier New',monospace;}
+.hacker-close:hover{color:#00ff41;}
+/* ADMIN DASHBOARD */
+#admin-section{background:#0a0a0a;min-height:100vh;color:#e0e0e0;}
+.admin-nav{background:#0f0f0f;border-bottom:1px solid #222;padding:0 16px;display:flex;align-items:center;gap:2px;height:54px;overflow-x:auto;}
+.admin-nav-title{color:#fff;font-size:.95rem;font-weight:700;margin-right:auto;white-space:nowrap;padding-right:12px;}
+.admin-tab{background:none;border:none;color:#555;padding:8px 13px;border-radius:6px;cursor:pointer;font-size:.82rem;white-space:nowrap;transition:.2s;}
+.admin-tab.active{background:rgba(255,255,255,.08);color:#fff;border:1px solid #333;}
+.admin-tab:hover:not(.active){color:#ccc;}
+.admin-content{padding:22px;max-width:1100px;margin:0 auto;}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:12px;margin-bottom:24px;}
+.stat-card{background:#141414;border:1px solid #222;border-radius:12px;padding:18px;text-align:center;}
+.stat-val{font-size:1.7rem;font-weight:900;color:#fff;}
+.stat-lbl{font-size:.78rem;color:#555;margin-top:4px;}
+.admin-box{background:#111;border:1px solid #222;border-radius:12px;padding:22px;margin-bottom:18px;}
+.admin-box h3{color:#e0e0e0;font-size:.95rem;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid #222;}
+.admin-table{width:100%;border-collapse:collapse;font-size:.83rem;}
+.admin-table th{background:#0a0a0a;padding:10px;text-align:right;border-bottom:1px solid #222;color:#555;font-weight:600;}
+.admin-table td{padding:10px;border-bottom:1px solid #1a1a1a;color:#bbb;}
+.admin-form-input{width:100%;background:#0a0a0a;border:1px solid #2a2a2a;color:#e0e0e0;padding:10px 14px;border-radius:8px;font-size:.88rem;outline:none;direction:rtl;}
+.admin-form-input:focus{border-color:#555;}
+.btn-white{background:#fff;color:#000;border:none;padding:10px 20px;border-radius:8px;font-size:.88rem;cursor:pointer;font-weight:700;transition:.2s;}
+.btn-white:hover{background:#ddd;}
+.btn-red{background:#c62828;color:#fff;border:none;padding:6px 13px;border-radius:6px;cursor:pointer;font-size:.78rem;}
+.btn-green{background:#2e7d32;color:#fff;border:none;padding:6px 13px;border-radius:6px;cursor:pointer;font-size:.78rem;margin-left:4px;}
+.sync-note{background:#0a0a0a;border:1px solid #222;border-radius:8px;padding:12px 16px;font-size:.8rem;color:#555;margin-bottom:16px;line-height:1.8;}
 input[type=text],input[type=password],input[type=number],select,textarea{direction:rtl;}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
 </style>
 </head>
 <body>
@@ -151,8 +196,8 @@ input[type=text],input[type=password],input[type=number],select,textarea{directi
 <!-- AGE GATE -->
 <div id="age-gate">
   <div class="age-box">
-    <div style="font-size:3rem;margin-bottom:10px;">🔞</div>
-    <h2>18+</h2>
+    <div style="font-size:3.5rem;margin-bottom:12px;">🔞</div>
+    <h2>+18</h2>
     <p>این سایت مربوط به فروش نوشیدنی‌های الکلی است.<br>ورود فقط برای افراد بالای ۱۸ سال مجاز است.</p>
     <div class="age-btns">
       <button class="btn-gold" onclick="confirmAge()">بله، ۱۸ سال دارم</button>
@@ -161,29 +206,43 @@ input[type=text],input[type=password],input[type=number],select,textarea{directi
   </div>
 </div>
 
-<!-- WELCOME MODAL -->
+<!-- WELCOME -->
 <div id="welcome-modal" class="hidden">
   <div class="welcome-box">
-    <div style="font-size:2rem;margin-bottom:10px;">🚚</div>
-    <h3>خوش آمدید!</h3>
-    <p>ارسال سفارش‌ها فقط در سطح شهر مشهد و زیر ۳ ساعت انجام می‌شود.<br>هزینه ارسال بسته به منطقه شما متفاوت است و در سبد خرید محاسبه می‌شود.</p>
+    <div style="font-size:2.8rem;margin-bottom:14px;">🚚</div>
+    <h3>خوش آمدید به بنجامین!</h3>
+    <p>ارسال سفارش‌ها فقط در سطح شهر <strong style="color:var(--gold);">مشهد</strong> انجام می‌شود.<br>
+    زمان تحویل زیر <strong style="color:var(--gold);">۳ ساعت</strong> — هزینه ارسال بر اساس منطقه شما متفاوت است.</p>
     <button class="btn-gold" onclick="closeWelcome()">متوجه شدم، ورود به فروشگاه</button>
+  </div>
+</div>
+
+<!-- HACKER LOGIN -->
+<div id="hacker-login" class="hidden">
+  <div class="hacker-wrap">
+    <button class="hacker-close" onclick="closeHackerLogin()">[ X ]</button>
+    <div class="hacker-box">
+      <div class="hacker-title"><span id="hacker-typed"></span><span class="hacker-cursor">█</span></div>
+      <div class="hacker-sub">&gt; SECURE ACCESS TERMINAL v2.1</div>
+      <div class="hacker-line">&gt; AUTHORIZED PERSONNEL ONLY _</div>
+      <input type="password" class="hacker-input" id="hacker-pass" placeholder="••••••••••••" autocomplete="off" dir="ltr">
+      <div class="hacker-err" id="hacker-err">&gt; ERROR: ACCESS DENIED — INVALID CREDENTIALS</div>
+      <button class="hacker-btn" onclick="doHackerLogin()">[ ACCESS ]</button>
+    </div>
   </div>
 </div>
 
 <!-- MAIN SHOP -->
 <div id="shop-section">
-  <!-- Header -->
   <header>
     <div class="logo">
       <div class="logo-icon">B</div>
       <div>
         <div class="logo-text">بنجامین</div>
-        <div style="font-size:.65rem;color:var(--text2);">FINE SPIRITS & WINE</div>
+        <div class="logo-sub">FINE SPIRITS & WINE</div>
       </div>
     </div>
     <div class="header-actions">
-      <button class="admin-btn" onclick="openAdminLogin()">⚙ داشبورد</button>
       <button class="cart-btn" onclick="openCart()">
         🛍️ سبد خرید
         <span class="cart-count" id="cart-count">0</span>
@@ -191,96 +250,69 @@ input[type=text],input[type=password],input[type=number],select,textarea{directi
     </div>
   </header>
 
-  <!-- Hero -->
+  <!-- HERO -->
   <div class="hero">
+    <div class="hero-badge">✦ BENJAMIN MASHHAD</div>
     <h1>کیفیت و <span>اصالت</span><br>در هر قطره</h1>
-    <p>مجموعه‌ای منتخب از بهترین نوشیدنی‌های الکلی از برندهای معتبر دنیا</p>
+    <p>مجموعه‌ای منتخب از بهترین نوشیدنی‌های الکلی<br>از برندهای معتبر دنیا</p>
     <button class="btn-gold" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">مشاهده مجموعه</button>
-    <div class="dots">
-      <div class="dot active"></div>
-      <div class="dot"></div>
-      <div class="dot"></div>
-    </div>
+    <div class="dots"><div class="dot active"></div><div class="dot"></div><div class="dot"></div></div>
   </div>
 
-  <!-- Categories -->
-  <div class="sec-title">
-    <h2>دسته‌بندی محصولات</h2>
-    <p>محصول مورد نظر خود را انتخاب کنید</p>
-  </div>
+  <!-- CATEGORIES -->
+  <div class="sec-title"><h2>دسته‌بندی محصولات</h2><p>محصول مورد نظر خود را انتخاب کنید</p></div>
   <div class="cats">
     <div class="cat-card active" onclick="filterCat('all',this)">
-      <div class="cat-icon">🍾</div>
-      <div class="cat-label">همه موارد</div>
-      <div class="cat-sub">مشاهده همه</div>
+      <div class="cat-icon">🍾</div><div class="cat-label">همه موارد</div><div class="cat-sub">مشاهده همه</div>
     </div>
     <div class="cat-card" onclick="filterCat('whiskey',this)">
-      <div class="cat-icon">🥃</div>
-      <div class="cat-label">ویسکی</div>
-      <div class="cat-sub">مشاهده محصولات</div>
+      <div class="cat-icon">🥃</div><div class="cat-label">ویسکی</div><div class="cat-sub">مشاهده محصولات</div>
     </div>
     <div class="cat-card" onclick="filterCat('vodka',this)">
-      <div class="cat-icon">🍸</div>
-      <div class="cat-label">ودکا</div>
-      <div class="cat-sub">مشاهده محصولات</div>
+      <div class="cat-icon">🍸</div><div class="cat-label">ودکا</div><div class="cat-sub">مشاهده محصولات</div>
     </div>
   </div>
 
-  <!-- Featured -->
+  <!-- FEATURED -->
   <div class="featured-section">
-    <div class="sec-title" style="padding-top:0;text-align:right;">
-      <h2>پیشنهاد ویژه</h2>
-      <p>منتخب بهترین‌ها برای شما</p>
-    </div>
-    <div class="featured-card" id="featured-card">
-      <div style="font-size:4rem;">🥃</div>
+    <div class="sec-title" style="padding-top:0;text-align:right;"><h2>پیشنهاد ویژه</h2><p>منتخب بهترین‌ها برای شما</p></div>
+    <div class="featured-card">
+      <div style="font-size:4.5rem;">🥃</div>
       <div class="featured-text" style="flex:1;">
         <h3 id="f-name">ویسکی دالمر ۱۵ ساله</h3>
-        <p id="f-desc">طعم اصالت، انتخابی ماندگار — یکی از برترین ویسکی‌های اسکاتلند با بلوغ ۱۵ ساله</p>
+        <p id="f-desc">طعم اصالت، انتخابی ماندگار — یکی از برترین ویسکی‌های اسکاتلند</p>
       </div>
       <div class="featured-price">
         <div class="lbl">قیمت:</div>
         <div class="amt" id="f-price">۱٬۷۵۰٬۰۰۰</div>
         <div class="lbl">تومان</div>
-        <button class="btn-gold" style="margin-top:10px;width:100%;font-size:.8rem;" id="f-btn" onclick="addFeaturedToCart()">جزئیات بیشتر</button>
+        <button class="btn-gold" style="margin-top:12px;width:100%;font-size:.8rem;" id="f-btn">جزئیات بیشتر</button>
       </div>
     </div>
   </div>
 
-  <!-- Products -->
+  <!-- PRODUCTS -->
   <div id="products">
-    <div class="sec-title">
-      <h2>ترکیب محصولات</h2>
-      <p>برای مشاهده جزئیات و قیمت روی محصول کلیک کنید</p>
-    </div>
-    <div class="products-section">
-      <div class="products-grid" id="products-grid"></div>
-    </div>
+    <div class="sec-title"><h2>ترکیب محصولات</h2><p>برای مشاهده جزئیات روی محصول کلیک کنید</p></div>
+    <div class="products-section"><div class="products-grid" id="products-grid"></div></div>
   </div>
 
-  <div style="text-align:center;padding:30px 20px;color:var(--text2);font-size:.8rem;border-top:1px solid var(--border);">
-    © Benjamin Fine Spirits & Wine — Mashhad | فروش فقط برای افراد بالای ۱۸ سال
-  </div>
+  <div class="site-footer">© Benjamin Fine Spirits & Wine — Mashhad | فروش فقط برای افراد بالای ۱۸ سال</div>
+  <button class="footer-gear-btn" onclick="openHackerLogin()" title="Admin Panel">⚙</button>
 </div>
-<!-- END SHOP -->
 
-<!-- PRODUCT DETAIL MODAL -->
+<!-- PRODUCT MODAL -->
 <div id="product-modal" class="modal-overlay hidden">
   <div class="modal-box">
-    <div class="modal-header">
-      <h3 id="pm-name">نام محصول</h3>
-      <button class="modal-close" onclick="closeModal('product-modal')">✕</button>
-    </div>
+    <div class="modal-header"><h3 id="pm-name">نام محصول</h3><button class="modal-close" onclick="closeModal('product-modal')">✕</button></div>
     <div class="modal-body">
-      <div style="text-align:center;margin-bottom:20px;">
-        <div id="pm-img" style="width:100%;height:220px;background:var(--dark4);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:5rem;overflow:hidden;"></div>
-      </div>
-      <div id="pm-badge" class="cat-badge" style="margin-bottom:10px;"></div>
-      <div id="pm-price" style="color:var(--gold);font-size:1.2rem;font-weight:700;margin-bottom:6px;"></div>
-      <div style="font-size:.78rem;color:var(--text2);margin-bottom:14px;">استعلام قیمت از طریق پشتیبانی انجام می‌شود</div>
+      <div id="pm-img" style="width:100%;height:220px;background:var(--dark4);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:5rem;overflow:hidden;margin-bottom:18px;"></div>
+      <span id="pm-badge" class="cat-badge"></span>
+      <div id="pm-price" style="color:var(--gold);font-size:1.2rem;font-weight:800;margin:10px 0 4px;"></div>
+      <div style="font-size:.76rem;color:var(--text2);margin-bottom:14px;">استعلام قیمت از طریق پشتیبانی انجام می‌شود</div>
       <div id="pm-desc" style="color:var(--text2);font-size:.88rem;line-height:1.8;margin-bottom:20px;"></div>
-      <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
-        <label style="font-size:.85rem;color:var(--text2);">تعداد:</label>
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px;">
+        <span style="font-size:.85rem;color:var(--text2);">تعداد:</span>
         <div class="qty-ctrl">
           <button class="qty-btn" onclick="changeQty(-1,'pm-qty')">−</button>
           <span class="qty-num" id="pm-qty">1</span>
@@ -294,31 +326,29 @@ input[type=text],input[type=password],input[type=number],select,textarea{directi
 
 <!-- CART MODAL -->
 <div id="cart-modal" class="modal-overlay hidden">
-  <div class="modal-box" style="max-width:520px;">
-    <div class="modal-header">
-      <h3>🛍️ سبد خرید</h3>
-      <button class="modal-close" onclick="closeModal('cart-modal')">✕</button>
-    </div>
+  <div class="modal-box" style="max-width:560px;">
+    <div class="modal-header"><h3>🛍️ سبد خرید</h3><button class="modal-close" onclick="closeModal('cart-modal')">✕</button></div>
     <div class="modal-body">
       <div id="cart-items-list"></div>
-      <div class="delivery-info">
-        🚚 <strong>هزینه ارسال:</strong><br>
-        مناطق ۱ و ۲ مشهد: ۵۰٬۰۰۰ تومان<br>
-        مناطق ۳ تا ۵ مشهد: ۸۰٬۰۰۰ تومان<br>
-        مناطق ۶ به بالا: ۱۲۰٬۰۰۰ تومان<br>
-        <br>
-        <label style="color:var(--text);">منطقه خود را انتخاب کنید:</label>
-        <select id="delivery-zone" onchange="calcDelivery()" style="width:100%;margin-top:6px;background:var(--dark3);border:1px solid var(--border);color:var(--text);padding:8px;border-radius:8px;">
-          <option value="">انتخاب کنید</option>
-          <option value="50000">منطقه ۱ و ۲</option>
-          <option value="80000">منطقه ۳ تا ۵</option>
-          <option value="120000">منطقه ۶ به بالا</option>
-        </select>
+      <div style="background:var(--dark4);border-radius:12px;padding:16px;margin:14px 0;">
+        <div style="font-weight:700;margin-bottom:10px;">🚚 هزینه ارسال — منطقه‌بندی مشهد:</div>
+        <div style="font-size:.82rem;color:var(--text2);line-height:2;margin-bottom:12px;">
+          <span style="color:#4caf50;">●</span> مناطق پایین شهر: <strong style="color:var(--text);">۱۰۰٬۰۰۰ تومان</strong><br>
+          <span style="color:#ffc107;">●</span> مرکز شهر: <strong style="color:var(--text);">۱۵۰٬۰۰۰ تومان</strong><br>
+          <span style="color:#ef5350;">●</span> مناطق بالای شهر: <strong style="color:var(--text);">۲۵۰٬۰۰۰ تومان</strong>
+        </div>
+        <div style="font-size:.84rem;color:var(--text2);margin-bottom:6px;">محله خود را جستجو کنید:</div>
+        <div class="delivery-search-box">
+          <input type="text" class="delivery-input" id="delivery-search" placeholder="مثلاً: الهیه، طلاب، احمدآباد..." autocomplete="off"
+            oninput="filterDelivery()" onfocus="showDelivery()" onclick="showDelivery()">
+          <div id="delivery-dropdown" class="delivery-dropdown"></div>
+        </div>
+        <div id="selected-zone-box" class="selected-zone-box"></div>
       </div>
-      <div class="cart-total-row"><span>جمع محصولات</span><span id="subtotal">۰</span></div>
+      <div class="cart-total-row"><span>جمع محصولات</span><span id="subtotal">۰ تومان</span></div>
       <div class="cart-total-row"><span>هزینه ارسال</span><span id="delivery-cost">—</span></div>
-      <div class="cart-total-row main"><span>مبلغ نهایی</span><span id="grand-total">۰</span></div>
-      <button class="btn-gold" style="width:100%;margin-top:16px;" onclick="proceedToCheckout()">تکمیل سفارش</button>
+      <div class="cart-total-row main"><span>مبلغ نهایی</span><span id="grand-total">۰ تومان</span></div>
+      <button class="btn-gold" style="width:100%;margin-top:18px;" onclick="proceedToCheckout()">تکمیل سفارش ←</button>
     </div>
   </div>
 </div>
@@ -326,494 +356,379 @@ input[type=text],input[type=password],input[type=number],select,textarea{directi
 <!-- CHECKOUT MODAL -->
 <div id="checkout-modal" class="modal-overlay hidden">
   <div class="modal-box" style="max-width:500px;">
-    <div class="modal-header">
-      <h3>📋 اطلاعات سفارش</h3>
-      <button class="modal-close" onclick="closeModal('checkout-modal')">✕</button>
-    </div>
+    <div class="modal-header"><h3>📋 اطلاعات سفارش</h3><button class="modal-close" onclick="closeModal('checkout-modal')">✕</button></div>
     <div class="modal-body">
-      <div class="form-group">
-        <label>نام و نام خانوادگی *</label>
-        <input type="text" id="co-name" placeholder="مثلاً: علی محمدی">
-      </div>
-      <div class="form-group">
-        <label>شماره موبایل *</label>
-        <input type="text" id="co-phone" placeholder="09XXXXXXXXX">
-      </div>
-      <div class="form-group">
-        <label>آیدی تلگرام (اختیاری)</label>
-        <input type="text" id="co-tg" placeholder="@username">
-      </div>
-      <div class="form-group">
-        <label>آدرس کامل *</label>
-        <textarea id="co-address" placeholder="مشهد، خیابان ..."></textarea>
-      </div>
-      <div class="form-group">
-        <label>توضیحات اضافه (اختیاری)</label>
-        <textarea id="co-note" placeholder="..."></textarea>
-      </div>
-      <button class="btn-gold" style="width:100%;" onclick="submitOrder()">ثبت سفارش و دریافت فاکتور</button>
+      <div class="form-group"><label>نام و نام خانوادگی *</label><input type="text" id="co-name" placeholder="مثلاً: علی محمدی"></div>
+      <div class="form-group"><label>شماره موبایل *</label><input type="text" id="co-phone" placeholder="09XXXXXXXXX"></div>
+      <div class="form-group"><label>آیدی تلگرام (اختیاری)</label><input type="text" id="co-tg" placeholder="@username"></div>
+      <div class="form-group"><label>آدرس کامل *</label><textarea id="co-address" placeholder="مشهد، خیابان ..."></textarea></div>
+      <div class="form-group"><label>توضیحات (اختیاری)</label><textarea id="co-note" placeholder="..."></textarea></div>
+      <button class="btn-gold" style="width:100%;" onclick="submitOrder()">ثبت سفارش و دریافت فاکتور ←</button>
     </div>
   </div>
 </div>
 
 <!-- INVOICE MODAL -->
 <div id="invoice-modal" class="modal-overlay hidden">
-  <div class="modal-box" style="max-width:540px;">
-    <div class="modal-header">
-      <h3>📄 فاکتور سفارش</h3>
-      <button class="modal-close" onclick="closeModal('invoice-modal')">✕</button>
-    </div>
+  <div class="modal-box" style="max-width:560px;">
+    <div class="modal-header"><h3>📄 فاکتور سفارش</h3><button class="modal-close" onclick="closeModal('invoice-modal')">✕</button></div>
     <div class="modal-body">
-      <div style="background:rgba(201,168,76,.08);border:1px solid var(--gold);border-radius:10px;padding:16px;margin-bottom:20px;text-align:center;">
-        <div style="font-size:1.1rem;margin-bottom:8px;">📬 مرحله بعد:</div>
-        <div style="color:var(--text2);font-size:.88rem;line-height:1.8;">
-          فاکتور را پرینت یا اسکرین‌شات بگیرید و به پشتیبانی ارسال کنید.<br>
-          <strong style="color:var(--gold);">آیدی تلگرام پشتیبانی: <a id="tg-link" href="#" target="_blank" style="color:var(--gold);">@Benjamin_BAH</a></strong><br>
-          یا روی دکمه زیر کلیک کنید تا مستقیم وارد چت شوید.
-        </div>
+      <div style="background:rgba(201,168,76,.07);border:1px solid var(--gold);border-radius:12px;padding:16px;margin-bottom:20px;text-align:center;line-height:1.9;font-size:.88rem;">
+        📬 <strong style="color:var(--gold);">مرحله بعد:</strong> فاکتور را اسکرین‌شات یا پرینت بگیرید و به پشتیبانی ارسال کنید.<br>
+        <strong style="color:var(--gold);">آیدی تلگرام: <a id="tg-link" href="#" target="_blank" style="color:var(--gold);"></a></strong><br>
+        یا روی دکمه زیر کلیک کنید.
       </div>
-      <div id="invoice-content" class="invoice"></div>
+      <div id="invoice-content"></div>
       <div style="display:flex;gap:10px;margin-top:16px;">
         <button class="btn-gold" style="flex:1;" onclick="printInvoice()">🖨️ پرینت فاکتور</button>
-        <button class="btn-outline" style="flex:1;" id="tg-open-btn" onclick="openTelegram()">📲 ارسال در تلگرام</button>
+        <button class="btn-outline" style="flex:1;" onclick="openTelegram()">📲 ارسال در تلگرام</button>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ADMIN LOGIN -->
-<div id="admin-login-modal" class="modal-overlay hidden">
-  <div class="modal-box" style="max-width:360px;">
-    <div class="modal-header">
-      <h3>🔐 ورود به داشبورد</h3>
-      <button class="modal-close" onclick="closeModal('admin-login-modal')">✕</button>
-    </div>
-    <div class="modal-body">
-      <div class="form-group">
-        <label>رمز عبور</label>
-        <input type="password" id="admin-pass" placeholder="رمز عبور را وارد کنید">
-      </div>
-      <div id="login-err" style="color:#e53935;font-size:.82rem;margin-bottom:10px;display:none;">رمز اشتباه است</div>
-      <button class="btn-gold" style="width:100%;" onclick="doAdminLogin()">ورود</button>
-    </div>
-  </div>
-</div>
-
-<!-- ADMIN SECTION -->
+<!-- ADMIN -->
 <div id="admin-section" class="hidden">
   <div class="admin-nav">
-    <button class="admin-tab active" onclick="adminTab('dashboard',this)">📊 داشبورد</button>
-    <button class="admin-tab" onclick="adminTab('products',this)">📦 محصولات</button>
-    <button class="admin-tab" onclick="adminTab('orders',this)">🧾 سفارش‌ها</button>
-    <button class="admin-tab" onclick="adminTab('accounting',this)">💰 حسابداری</button>
-    <button class="admin-tab" onclick="adminTab('crm',this)">👥 CRM</button>
-    <button class="admin-tab" onclick="adminTab('settings',this)">⚙ تنظیمات</button>
-    <h2>Benjamin Admin</h2>
-    <button class="btn-outline" style="margin-right:12px;font-size:.8rem;" onclick="exitAdmin()">خروج</button>
+    <button class="admin-tab active" id="tab-btn-dashboard" onclick="adminTab('dashboard',this)">📊 داشبورد</button>
+    <button class="admin-tab" id="tab-btn-products" onclick="adminTab('products',this)">📦 محصولات</button>
+    <button class="admin-tab" id="tab-btn-orders" onclick="adminTab('orders',this)">🧾 سفارش‌ها</button>
+    <button class="admin-tab" id="tab-btn-accounting" onclick="adminTab('accounting',this)">💰 حسابداری</button>
+    <button class="admin-tab" id="tab-btn-crm" onclick="adminTab('crm',this)">👥 CRM</button>
+    <button class="admin-tab" id="tab-btn-settings" onclick="adminTab('settings',this)">⚙ تنظیمات</button>
+    <span class="admin-nav-title">Benjamin Admin</span>
+    <button class="btn-white" style="font-size:.78rem;padding:6px 14px;" onclick="exitAdmin()">← خروج</button>
   </div>
 
-  <!-- Dashboard Tab -->
   <div id="tab-dashboard" class="admin-content">
     <div class="stats-grid">
       <div class="stat-card"><div class="stat-val" id="st-today">۰</div><div class="stat-lbl">بازدید امروز</div></div>
       <div class="stat-card"><div class="stat-val" id="st-total">۰</div><div class="stat-lbl">بازدید کل</div></div>
-      <div class="stat-card"><div class="stat-val" id="st-pending">۰</div><div class="stat-lbl">سفارش در انتظار</div></div>
+      <div class="stat-card"><div class="stat-val" id="st-pending">۰</div><div class="stat-lbl">در انتظار تایید</div></div>
       <div class="stat-card"><div class="stat-val" id="st-done">۰</div><div class="stat-lbl">سفارش نهایی</div></div>
       <div class="stat-card"><div class="stat-val" id="st-revenue">۰</div><div class="stat-lbl">فروش نهایی (تومان)</div></div>
     </div>
-    <div style="background:var(--dark3);border:1px solid var(--border);border-radius:12px;padding:20px;">
-      <h3 style="margin-bottom:16px;font-size:1rem;color:var(--gold);">آخرین سفارش‌ها</h3>
-      <div id="dashboard-orders"></div>
-    </div>
+    <div class="admin-box"><h3>آخرین سفارش‌ها</h3><div id="dashboard-orders"></div></div>
   </div>
 
-  <!-- Products Tab -->
   <div id="tab-products" class="admin-content hidden">
-    <div style="background:var(--dark3);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:24px;">
-      <h3 style="color:var(--gold);margin-bottom:20px;">➕ افزودن محصول جدید</h3>
-      <div class="form-group"><label>نام محصول *</label><input type="text" id="ap-name" placeholder="مثلاً: ویسکی جک دنیلز"></div>
-      <div class="form-group">
-        <label>دسته‌بندی *</label>
-        <select id="ap-cat" style="width:100%;background:var(--dark4);border:1px solid var(--border);color:var(--text);padding:10px;border-radius:8px;">
-          <option value="whiskey">ویسکی</option>
-          <option value="vodka">ودکا</option>
-          <option value="other">سایر</option>
-        </select>
+    <div class="admin-box">
+      <h3>➕ افزودن محصول جدید</h3>
+      <div class="form-group"><label style="color:#666;">نام محصول *</label><input type="text" class="admin-form-input" id="ap-name" placeholder="مثلاً: ویسکی جک دنیلز"></div>
+      <div class="form-group"><label style="color:#666;">دسته‌بندی</label>
+        <select id="ap-cat" class="admin-form-input"><option value="whiskey">ویسکی</option><option value="vodka">ودکا</option><option value="other">سایر</option></select>
       </div>
-      <div class="form-group"><label>قیمت (تومان)</label><input type="number" id="ap-price" placeholder="مثلاً: 1500000"></div>
-      <div class="form-group"><label>توضیحات محصول</label><textarea id="ap-desc" placeholder="توضیح کوتاه..."></textarea></div>
+      <div class="form-group"><label style="color:#666;">قیمت (تومان)</label><input type="number" class="admin-form-input" id="ap-price" placeholder="1500000"></div>
+      <div class="form-group"><label style="color:#666;">توضیحات</label><textarea class="admin-form-input" id="ap-desc" style="min-height:65px;resize:vertical;" placeholder="توضیح کوتاه..."></textarea></div>
       <div class="form-group">
-        <label>عکس محصول</label>
-        <input type="file" id="ap-img" accept="image/*" onchange="previewImg(this,'ap-img-preview')" style="background:var(--dark4);border:1px solid var(--border);color:var(--text);padding:8px;border-radius:8px;width:100%;">
+        <label style="color:#666;">عکس محصول</label>
+        <input type="file" id="ap-img" accept="image/*" onchange="previewImg(this,'ap-img-preview')" style="background:#0a0a0a;border:1px solid #2a2a2a;color:#888;padding:8px;border-radius:8px;width:100%;">
         <img id="ap-img-preview" src="" style="max-height:100px;margin-top:8px;border-radius:8px;display:none;">
       </div>
-      <button class="btn-gold" onclick="addProduct()">افزودن محصول</button>
+      <button class="btn-white" onclick="addProduct()">افزودن محصول</button>
     </div>
-    <div style="background:var(--dark3);border:1px solid var(--border);border-radius:12px;padding:20px;">
-      <h3 style="color:var(--gold);margin-bottom:16px;">لیست محصولات</h3>
-      <div id="admin-products-list"></div>
-    </div>
+    <div class="admin-box"><h3>لیست محصولات</h3><div id="admin-products-list"></div></div>
   </div>
 
-  <!-- Orders Tab -->
   <div id="tab-orders" class="admin-content hidden">
-    <div style="background:var(--dark3);border:1px solid var(--border);border-radius:12px;padding:20px;">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
-        <h3 style="color:var(--gold);">سفارش‌های ثبت‌شده</h3>
-        <div style="font-size:.8rem;color:var(--text2);">سفارش‌ها تا تایید دستی، در انتظار هستند</div>
+    <div class="admin-box">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:8px;">
+        <h3 style="margin-bottom:0;">سفارش‌های ثبت‌شده</h3>
+        <span style="font-size:.78rem;color:#444;">تایید = ثبت در حسابداری</span>
       </div>
       <div id="orders-list"></div>
     </div>
   </div>
 
-  <!-- Accounting Tab -->
   <div id="tab-accounting" class="admin-content hidden">
     <div class="stats-grid">
-      <div class="stat-card"><div class="stat-val" id="acc-revenue">۰</div><div class="stat-lbl">مجموع فروش نهایی (تومان)</div></div>
+      <div class="stat-card"><div class="stat-val" id="acc-revenue">۰</div><div class="stat-lbl">مجموع فروش نهایی</div></div>
       <div class="stat-card"><div class="stat-val" id="acc-orders">۰</div><div class="stat-lbl">تعداد سفارش نهایی</div></div>
       <div class="stat-card"><div class="stat-val" id="acc-avg">۰</div><div class="stat-lbl">میانگین سفارش</div></div>
     </div>
-    <div style="background:var(--dark3);border:1px solid var(--border);border-radius:12px;padding:20px;">
-      <h3 style="color:var(--gold);margin-bottom:16px;">تاریخچه مالی سفارش‌ها</h3>
-      <div id="accounting-list"></div>
-    </div>
+    <div class="admin-box"><h3>تاریخچه مالی</h3><div id="accounting-list"></div></div>
   </div>
 
-  <!-- CRM Tab -->
   <div id="tab-crm" class="admin-content hidden">
-    <div style="background:var(--dark3);border:1px solid var(--border);border-radius:12px;padding:20px;">
+    <div class="admin-box">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:10px;">
-        <h3 style="color:var(--gold);">👥 مدیریت مشتریان (CRM)</h3>
-        <input type="text" id="crm-search" placeholder="جستجو نام / موبایل / تلگرام..." oninput="renderCRM()" style="background:var(--dark4);border:1px solid var(--border);color:var(--text);padding:8px 14px;border-radius:8px;width:240px;">
+        <h3 style="margin-bottom:0;">👥 مدیریت مشتریان</h3>
+        <input type="text" class="admin-form-input" id="crm-search" placeholder="جستجو نام / موبایل..." oninput="renderCRM()" style="width:220px;">
       </div>
       <div id="crm-list"></div>
     </div>
   </div>
 
-  <!-- Settings Tab -->
   <div id="tab-settings" class="admin-content hidden">
-    <div style="background:var(--dark3);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:20px;">
-      <h3 style="color:var(--gold);margin-bottom:20px;">⚙ تنظیمات کلی</h3>
-      <div class="form-group"><label>نام سایت</label><input type="text" id="cfg-site-name" value="Benjamin Fine Spirits & Wine"></div>
-      <div class="form-group"><label>آیدی تلگرام پشتیبانی</label><input type="text" id="cfg-tg-id" value="@Benjamin_BAH" placeholder="@username"></div>
-      <div class="form-group"><label>رمز عبور جدید داشبورد (خالی = بدون تغییر)</label><input type="password" id="cfg-pass" placeholder="رمز جدید..."></div>
-      <button class="btn-gold" onclick="saveSettings()">ذخیره تنظیمات</button>
-      <div id="settings-msg" style="margin-top:10px;font-size:.85rem;color:var(--success);display:none;">تنظیمات ذخیره شد ✓</div>
+    <div class="admin-box">
+      <h3>⚙ تنظیمات کلی</h3>
+      <div class="sync-note">⚠️ داده‌ها فقط در <strong>این مرورگر</strong> ذخیره هستند. برای اشتراک‌گذاری بین دستگاه‌ها از Export/Import استفاده کنید.</div>
+      <div class="form-group"><label style="color:#666;">نام سایت</label><input type="text" class="admin-form-input" id="cfg-site-name"></div>
+      <div class="form-group"><label style="color:#666;">آیدی تلگرام پشتیبانی</label><input type="text" class="admin-form-input" id="cfg-tg-id" placeholder="@username"></div>
+      <div class="form-group"><label style="color:#666;">رمز عبور جدید ادمین (خالی = بدون تغییر)</label><input type="password" class="admin-form-input" id="cfg-pass" placeholder="رمز جدید..."></div>
+      <button class="btn-white" onclick="saveSettings()">ذخیره تنظیمات</button>
+      <span id="settings-msg" style="margin-right:12px;font-size:.83rem;color:#4caf50;display:none;">✓ ذخیره شد</span>
     </div>
-    <div style="background:var(--dark3);border:1px solid var(--border);border-radius:12px;padding:24px;">
-      <h3 style="color:var(--gold);margin-bottom:16px;">👤 مدیریت سطح دسترسی</h3>
-      <div style="font-size:.85rem;color:var(--text2);margin-bottom:16px;line-height:1.7;">
-        <strong style="color:var(--text);">ادمین اصلی:</strong> دسترسی کامل به همه بخش‌ها<br>
-        <strong style="color:var(--text);">اپراتور محصول:</strong> فقط آپلود و مدیریت محصولات<br>
-        <strong style="color:var(--text);">حسابدار:</strong> فقط حسابداری و CRM
+    <div class="admin-box">
+      <h3>👤 رمز دسترسی نقش‌ها</h3>
+      <div style="font-size:.83rem;color:#555;margin-bottom:16px;line-height:2;">
+        <strong style="color:#ccc;">ادمین (admin123):</strong> دسترسی کامل<br>
+        <strong style="color:#ccc;">اپراتور (op123):</strong> فقط محصولات<br>
+        <strong style="color:#ccc;">حسابدار (acc123):</strong> حسابداری + CRM
       </div>
-      <div class="form-group"><label>رمز عبور اپراتور محصول</label><input type="password" id="cfg-op-pass" placeholder="رمز اپراتور..."></div>
-      <div class="form-group"><label>رمز عبور حسابدار</label><input type="password" id="cfg-acc-pass" placeholder="رمز حسابدار..."></div>
-      <button class="btn-gold" onclick="saveRolePasswords()">ذخیره رمزها</button>
-      <div id="role-msg" style="margin-top:10px;font-size:.85rem;color:var(--success);display:none;">ذخیره شد ✓</div>
+      <div class="form-group"><label style="color:#666;">رمز اپراتور</label><input type="password" class="admin-form-input" id="cfg-op-pass" placeholder="رمز اپراتور..."></div>
+      <div class="form-group"><label style="color:#666;">رمز حسابدار</label><input type="password" class="admin-form-input" id="cfg-acc-pass" placeholder="رمز حسابدار..."></div>
+      <button class="btn-white" onclick="saveRolePasswords()">ذخیره رمزها</button>
+      <span id="role-msg" style="margin-right:12px;font-size:.83rem;color:#4caf50;display:none;">✓ ذخیره شد</span>
+    </div>
+    <div class="admin-box">
+      <h3>🔄 Export / Import داده (اشتراک‌گذاری بین دستگاه‌ها)</h3>
+      <div class="sync-note">۱. روی Export کلیک کنید و کد را کپی کنید<br>۲. در دستگاه مقصد، کد را در باکس Import وارد کنید و Import بزنید</div>
+      <button class="btn-white" style="margin-bottom:12px;" onclick="exportData()">📤 Export Data</button>
+      <div id="export-output" style="display:none;margin-bottom:14px;">
+        <textarea class="admin-form-input" id="export-text" rows="4" style="font-family:monospace;font-size:.72rem;" onclick="this.select()"></textarea>
+        <button class="btn-white" style="margin-top:8px;font-size:.8rem;" onclick="copyExport()">کپی کد</button>
+      </div>
+      <div class="form-group" style="margin-top:6px;">
+        <label style="color:#666;">Import — کد JSON را اینجا paste کنید:</label>
+        <textarea class="admin-form-input" id="import-text" rows="4" style="font-family:monospace;font-size:.72rem;" placeholder="کد JSON..."></textarea>
+      </div>
+      <button class="btn-white" onclick="importData()">📥 Import Data</button>
+      <span id="import-msg" style="margin-right:12px;font-size:.83rem;color:#4caf50;display:none;"></span>
     </div>
   </div>
-
-</div><!-- END ADMIN -->
+</div>
 
 <script>
-// ===== CONFIG =====
-var CFG = {
-  siteName: 'Benjamin Fine Spirits & Wine',
-  tgId: '@Benjamin_BAH',
-  adminPass: 'admin123',
-  opPass: 'op123',
-  accPass: 'acc123',
-};
+var CFG={siteName:'Benjamin Fine Spirits & Wine',tgId:'@Benjamin_BAH',adminPass:'admin123',opPass:'op123',accPass:'acc123'};
+var ZONES=[
+  {area:'احمدآباد مشروطه',zone:'low',price:100000},{area:'بهمن',zone:'low',price:100000},
+  {area:'شاهد',zone:'low',price:100000},{area:'سجاد (قسمت دور)',zone:'low',price:100000},
+  {area:'ابوطالب',zone:'low',price:100000},{area:'وکیل‌آباد پایین',zone:'low',price:100000},
+  {area:'دروازه قوچان',zone:'low',price:100000},{area:'حرم مطهر',zone:'mid',price:150000},
+  {area:'بازار رضا',zone:'mid',price:150000},{area:'شهدا',zone:'mid',price:150000},
+  {area:'میدان شریعتی',zone:'mid',price:150000},{area:'راهنمایی',zone:'mid',price:150000},
+  {area:'طلاب',zone:'mid',price:150000},{area:'بلوار جانباز',zone:'mid',price:150000},
+  {area:'میدان ارگ',zone:'mid',price:150000},{area:'امام رضا (ع)',zone:'mid',price:150000},
+  {area:'نواب صفوی',zone:'mid',price:150000},{area:'سناباد',zone:'mid',price:150000},
+  {area:'الهیه',zone:'high',price:250000},{area:'صیاد شیرازی',zone:'high',price:250000},
+  {area:'فرامرز عباسی',zone:'high',price:250000},{area:'وکیل‌آباد بالا',zone:'high',price:250000},
+  {area:'بلوار معلم',zone:'high',price:250000},{area:'بلوار صادقیه',zone:'high',price:250000},
+  {area:'سیدی',zone:'high',price:250000},{area:'آبکوه',zone:'high',price:250000},
+  {area:'مشکین‌فام',zone:'high',price:250000},{area:'ملک‌آباد',zone:'high',price:250000},
+  {area:'توس',zone:'high',price:250000},{area:'نمایشگاه',zone:'high',price:250000}
+];
+var ZONE_LABEL={low:'مناطق پایین شهر',mid:'مرکز شهر',high:'مناطق بالای شهر'};
+var ZONE_CLASS={low:'zone-low',mid:'zone-mid',high:'zone-high'};
+var products=[],cart=[],orders=[],currentProduct=null,currentRole=null,selectedZone=null,hackerTyped=false;
 
-// ===== DATA =====
-var products = [];
-var cart = [];
-var orders = [];
-var currentProduct = null;
-var currentRole = null; // 'admin','operator','accountant'
-
-// ===== INIT =====
 function init(){
-  loadData();
-  trackVisit();
-  var age = localStorage.getItem('ben_age');
-  if(age){
-    document.getElementById('age-gate').classList.add('hidden');
-    var welcomed = sessionStorage.getItem('ben_welcome');
-    if(!welcomed){ document.getElementById('welcome-modal').classList.remove('hidden'); }
-    else { document.getElementById('welcome-modal').classList.add('hidden'); }
-  }
-}
-
-// ===== VISIT TRACKING =====
-function trackVisit(){
-  var key = 'ben_visits';
-  var todayKey = 'ben_today_' + new Date().toDateString();
-  var fp = getFingerprint();
-  var visits = JSON.parse(localStorage.getItem(key)||'{}');
-  var todayVisits = JSON.parse(localStorage.getItem(todayKey)||'[]');
-  var allVisits = JSON.parse(localStorage.getItem('ben_all_visitors')||'[]');
-  if(!visits[fp]){ visits[fp]=1; localStorage.setItem(key,JSON.stringify(visits)); }
-  if(!todayVisits.includes(fp)){ todayVisits.push(fp); localStorage.setItem(todayKey,JSON.stringify(todayVisits)); }
-  if(!allVisits.includes(fp)){ allVisits.push(fp); localStorage.setItem('ben_all_visitors',JSON.stringify(allVisits)); }
-}
-function getFingerprint(){
-  var fp = localStorage.getItem('ben_fp');
-  if(!fp){
-    fp = Math.random().toString(36).slice(2) + Date.now().toString(36);
-    localStorage.setItem('ben_fp',fp);
-  }
-  return fp;
-}
-function getTodayVisits(){
-  var todayKey = 'ben_today_' + new Date().toDateString();
-  return JSON.parse(localStorage.getItem(todayKey)||'[]').length;
-}
-function getTotalVisits(){
-  return JSON.parse(localStorage.getItem('ben_all_visitors')||'[]').length;
-}
-
-// ===== AGE GATE =====
-function confirmAge(){
-  localStorage.setItem('ben_age','1');
-  document.getElementById('age-gate').classList.add('hidden');
-  document.getElementById('welcome-modal').classList.remove('hidden');
-}
-function closeWelcome(){
-  sessionStorage.setItem('ben_welcome','1');
-  document.getElementById('welcome-modal').classList.add('hidden');
-}
-
-// ===== MODAL =====
-function openModal(id){ document.getElementById(id).classList.remove('hidden'); }
-function closeModal(id){ document.getElementById(id).classList.add('hidden'); }
-
-// ===== PRODUCTS =====
-function loadData(){
-  var p = localStorage.getItem('ben_products');
-  if(p) products = JSON.parse(p);
-  else {
-    products = [
-      {id:1,name:'ویسکی دالمر ۱۵ ساله',cat:'whiskey',price:1750000,desc:'طعم اصالت، انتخابی ماندگار — یکی از برترین ویسکی‌های اسکاتلند با بلوغ ۱۵ ساله',img:''},
+  var c=localStorage.getItem('ben_cfg'); if(c)Object.assign(CFG,JSON.parse(c));
+  var p=localStorage.getItem('ben_products');
+  if(p){products=JSON.parse(p);}else{
+    products=[
+      {id:1,name:'ویسکی دالمر ۱۵ ساله',cat:'whiskey',price:1750000,desc:'طعم اصالت — یکی از برترین ویسکی‌های اسکاتلند با بلوغ ۱۵ ساله',img:''},
       {id:2,name:'ویسکی جک دنیلز',cat:'whiskey',price:1200000,desc:'ویسکی تنسی اصل — محبوب‌ترین ویسکی آمریکایی',img:''},
       {id:3,name:'ودکا گری گوز',cat:'vodka',price:950000,desc:'ودکای فرانسوی ممتاز — تهیه‌شده از گندم‌های برتر',img:''},
-      {id:4,name:'ودکا بلوگا',cat:'vodka',price:1100000,desc:'ودکای روسی اصیل — با خلوص بالا و طعم بی‌نظیر',img:''},
+      {id:4,name:'ودکا بلوگا',cat:'vodka',price:1100000,desc:'ودکای روسی اصیل — با خلوص بالا و طعم بی‌نظیر',img:''}
     ];
     saveProducts();
   }
-  var o = localStorage.getItem('ben_orders');
-  if(o) orders = JSON.parse(o);
-  var c = localStorage.getItem('ben_cfg');
-  if(c){ var cc=JSON.parse(c); Object.assign(CFG,cc); }
-  renderProducts('all');
-  updateFeatured();
+  var o=localStorage.getItem('ben_orders'); if(o)orders=JSON.parse(o);
+  trackVisit();
+  var age=localStorage.getItem('ben_age');
+  if(age){
+    hide('age-gate');
+    if(!sessionStorage.getItem('ben_welcome'))show('welcome-modal');
+    else hide('welcome-modal');
+  }
+  renderProducts('all'); updateFeatured();
+  document.addEventListener('click',function(e){
+    var dd=document.getElementById('delivery-dropdown');
+    var src=document.getElementById('delivery-search');
+    if(dd&&src&&!src.contains(e.target)&&!dd.contains(e.target))dd.classList.remove('open');
+  });
 }
-function saveProducts(){ localStorage.setItem('ben_products',JSON.stringify(products)); }
-function saveOrders(){ localStorage.setItem('ben_orders',JSON.stringify(orders)); }
+function show(id){document.getElementById(id).classList.remove('hidden');}
+function hide(id){document.getElementById(id).classList.add('hidden');}
+function openModal(id){show(id);}
+function closeModal(id){hide(id);}
+function formatPrice(n){return Number(n||0).toLocaleString('fa-IR');}
+function catName(c){return c==='whiskey'?'ویسکی':c==='vodka'?'ودکا':'سایر';}
+function getCatEmoji(c){return c==='whiskey'?'🥃':c==='vodka'?'🍸':'🍾';}
+function saveProducts(){localStorage.setItem('ben_products',JSON.stringify(products));}
+function saveOrders(){localStorage.setItem('ben_orders',JSON.stringify(orders));}
+function showToast(msg){
+  var t=document.createElement('div');
+  t.style.cssText='position:fixed;bottom:28px;right:18px;background:var(--gold);color:#000;padding:10px 20px;border-radius:10px;font-weight:800;z-index:9900;font-size:.88rem;animation:fadeInUp .3s;';
+  t.textContent=msg; document.body.appendChild(t);
+  setTimeout(function(){if(t.parentNode)t.parentNode.removeChild(t);},2200);
+}
 
-function catName(c){ return c==='whiskey'?'ویسکی':c==='vodka'?'ودکا':'سایر'; }
+function trackVisit(){
+  var fp=localStorage.getItem('ben_fp');
+  if(!fp){fp=Math.random().toString(36).slice(2)+Date.now().toString(36);localStorage.setItem('ben_fp',fp);}
+  var tk='ben_today_'+new Date().toDateString();
+  var today=JSON.parse(localStorage.getItem(tk)||'[]');
+  var all=JSON.parse(localStorage.getItem('ben_all_visitors')||'[]');
+  if(!today.includes(fp)){today.push(fp);localStorage.setItem(tk,JSON.stringify(today));}
+  if(!all.includes(fp)){all.push(fp);localStorage.setItem('ben_all_visitors',JSON.stringify(all));}
+}
+function getTodayV(){return JSON.parse(localStorage.getItem('ben_today_'+new Date().toDateString())||'[]').length;}
+function getTotalV(){return JSON.parse(localStorage.getItem('ben_all_visitors')||'[]').length;}
+
+function confirmAge(){localStorage.setItem('ben_age','1');hide('age-gate');show('welcome-modal');}
+function closeWelcome(){sessionStorage.setItem('ben_welcome','1');hide('welcome-modal');}
 
 function renderProducts(cat){
-  var grid = document.getElementById('products-grid');
-  var list = cat==='all'?products:products.filter(function(p){return p.cat===cat;});
-  if(!list.length){ grid.innerHTML='<div style="color:var(--text2);text-align:center;padding:40px;">محصولی یافت نشد</div>'; return; }
-  grid.innerHTML = list.map(function(p){
+  var grid=document.getElementById('products-grid');
+  var list=cat==='all'?products:products.filter(function(p){return p.cat===cat;});
+  if(!list.length){grid.innerHTML='<div style="color:var(--text2);text-align:center;padding:50px;grid-column:1/-1;">محصولی در این دسته‌بندی یافت نشد</div>';return;}
+  grid.innerHTML=list.map(function(p){
     return '<div class="product-card" onclick="openProduct('+p.id+')">'
       +'<div class="product-img">'+(p.img?'<img src="'+p.img+'" alt="'+p.name+'" loading="lazy">':getCatEmoji(p.cat))+'</div>'
       +'<div class="product-info">'
-      +'<div class="cat-badge">'+catName(p.cat)+'</div>'
+      +'<span class="cat-badge">'+catName(p.cat)+'</span>'
       +'<div class="product-name">'+p.name+'</div>'
       +'<div class="product-price">'+formatPrice(p.price)+' تومان</div>'
-      +'<div class="product-inquiry">استعلام قیمت از طریق پشتیبانی انجام می‌شود</div>'
-      +'<button class="btn-add">افزودن به سبد</button>'
+      +'<div class="product-inquiry">استعلام قیمت از طریق پشتیبانی</div>'
+      +'<button class="btn-add" onclick="event.stopPropagation();addDirect('+p.id+')">افزودن به سبد</button>'
       +'</div></div>';
   }).join('');
 }
-
-function getCatEmoji(c){ return c==='whiskey'?'🥃':c==='vodka'?'🍸':'🍾'; }
-
-function filterCat(cat, el){
+function filterCat(cat,el){
   document.querySelectorAll('.cat-card').forEach(function(c){c.classList.remove('active');});
-  el.classList.add('active');
-  renderProducts(cat);
+  el.classList.add('active'); renderProducts(cat);
 }
-
 function updateFeatured(){
-  var p = products.find(function(p){return p.cat==='whiskey';});
-  if(p){
-    document.getElementById('f-name').textContent = p.name;
-    document.getElementById('f-desc').textContent = p.desc||'';
-    document.getElementById('f-price').textContent = formatPrice(p.price);
-    var fb = document.getElementById('f-btn');
-    fb.onclick = function(){ openProduct(p.id); };
-    var fi = document.getElementById('featured-card').querySelector('.featured-text');
-    fi; // already updated
-  }
+  var p=products.find(function(x){return x.cat==='whiskey';})||products[0];
+  if(!p)return;
+  document.getElementById('f-name').textContent=p.name;
+  document.getElementById('f-desc').textContent=p.desc||'';
+  document.getElementById('f-price').textContent=formatPrice(p.price);
+  document.getElementById('f-btn').onclick=function(){openProduct(p.id);};
 }
-
 function openProduct(id){
-  var p = products.find(function(x){return x.id===id;});
-  if(!p) return;
-  currentProduct = p;
-  document.getElementById('pm-name').textContent = p.name;
-  document.getElementById('pm-badge').textContent = catName(p.cat);
-  document.getElementById('pm-price').textContent = formatPrice(p.price)+' تومان';
-  document.getElementById('pm-desc').textContent = p.desc||'';
-  var img = document.getElementById('pm-img');
-  img.innerHTML = p.img ? '<img src="'+p.img+'" style="width:100%;height:100%;object-fit:cover;">' : getCatEmoji(p.cat);
-  document.getElementById('pm-qty').textContent = '1';
+  var p=products.find(function(x){return x.id===id;}); if(!p)return;
+  currentProduct=p;
+  document.getElementById('pm-name').textContent=p.name;
+  document.getElementById('pm-badge').textContent=catName(p.cat);
+  document.getElementById('pm-price').textContent=formatPrice(p.price)+' تومان';
+  document.getElementById('pm-desc').textContent=p.desc||'';
+  var img=document.getElementById('pm-img');
+  img.innerHTML=p.img?'<img src="'+p.img+'" style="width:100%;height:100%;object-fit:cover;">':getCatEmoji(p.cat);
+  document.getElementById('pm-qty').textContent='1';
   openModal('product-modal');
 }
-
 function addToCartFromModal(){
-  if(!currentProduct) return;
-  var qty = parseInt(document.getElementById('pm-qty').textContent)||1;
-  addToCart(currentProduct, qty);
+  if(!currentProduct)return;
+  addToCart(currentProduct,parseInt(document.getElementById('pm-qty').textContent)||1);
   closeModal('product-modal');
 }
-function addFeaturedToCart(){
-  var p = products.find(function(p){return p.cat==='whiskey';});
-  if(p) openProduct(p.id);
-}
-function changeQty(d, elId){
-  var el = document.getElementById(elId);
-  var v = parseInt(el.textContent)+d;
-  if(v<1) v=1;
-  el.textContent = v;
-}
-function addToCart(p, qty){
-  var existing = cart.find(function(c){return c.id===p.id;});
-  if(existing){ existing.qty += qty; }
-  else { cart.push({id:p.id,name:p.name,price:p.price,qty:qty,img:p.img,cat:p.cat}); }
-  updateCartCount();
+function addDirect(id){var p=products.find(function(x){return x.id===id;});if(p)addToCart(p,1);}
+function changeQty(d,elId){var el=document.getElementById(elId);var v=parseInt(el.textContent)+d;if(v<1)v=1;el.textContent=v;}
+function addToCart(p,qty){
+  var ex=cart.find(function(c){return c.id===p.id;});
+  if(ex)ex.qty+=qty; else cart.push({id:p.id,name:p.name,price:p.price,qty:qty,img:p.img,cat:p.cat});
+  document.getElementById('cart-count').textContent=cart.reduce(function(s,c){return s+c.qty;},0);
   showToast('✓ به سبد اضافه شد');
-}
-function updateCartCount(){
-  var total = cart.reduce(function(s,c){return s+c.qty;},0);
-  document.getElementById('cart-count').textContent = total;
-}
-function showToast(msg){
-  var t = document.createElement('div');
-  t.style.cssText='position:fixed;bottom:30px;right:20px;background:var(--gold);color:#000;padding:10px 20px;border-radius:8px;font-weight:700;z-index:9000;font-size:.9rem;animation:fadeIn .3s';
-  t.textContent = msg;
-  document.body.appendChild(t);
-  setTimeout(function(){t.remove();},2000);
 }
 </script>
 
 <script>
-// ===== CART =====
-function openCart(){
-  renderCartItems();
-  calcDelivery();
-  openModal('cart-modal');
+function showDelivery(){filterDelivery();}
+function filterDelivery(){
+  var s=document.getElementById('delivery-search').value.trim();
+  var dd=document.getElementById('delivery-dropdown');
+  var filtered=s?ZONES.filter(function(z){return z.area.indexOf(s)>=0;}):ZONES;
+  if(!filtered.length){dd.innerHTML='<div class="delivery-option" style="color:#555;">محله‌ای یافت نشد</div>';}
+  else{dd.innerHTML=filtered.map(function(z){
+    return '<div class="delivery-option" onclick="selectZone(\''+z.area+'\',\''+z.zone+'\','+z.price+')">'
+      +'<span>'+z.area+'</span>'
+      +'<span class="zone-pill '+ZONE_CLASS[z.zone]+'">'+formatPrice(z.price)+' تومان</span>'
+      +'</div>';
+  }).join('');}
+  dd.classList.add('open');
 }
+function selectZone(area,zone,price){
+  selectedZone={area:area,zone:zone,price:price};
+  document.getElementById('delivery-search').value=area;
+  document.getElementById('delivery-dropdown').classList.remove('open');
+  var box=document.getElementById('selected-zone-box');
+  box.style.display='block';
+  box.innerHTML='📍 '+ZONE_LABEL[zone]+' — <strong>'+formatPrice(price)+' تومان</strong>';
+  calcDelivery();
+}
+function openCart(){renderCartItems();calcDelivery();openModal('cart-modal');}
 function renderCartItems(){
-  var el = document.getElementById('cart-items-list');
-  if(!cart.length){ el.innerHTML='<div style="text-align:center;color:var(--text2);padding:20px;">سبد خرید خالی است</div>'; return; }
-  el.innerHTML = cart.map(function(c,i){
+  var el=document.getElementById('cart-items-list');
+  if(!cart.length){el.innerHTML='<div style="text-align:center;color:var(--text2);padding:24px;">سبد خرید خالی است 🛍️</div>';return;}
+  el.innerHTML=cart.map(function(c,i){
     return '<div class="cart-item">'
       +'<div class="cart-item-img">'+(c.img?'<img src="'+c.img+'">':getCatEmoji(c.cat))+'</div>'
       +'<div class="cart-item-info"><div class="cart-item-name">'+c.name+'</div><div class="cart-item-price">'+formatPrice(c.price)+' تومان</div></div>'
-      +'<div class="qty-ctrl">'
-      +'<button class="qty-btn" onclick="cartQty('+i+',-1)">−</button>'
+      +'<div class="qty-ctrl"><button class="qty-btn" onclick="cartQty('+i+',-1)">−</button>'
       +'<span class="qty-num">'+c.qty+'</span>'
-      +'<button class="qty-btn" onclick="cartQty('+i+',1)">+</button>'
-      +'</div>'
-      +'<button class="remove-item" onclick="removeCartItem('+i+')" title="حذف">🗑</button>'
+      +'<button class="qty-btn" onclick="cartQty('+i+',1)">+</button></div>'
+      +'<button class="remove-item" onclick="removeItem('+i+')">🗑</button>'
       +'</div>';
   }).join('');
 }
-function cartQty(i,d){
-  cart[i].qty += d;
-  if(cart[i].qty<1) cart.splice(i,1);
-  updateCartCount();
-  renderCartItems();
-  calcDelivery();
-}
-function removeCartItem(i){
-  cart.splice(i,1);
-  updateCartCount();
-  renderCartItems();
-  calcDelivery();
-}
-function getSubtotal(){
-  return cart.reduce(function(s,c){return s+c.price*c.qty;},0);
-}
+function cartQty(i,d){cart[i].qty+=d;if(cart[i].qty<1)cart.splice(i,1);updateCount();renderCartItems();calcDelivery();}
+function removeItem(i){cart.splice(i,1);updateCount();renderCartItems();calcDelivery();}
+function updateCount(){document.getElementById('cart-count').textContent=cart.reduce(function(s,c){return s+c.qty;},0);}
+function getSub(){return cart.reduce(function(s,c){return s+c.price*c.qty;},0);}
 function calcDelivery(){
-  var zone = document.getElementById('delivery-zone');
-  var sub = getSubtotal();
-  var dc = zone && zone.value ? parseInt(zone.value) : 0;
-  document.getElementById('subtotal').textContent = formatPrice(sub)+' تومان';
-  document.getElementById('delivery-cost').textContent = dc ? formatPrice(dc)+' تومان' : '—';
-  document.getElementById('grand-total').textContent = formatPrice(sub+dc)+' تومان';
+  var sub=getSub(),dc=selectedZone?selectedZone.price:0;
+  var sEl=document.getElementById('subtotal'),dEl=document.getElementById('delivery-cost'),gEl=document.getElementById('grand-total');
+  if(sEl)sEl.textContent=formatPrice(sub)+' تومان';
+  if(dEl)dEl.textContent=dc?formatPrice(dc)+' تومان':'—';
+  if(gEl)gEl.textContent=formatPrice(sub+dc)+' تومان';
 }
 function proceedToCheckout(){
-  if(!cart.length){ showToast('سبد خرید خالی است'); return; }
-  var zone = document.getElementById('delivery-zone').value;
-  if(!zone){ showToast('لطفاً منطقه ارسال را انتخاب کنید'); return; }
-  closeModal('cart-modal');
-  openModal('checkout-modal');
+  if(!cart.length){showToast('سبد خرید خالی است');return;}
+  if(!selectedZone){showToast('لطفاً محله خود را انتخاب کنید');return;}
+  closeModal('cart-modal'); openModal('checkout-modal');
 }
-
-// ===== ORDER SUBMIT =====
 function submitOrder(){
-  var name = document.getElementById('co-name').value.trim();
-  var phone = document.getElementById('co-phone').value.trim();
-  var tg = document.getElementById('co-tg').value.trim();
-  var addr = document.getElementById('co-address').value.trim();
-  var note = document.getElementById('co-note').value.trim();
-  if(!name||!phone||!addr){ showToast('لطفاً فیلدهای ستاره‌دار را پر کنید'); return; }
-  var zone = document.getElementById('delivery-zone').value;
-  var dc = zone ? parseInt(zone) : 0;
-  var sub = getSubtotal();
-  var total = sub + dc;
-  var orderId = 'BEN-' + Date.now().toString(36).toUpperCase();
-  var order = {
-    id: orderId,
-    date: new Date().toLocaleString('fa-IR'),
-    dateRaw: Date.now(),
-    customer: { name:name, phone:phone, tg:tg||'—', address:addr, note:note||'' },
-    items: JSON.parse(JSON.stringify(cart)),
-    subtotal: sub,
-    delivery: dc,
-    total: total,
-    status: 'pending',
-    zone: zone
+  var name=document.getElementById('co-name').value.trim();
+  var phone=document.getElementById('co-phone').value.trim();
+  var tg=document.getElementById('co-tg').value.trim();
+  var addr=document.getElementById('co-address').value.trim();
+  var note=document.getElementById('co-note').value.trim();
+  if(!name||!phone||!addr){showToast('لطفاً فیلدهای ستاره‌دار را پر کنید');return;}
+  var sub=getSub(),dc=selectedZone?selectedZone.price:0,total=sub+dc;
+  var orderId='BEN-'+Date.now().toString(36).toUpperCase();
+  var order={
+    id:orderId,date:new Date().toLocaleString('fa-IR'),dateRaw:Date.now(),
+    customer:{name:name,phone:phone,tg:tg||'—',address:addr,note:note||''},
+    items:JSON.parse(JSON.stringify(cart)),
+    subtotal:sub,delivery:dc,
+    deliveryArea:selectedZone?selectedZone.area:'—',
+    deliveryZoneLabel:selectedZone?ZONE_LABEL[selectedZone.zone]:'—',
+    total:total,status:'pending'
   };
-  orders.unshift(order);
-  saveOrders();
-  // Add to accounting as pending
-  cart = [];
-  updateCartCount();
+  orders.unshift(order); saveOrders();
+  cart=[]; selectedZone=null; updateCount();
+  document.getElementById('delivery-search').value='';
+  var sb=document.getElementById('selected-zone-box'); if(sb)sb.style.display='none';
   closeModal('checkout-modal');
-  buildInvoice(order);
-  openModal('invoice-modal');
+  buildInvoice(order); openModal('invoice-modal');
 }
-
-// ===== INVOICE =====
 function buildInvoice(order){
-  var tgId = CFG.tgId;
-  document.getElementById('tg-link').textContent = tgId;
-  document.getElementById('tg-link').href = 'https://t.me/' + tgId.replace('@','');
-  document.getElementById('tg-open-btn').onclick = function(){ window.open('https://t.me/'+tgId.replace('@',''),'_blank'); };
-
-  var rows = order.items.map(function(it){
+  var tg=CFG.tgId;
+  var lnk=document.getElementById('tg-link');
+  if(lnk){lnk.textContent=tg;lnk.href='https://t.me/'+tg.replace('@','');}
+  var rows=order.items.map(function(it){
     return '<tr><td>'+it.name+'</td><td style="text-align:center">'+it.qty+'</td>'
       +'<td style="text-align:left">'+formatPrice(it.price)+' تومان</td>'
       +'<td style="text-align:left">'+formatPrice(it.price*it.qty)+' تومان</td></tr>';
   }).join('');
-
-  document.getElementById('invoice-content').innerHTML =
-    '<div class="invoice">'
-    +'<div class="inv-header"><div class="inv-logo">BENJAMIN</div>'
-    +'<div class="inv-sub">FINE SPIRITS & WINE — MASHHAD</div></div>'
-    +'<div class="inv-meta">'
-    +'<div><strong>شماره فاکتور:</strong> '+order.id+'</div>'
-    +'<div><strong>تاریخ:</strong> '+order.date+'</div>'
-    +'</div>'
-    +'<div style="background:#f9f5ed;border-radius:8px;padding:14px;margin-bottom:16px;font-size:.83rem;">'
+  document.getElementById('invoice-content').innerHTML=
+    '<div class="invoice"><div class="inv-header"><div class="inv-logo">BENJAMIN</div>'
+    +'<div class="inv-sub">FINE SPIRITS &amp; WINE — MASHHAD</div></div>'
+    +'<div class="inv-meta"><div><strong>فاکتور:</strong> '+order.id+'</div><div><strong>تاریخ:</strong> '+order.date+'</div></div>'
+    +'<div style="background:#f9f5ed;border-radius:8px;padding:12px 14px;margin-bottom:14px;font-size:.82rem;line-height:1.9;">'
     +'<strong>اطلاعات مشتری:</strong><br>'
     +'نام: '+order.customer.name+' | موبایل: '+order.customer.phone+'<br>'
     +(order.customer.tg!=='—'?'تلگرام: '+order.customer.tg+'<br>':'')
@@ -823,306 +738,270 @@ function buildInvoice(order){
     +'<table class="inv-table"><thead><tr><th>محصول</th><th>تعداد</th><th>قیمت واحد</th><th>جمع</th></tr></thead><tbody>'+rows+'</tbody></table>'
     +'<div class="inv-totals">'
     +'<div><span>جمع محصولات</span><span>'+formatPrice(order.subtotal)+' تومان</span></div>'
-    +'<div><span>هزینه ارسال</span><span>'+formatPrice(order.delivery)+' تومان</span></div>'
+    +'<div><span>هزینه ارسال ('+order.deliveryArea+')</span><span>'+formatPrice(order.delivery)+' تومان</span></div>'
     +'<div class="final"><span>مبلغ نهایی</span><span>'+formatPrice(order.total)+' تومان</span></div>'
     +'</div>'
-    +'<div class="inv-footer">این فاکتور را به <span class="inv-tg">'+tgId+'</span> در تلگرام ارسال کنید.<br>پس از تأیید، راهنمای پرداخت برای شما ارسال می‌شود.</div>'
+    +'<div class="inv-footer">این فاکتور را به <span class="inv-tg">'+tg+'</span> در تلگرام ارسال کنید.<br>پس از تأیید، راهنمای پرداخت برای شما ارسال می‌شود.</div>'
     +'</div>';
 }
 function printInvoice(){
-  var content = document.getElementById('invoice-content').innerHTML;
-  var w = window.open('','_blank');
+  var c=document.getElementById('invoice-content').innerHTML;
+  var w=window.open('','_blank');
   w.document.write('<html dir="rtl"><head><meta charset="UTF-8"><title>فاکتور Benjamin</title>'
-    +'<style>body{font-family:Tahoma,sans-serif;background:#fff;}.invoice{max-width:600px;margin:0 auto;padding:24px;}'
-    +'.inv-header{text-align:center;border-bottom:2px solid #c9a84c;padding-bottom:14px;margin-bottom:16px;}'
-    +'.inv-logo{font-size:1.6rem;font-weight:900;color:#c9a84c;letter-spacing:2px;}'
-    +'.inv-sub{font-size:.83rem;color:#666;margin-top:4px;}'
-    +'.inv-meta{display:flex;justify-content:space-between;font-size:.8rem;color:#555;margin-bottom:14px;}'
-    +'table{width:100%;border-collapse:collapse;font-size:.83rem;margin-bottom:14px;}'
+    +'<style>body{font-family:Tahoma,sans-serif;background:#fff;padding:20px;}'
+    +'.invoice{max-width:600px;margin:0 auto;padding:24px;}'
+    +'.inv-header{text-align:center;border-bottom:2px solid #c9a84c;padding-bottom:14px;margin-bottom:14px;}'
+    +'.inv-logo{font-size:1.6rem;font-weight:900;color:#c9a84c;letter-spacing:3px;}'
+    +'.inv-sub{font-size:.8rem;color:#666;margin-top:4px;}'
+    +'.inv-meta{display:flex;justify-content:space-between;font-size:.78rem;color:#555;margin-bottom:12px;flex-wrap:wrap;gap:6px;}'
+    +'table{width:100%;border-collapse:collapse;font-size:.82rem;margin-bottom:12px;}'
     +'th{background:#f5f0e8;padding:8px;text-align:right;border:1px solid #ddd;}'
     +'td{padding:8px;border:1px solid #ddd;}'
-    +'.inv-totals div{display:flex;justify-content:space-between;padding:4px 0;font-size:.85rem;}'
-    +'.final{font-weight:700;color:#c9a84c;border-top:1px solid #ddd;padding-top:8px;}'
-    +'.inv-footer{text-align:center;margin-top:16px;font-size:.76rem;color:#888;border-top:1px solid #eee;padding-top:10px;}'
+    +'.inv-totals div{display:flex;justify-content:space-between;padding:3px 0;font-size:.83rem;}'
+    +'.final{font-weight:700;color:#c9a84c;border-top:1px solid #ddd;padding-top:7px;margin-top:3px;}'
+    +'.inv-footer{text-align:center;margin-top:14px;font-size:.74rem;color:#888;border-top:1px solid #eee;padding-top:10px;}'
     +'.inv-tg{color:#c9a84c;font-weight:700;}'
-    +'</style></head><body>'+content+'</body></html>');
-  w.document.close();
-  w.focus();
-  w.print();
+    +'</style></head><body>'+c+'</body></html>');
+  w.document.close(); w.focus(); setTimeout(function(){w.print();},400);
 }
-function openTelegram(){
-  window.open('https://t.me/'+CFG.tgId.replace('@',''),'_blank');
-}
-
-// ===== FORMAT =====
-function formatPrice(n){
-  return n.toLocaleString('fa-IR');
-}
+function openTelegram(){window.open('https://t.me/'+CFG.tgId.replace('@',''),'_blank');}
 </script>
 
 <script>
-// ===== ADMIN =====
-function openAdminLogin(){ openModal('admin-login-modal'); }
-function doAdminLogin(){
-  var pass = document.getElementById('admin-pass').value;
-  var err = document.getElementById('login-err');
-  if(pass === CFG.adminPass){ currentRole='admin'; enterAdmin(); }
-  else if(pass === CFG.opPass){ currentRole='operator'; enterAdmin(); }
-  else if(pass === CFG.accPass){ currentRole='accountant'; enterAdmin(); }
-  else { err.style.display='block'; return; }
-  err.style.display='none';
-  document.getElementById('admin-pass').value='';
-  closeModal('admin-login-modal');
+function openHackerLogin(){
+  show('hacker-login');
+  document.getElementById('hacker-pass').value='';
+  document.getElementById('hacker-err').style.display='none';
+  if(!hackerTyped){hackerTyped=true;typewriter('BENJAMIN ADMIN PANEL','hacker-typed',75);}
+  setTimeout(function(){document.getElementById('hacker-pass').focus();},200);
 }
+function closeHackerLogin(){hide('hacker-login');}
+function typewriter(text,elId,spd){
+  var el=document.getElementById(elId); el.textContent=''; var i=0;
+  var t=setInterval(function(){if(i<text.length){el.textContent+=text[i];i++;}else clearInterval(t);},spd);
+}
+function doHackerLogin(){
+  var pass=document.getElementById('hacker-pass').value;
+  var err=document.getElementById('hacker-err');
+  if(pass===CFG.adminPass)currentRole='admin';
+  else if(pass===CFG.opPass)currentRole='operator';
+  else if(pass===CFG.accPass)currentRole='accountant';
+  else{err.style.display='block';document.getElementById('hacker-pass').value='';return;}
+  err.style.display='none'; document.getElementById('hacker-pass').value='';
+  closeHackerLogin(); enterAdmin();
+}
+document.addEventListener('keydown',function(e){
+  if(e.key==='Enter'&&!document.getElementById('hacker-login').classList.contains('hidden'))doHackerLogin();
+});
+
 function enterAdmin(){
-  document.getElementById('shop-section').classList.add('hidden');
-  document.getElementById('admin-section').classList.remove('hidden');
-  // Restrict tabs by role
-  var tabs = document.querySelectorAll('.admin-tab');
-  if(currentRole==='operator'){
-    // show only products
-    tabs.forEach(function(t){ t.style.display='none'; });
-    document.querySelectorAll('.admin-tab')[1].style.display='';
-    adminTab('products', document.querySelectorAll('.admin-tab')[1]);
-  } else if(currentRole==='accountant'){
-    tabs.forEach(function(t){ t.style.display='none'; });
-    document.querySelectorAll('.admin-tab')[3].style.display='';
-    document.querySelectorAll('.admin-tab')[4].style.display='';
-    adminTab('accounting', document.querySelectorAll('.admin-tab')[3]);
-  } else {
-    tabs.forEach(function(t){ t.style.display=''; });
-    adminTab('dashboard', document.querySelectorAll('.admin-tab')[0]);
-  }
-  renderAdminDashboard();
+  hide('shop-section'); show('admin-section');
+  var all=['dashboard','products','orders','accounting','crm','settings'];
+  var allowed=all;
+  if(currentRole==='operator')allowed=['products'];
+  else if(currentRole==='accountant')allowed=['accounting','crm'];
+  all.forEach(function(t){
+    var btn=document.getElementById('tab-btn-'+t);
+    if(btn)btn.style.display=allowed.indexOf(t)>=0?'':'none';
+  });
+  adminTab(allowed[0],document.getElementById('tab-btn-'+allowed[0]));
 }
 function exitAdmin(){
-  currentRole=null;
-  document.getElementById('shop-section').classList.remove('hidden');
-  document.getElementById('admin-section').classList.add('hidden');
-  document.querySelectorAll('.admin-tab').forEach(function(t){t.style.display='';});
-}
-function adminTab(name, el){
-  document.querySelectorAll('.admin-tab').forEach(function(t){t.classList.remove('active');});
-  if(el) el.classList.add('active');
+  currentRole=null; hide('admin-section'); show('shop-section');
   ['dashboard','products','orders','accounting','crm','settings'].forEach(function(t){
-    var el2 = document.getElementById('tab-'+t);
-    if(el2) el2.classList.add('hidden');
+    var btn=document.getElementById('tab-btn-'+t); if(btn)btn.style.display='';
   });
-  var target = document.getElementById('tab-'+name);
-  if(target) target.classList.remove('hidden');
-  if(name==='dashboard') renderAdminDashboard();
-  if(name==='products') renderAdminProducts();
-  if(name==='orders') renderOrders();
-  if(name==='accounting') renderAccounting();
-  if(name==='crm') renderCRM();
-  if(name==='settings') loadSettings();
 }
-function renderAdminDashboard(){
-  document.getElementById('st-today').textContent = getTodayVisits().toLocaleString('fa-IR');
-  document.getElementById('st-total').textContent = getTotalVisits().toLocaleString('fa-IR');
-  var pending = orders.filter(function(o){return o.status==='pending';}).length;
-  var done = orders.filter(function(o){return o.status==='done';}).length;
-  var revenue = orders.filter(function(o){return o.status==='done';}).reduce(function(s,o){return s+o.total;},0);
-  document.getElementById('st-pending').textContent = pending.toLocaleString('fa-IR');
-  document.getElementById('st-done').textContent = done.toLocaleString('fa-IR');
-  document.getElementById('st-revenue').textContent = formatPrice(revenue);
-  var last5 = orders.slice(0,5);
-  document.getElementById('dashboard-orders').innerHTML = last5.length ? renderOrdersTable(last5,true) : '<div style="color:var(--text2);text-align:center;padding:20px;">سفارشی ثبت نشده</div>';
+function adminTab(name,el){
+  document.querySelectorAll('.admin-tab').forEach(function(t){t.classList.remove('active');});
+  if(el)el.classList.add('active');
+  ['dashboard','products','orders','accounting','crm','settings'].forEach(function(t){
+    var p=document.getElementById('tab-'+t); if(p)p.classList.add('hidden');
+  });
+  var tgt=document.getElementById('tab-'+name); if(tgt)tgt.classList.remove('hidden');
+  if(name==='dashboard')renderDash();
+  if(name==='products')renderAdminProducts();
+  if(name==='orders')renderOrders();
+  if(name==='accounting')renderAccounting();
+  if(name==='crm')renderCRM();
+  if(name==='settings')loadSettings();
 }
-function renderOrdersTable(list, mini){
-  return '<table class="admin-table" style="width:100%"><thead><tr>'
+function renderDash(){
+  document.getElementById('st-today').textContent=getTodayV().toLocaleString('fa-IR');
+  document.getElementById('st-total').textContent=getTotalV().toLocaleString('fa-IR');
+  var pending=orders.filter(function(o){return o.status==='pending';}).length;
+  var done=orders.filter(function(o){return o.status==='done';}).length;
+  var rev=orders.filter(function(o){return o.status==='done';}).reduce(function(s,o){return s+o.total;},0);
+  document.getElementById('st-pending').textContent=pending.toLocaleString('fa-IR');
+  document.getElementById('st-done').textContent=done.toLocaleString('fa-IR');
+  document.getElementById('st-revenue').textContent=formatPrice(rev);
+  var el=document.getElementById('dashboard-orders');
+  el.innerHTML=orders.slice(0,5).length?buildOrderTable(orders.slice(0,5),true):'<div style="color:#444;text-align:center;padding:20px;">سفارشی ثبت نشده</div>';
+}
+function buildOrderTable(list,mini){
+  return '<div style="overflow-x:auto;"><table class="admin-table" style="width:100%;min-width:480px"><thead><tr>'
     +'<th>شماره</th><th>مشتری</th><th>مبلغ</th><th>وضعیت</th>'
     +(mini?'':'<th>تاریخ</th><th>عملیات</th>')
     +'</tr></thead><tbody>'
-    + list.map(function(o){
-        var badge = o.status==='done'?'badge-done':o.status==='cancel'?'badge-cancel':'badge-pending';
-        var label = o.status==='done'?'نهایی':o.status==='cancel'?'لغو':'در انتظار';
-        return '<tr>'
-          +'<td style="font-size:.78rem;">'+o.id+'</td>'
-          +'<td>'+o.customer.name+'<br><span style="font-size:.75rem;color:var(--text2);">'+o.customer.phone+'</span></td>'
-          +'<td>'+formatPrice(o.total)+'</td>'
-          +'<td><span class="badge '+badge+'">'+label+'</span></td>'
-          +(mini?'':'<td style="font-size:.78rem;">'+o.date+'</td>')
-          +(mini?'':'<td>'
-            +(o.status==='pending'?'<button class="btn-gold" style="padding:4px 10px;font-size:.78rem;margin-left:4px;" onclick="changeOrderStatus(\''+o.id+'\',\'done\')">تایید</button>':'')
-            +(o.status==='pending'?'<button class="btn-danger" style="padding:4px 10px;font-size:.78rem;" onclick="changeOrderStatus(\''+o.id+'\',\'cancel\')">لغو</button>':'')
-            +'</td>')
-          +'</tr>';
-    }).join('')
-    +'</tbody></table>';
+    +list.map(function(o){
+      var bc=o.status==='done'?'badge-done':o.status==='cancel'?'badge-cancel':'badge-pending';
+      var bl=o.status==='done'?'نهایی':o.status==='cancel'?'لغو':'در انتظار';
+      return '<tr>'
+        +'<td style="font-size:.73rem;color:#444;">'+o.id+'</td>'
+        +'<td>'+o.customer.name+'<br><span style="font-size:.73rem;color:#555;">'+o.customer.phone+'</span></td>'
+        +'<td style="color:#e0e0e0;">'+formatPrice(o.total)+'</td>'
+        +'<td><span class="badge '+bc+'">'+bl+'</span></td>'
+        +(mini?'':'<td style="font-size:.73rem;color:#444;">'+o.date+'</td>')
+        +(mini?'':'<td style="white-space:nowrap;">'
+          +(o.status==='pending'?'<button class="btn-green" onclick="changeStatus(\''+o.id+'\',\'done\')">✓ تایید</button>':'')
+          +(o.status==='pending'?'<button class="btn-red" onclick="changeStatus(\''+o.id+'\',\'cancel\')">✕ لغو</button>':'')
+          +'</td>')
+        +'</tr>';
+    }).join('')+'</tbody></table></div>';
 }
-function changeOrderStatus(id, status){
-  var o = orders.find(function(x){return x.id===id;});
-  if(o){ o.status=status; saveOrders(); }
-  renderOrders();
-  renderAccounting();
+function changeStatus(id,status){
+  var o=orders.find(function(x){return x.id===id;}); if(o)o.status=status;
+  saveOrders(); renderOrders(); renderAccounting(); renderDash();
 }
 function renderOrders(){
-  var el = document.getElementById('orders-list');
-  if(!el) return;
-  el.innerHTML = orders.length ? renderOrdersTable(orders,false) : '<div style="color:var(--text2);text-align:center;padding:20px;">سفارشی ثبت نشده</div>';
+  var el=document.getElementById('orders-list'); if(!el)return;
+  el.innerHTML=orders.length?buildOrderTable(orders,false):'<div style="color:#444;text-align:center;padding:20px;">سفارشی ثبت نشده</div>';
 }
 function renderAccounting(){
-  var done = orders.filter(function(o){return o.status==='done';});
-  var rev = done.reduce(function(s,o){return s+o.total;},0);
-  var avg = done.length ? Math.round(rev/done.length) : 0;
-  document.getElementById('acc-revenue').textContent = formatPrice(rev);
-  document.getElementById('acc-orders').textContent = done.length.toLocaleString('fa-IR');
-  document.getElementById('acc-avg').textContent = formatPrice(avg);
-  var el = document.getElementById('accounting-list');
-  if(!el) return;
-  // show all orders with financial info
-  el.innerHTML = orders.length ? '<table class="admin-table" style="width:100%"><thead><tr>'
-    +'<th>شماره</th><th>مشتری</th><th>محصولات</th><th>جمع کالا</th><th>ارسال</th><th>مبلغ کل</th><th>وضعیت</th></tr></thead><tbody>'
-    + orders.map(function(o){
-      var badge = o.status==='done'?'badge-done':o.status==='cancel'?'badge-cancel':'badge-pending';
-      var label = o.status==='done'?'نهایی':o.status==='cancel'?'لغو':'در انتظار';
-      return '<tr>'
-        +'<td style="font-size:.75rem;">'+o.id+'</td>'
+  var done=orders.filter(function(o){return o.status==='done';});
+  var rev=done.reduce(function(s,o){return s+o.total;},0);
+  var avg=done.length?Math.round(rev/done.length):0;
+  var r=document.getElementById('acc-revenue'),c=document.getElementById('acc-orders'),a=document.getElementById('acc-avg');
+  if(r)r.textContent=formatPrice(rev); if(c)c.textContent=done.length.toLocaleString('fa-IR'); if(a)a.textContent=formatPrice(avg);
+  var el=document.getElementById('accounting-list'); if(!el)return;
+  el.innerHTML=orders.length?'<div style="overflow-x:auto;"><table class="admin-table" style="width:100%;min-width:600px"><thead><tr>'
+    +'<th>شماره</th><th>مشتری</th><th>محله</th><th>کالا</th><th>ارسال</th><th>کل</th><th>وضعیت</th></tr></thead><tbody>'
+    +orders.map(function(o){
+      var bc=o.status==='done'?'badge-done':o.status==='cancel'?'badge-cancel':'badge-pending';
+      var bl=o.status==='done'?'نهایی':o.status==='cancel'?'لغو':'در انتظار';
+      return '<tr><td style="font-size:.72rem;color:#444;">'+o.id+'</td>'
         +'<td>'+o.customer.name+'</td>'
-        +'<td style="font-size:.78rem;">'+o.items.map(function(i){return i.name+'×'+i.qty;}).join('<br>')+'</td>'
+        +'<td style="font-size:.78rem;color:#555;">'+o.deliveryArea+'</td>'
         +'<td>'+formatPrice(o.subtotal)+'</td>'
         +'<td>'+formatPrice(o.delivery)+'</td>'
-        +'<td style="color:var(--gold);font-weight:700;">'+formatPrice(o.total)+'</td>'
-        +'<td><span class="badge '+badge+'">'+label+'</span></td>'
-        +'</tr>';
-    }).join('')+'</tbody></table>'
-    : '<div style="color:var(--text2);text-align:center;padding:20px;">سفارشی ثبت نشده</div>';
+        +'<td style="color:#e0e0e0;font-weight:700;">'+formatPrice(o.total)+'</td>'
+        +'<td><span class="badge '+bc+'">'+bl+'</span></td></tr>';
+    }).join('')+'</tbody></table></div>'
+    :'<div style="color:#444;text-align:center;padding:20px;">سفارشی ثبت نشده</div>';
 }
-</script>
-
-<script>
-// ===== CRM =====
 function renderCRM(){
-  var search = (document.getElementById('crm-search')||{}).value||'';
-  var el = document.getElementById('crm-list');
-  if(!el) return;
-  // Build unique customers from orders
-  var customers = {};
+  var s=(document.getElementById('crm-search')||{}).value||'';
+  var el=document.getElementById('crm-list'); if(!el)return;
+  var custs={};
   orders.forEach(function(o){
-    var key = o.customer.phone;
-    if(!customers[key]){
-      customers[key] = {
-        name:o.customer.name, phone:o.customer.phone,
-        tg:o.customer.tg, address:o.customer.address,
-        orderCount:0, totalSpent:0, lastOrder:o.date
-      };
-    }
-    customers[key].orderCount++;
-    if(o.status==='done') customers[key].totalSpent += o.total;
-    customers[key].lastOrder = o.date;
+    var k=o.customer.phone;
+    if(!custs[k])custs[k]={name:o.customer.name,phone:k,tg:o.customer.tg,orderCount:0,totalSpent:0,lastOrder:o.date};
+    custs[k].orderCount++;
+    if(o.status==='done')custs[k].totalSpent+=o.total;
+    custs[k].lastOrder=o.date;
   });
-  var list = Object.values(customers);
-  if(search){ list = list.filter(function(c){ return (c.name+c.phone+c.tg).includes(search); }); }
-  if(!list.length){ el.innerHTML='<div style="color:var(--text2);text-align:center;padding:20px;">مشتری یافت نشد</div>'; return; }
-  el.innerHTML = '<table class="admin-table" style="width:100%"><thead><tr>'
-    +'<th>نام</th><th>موبایل</th><th>تلگرام</th><th>تعداد سفارش</th><th>خرید کل</th><th>آخرین سفارش</th>'
+  var list=Object.values(custs);
+  if(s)list=list.filter(function(c){return(c.name+c.phone+c.tg).indexOf(s)>=0;});
+  if(!list.length){el.innerHTML='<div style="color:#444;text-align:center;padding:20px;">مشتری یافت نشد</div>';return;}
+  el.innerHTML='<div style="overflow-x:auto;"><table class="admin-table" style="width:100%;min-width:480px"><thead><tr>'
+    +'<th>نام</th><th>موبایل</th><th>تلگرام</th><th>سفارش</th><th>خرید کل</th><th>آخرین سفارش</th>'
     +'</tr></thead><tbody>'
-    + list.map(function(c){
-      return '<tr>'
-        +'<td>'+c.name+'</td>'
-        +'<td>'+c.phone+'</td>'
-        +'<td>'+(c.tg!=='—'?'<a href="https://t.me/'+c.tg.replace('@','')+'" target="_blank" style="color:var(--gold);">'+c.tg+'</a>':'—')+'</td>'
+    +list.map(function(c){
+      return '<tr><td>'+c.name+'</td><td>'+c.phone+'</td>'
+        +'<td>'+(c.tg&&c.tg!=='—'?'<a href="https://t.me/'+c.tg.replace('@','')+'" target="_blank" style="color:#888;">'+c.tg+'</a>':'—')+'</td>'
         +'<td>'+c.orderCount.toLocaleString('fa-IR')+'</td>'
         +'<td>'+formatPrice(c.totalSpent)+'</td>'
-        +'<td style="font-size:.78rem;">'+c.lastOrder+'</td>'
-        +'</tr>';
-    }).join('')+'</tbody></table>';
+        +'<td style="font-size:.73rem;color:#444;">'+c.lastOrder+'</td></tr>';
+    }).join('')+'</tbody></table></div>';
 }
-
-// ===== ADMIN PRODUCTS =====
 function renderAdminProducts(){
-  var el = document.getElementById('admin-products-list');
-  if(!el) return;
-  if(!products.length){ el.innerHTML='<div style="color:var(--text2);text-align:center;padding:20px;">محصولی ثبت نشده</div>'; return; }
-  el.innerHTML = '<table class="admin-table" style="width:100%"><thead><tr>'
+  var el=document.getElementById('admin-products-list'); if(!el)return;
+  if(!products.length){el.innerHTML='<div style="color:#444;text-align:center;padding:20px;">محصولی ثبت نشده</div>';return;}
+  el.innerHTML='<div style="overflow-x:auto;"><table class="admin-table" style="width:100%;min-width:400px"><thead><tr>'
     +'<th>تصویر</th><th>نام</th><th>دسته</th><th>قیمت</th><th>عملیات</th>'
     +'</tr></thead><tbody>'
-    + products.map(function(p){
-      return '<tr>'
-        +'<td>'+(p.img?'<img src="'+p.img+'" style="width:40px;height:40px;object-fit:cover;border-radius:6px;">':getCatEmoji(p.cat))+'</td>'
-        +'<td>'+p.name+'</td>'
-        +'<td>'+catName(p.cat)+'</td>'
-        +'<td>'+formatPrice(p.price)+' تومان</td>'
-        +'<td><button class="btn-danger" style="font-size:.78rem;padding:4px 10px;" onclick="deleteProduct('+p.id+')">حذف</button></td>'
-        +'</tr>';
-    }).join('')+'</tbody></table>';
+    +products.map(function(p){
+      return '<tr><td>'+(p.img?'<img src="'+p.img+'" style="width:40px;height:40px;object-fit:cover;border-radius:6px;">':getCatEmoji(p.cat))+'</td>'
+        +'<td>'+p.name+'</td><td>'+catName(p.cat)+'</td>'
+        +'<td>'+formatPrice(p.price)+'</td>'
+        +'<td><button class="btn-red" onclick="deleteProd('+p.id+')">حذف</button></td></tr>';
+    }).join('')+'</tbody></table></div>';
 }
 function addProduct(){
-  var name = document.getElementById('ap-name').value.trim();
-  var cat = document.getElementById('ap-cat').value;
-  var price = parseInt(document.getElementById('ap-price').value)||0;
-  var desc = document.getElementById('ap-desc').value.trim();
-  if(!name){ showToast('نام محصول الزامی است'); return; }
-  var imgEl = document.getElementById('ap-img');
-  var imgSrc = '';
-  if(imgEl.files && imgEl.files[0]){
-    // already previewed — use preview src
-    imgSrc = document.getElementById('ap-img-preview').src||'';
-  }
-  var newId = products.length ? Math.max.apply(null,products.map(function(p){return p.id;}))+1 : 1;
-  products.push({id:newId,name:name,cat:cat,price:price,desc:desc,img:imgSrc});
+  var name=document.getElementById('ap-name').value.trim();
+  var cat=document.getElementById('ap-cat').value;
+  var price=parseInt(document.getElementById('ap-price').value)||0;
+  var desc=document.getElementById('ap-desc').value.trim();
+  if(!name){showToast('نام محصول الزامی است');return;}
+  var prev=document.getElementById('ap-img-preview');
+  var img=(prev&&prev.style.display!=='none'&&prev.src)?prev.src:'';
+  var nid=products.length?Math.max.apply(null,products.map(function(p){return p.id;}))+1:1;
+  products.push({id:nid,name:name,cat:cat,price:price,desc:desc,img:img});
   saveProducts();
-  // reset form
-  document.getElementById('ap-name').value='';
-  document.getElementById('ap-price').value='';
-  document.getElementById('ap-desc').value='';
-  document.getElementById('ap-img').value='';
-  document.getElementById('ap-img-preview').style.display='none';
-  renderAdminProducts();
-  renderProducts('all');
-  updateFeatured();
+  document.getElementById('ap-name').value=''; document.getElementById('ap-price').value='';
+  document.getElementById('ap-desc').value=''; document.getElementById('ap-img').value='';
+  if(prev){prev.style.display='none';prev.src='';}
+  renderAdminProducts(); renderProducts('all'); updateFeatured();
   showToast('✓ محصول اضافه شد');
 }
-function deleteProduct(id){
-  if(!confirm('آیا از حذف این محصول مطمئنید؟')) return;
-  products = products.filter(function(p){return p.id!==id;});
-  saveProducts();
-  renderAdminProducts();
-  renderProducts('all');
-  updateFeatured();
+function deleteProd(id){
+  if(!confirm('آیا از حذف این محصول مطمئنید؟'))return;
+  products=products.filter(function(p){return p.id!==id;}); saveProducts();
+  renderAdminProducts(); renderProducts('all'); updateFeatured();
   showToast('محصول حذف شد');
 }
-function previewImg(input, previewId){
-  var prev = document.getElementById(previewId);
-  if(input.files && input.files[0]){
-    var reader = new FileReader();
-    reader.onload = function(e){ prev.src=e.target.result; prev.style.display='block'; };
-    reader.readAsDataURL(input.files[0]);
+function previewImg(input,prevId){
+  var prev=document.getElementById(prevId);
+  if(input.files&&input.files[0]){
+    var r=new FileReader();
+    r.onload=function(e){prev.src=e.target.result;prev.style.display='block';};
+    r.readAsDataURL(input.files[0]);
   }
 }
-// ===== SETTINGS =====
 function loadSettings(){
-  document.getElementById('cfg-site-name').value = CFG.siteName;
-  document.getElementById('cfg-tg-id').value = CFG.tgId;
+  var n=document.getElementById('cfg-site-name'),t=document.getElementById('cfg-tg-id');
+  if(n)n.value=CFG.siteName; if(t)t.value=CFG.tgId;
 }
 function saveSettings(){
-  CFG.siteName = document.getElementById('cfg-site-name').value;
-  CFG.tgId = document.getElementById('cfg-tg-id').value;
-  var newPass = document.getElementById('cfg-pass').value;
-  if(newPass) CFG.adminPass = newPass;
-  localStorage.setItem('ben_cfg', JSON.stringify(CFG));
-  document.title = CFG.siteName;
-  var msg = document.getElementById('settings-msg');
-  msg.style.display='block';
-  setTimeout(function(){ msg.style.display='none'; },2500);
+  CFG.siteName=document.getElementById('cfg-site-name').value;
+  CFG.tgId=document.getElementById('cfg-tg-id').value;
+  var np=document.getElementById('cfg-pass').value; if(np)CFG.adminPass=np;
+  localStorage.setItem('ben_cfg',JSON.stringify(CFG));
+  document.title=CFG.siteName;
+  var m=document.getElementById('settings-msg'); m.style.display='inline';
+  setTimeout(function(){m.style.display='none';},2500);
 }
 function saveRolePasswords(){
-  var op = document.getElementById('cfg-op-pass').value;
-  var acc = document.getElementById('cfg-acc-pass').value;
-  if(op) CFG.opPass = op;
-  if(acc) CFG.accPass = acc;
-  localStorage.setItem('ben_cfg', JSON.stringify(CFG));
-  var msg = document.getElementById('role-msg');
-  msg.style.display='block';
-  setTimeout(function(){ msg.style.display='none'; },2500);
+  var op=document.getElementById('cfg-op-pass').value,ac=document.getElementById('cfg-acc-pass').value;
+  if(op)CFG.opPass=op; if(ac)CFG.accPass=ac;
+  localStorage.setItem('ben_cfg',JSON.stringify(CFG));
+  var m=document.getElementById('role-msg'); m.style.display='inline';
+  setTimeout(function(){m.style.display='none';},2500);
 }
-document.addEventListener('keydown',function(e){
-  if(e.key==='Enter' && !document.getElementById('admin-login-modal').classList.contains('hidden')) doAdminLogin();
-});
-var style = document.createElement('style');
-style.textContent = '@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}';
-document.head.appendChild(style);
+function exportData(){
+  var data={products:products,orders:orders,cfg:CFG,exported:new Date().toLocaleString('fa-IR')};
+  var el=document.getElementById('export-text'),wrap=document.getElementById('export-output');
+  el.value=JSON.stringify(data); wrap.style.display='block';
+}
+function copyExport(){
+  var el=document.getElementById('export-text'); el.select(); document.execCommand('copy');
+  showToast('✓ کد کپی شد');
+}
+function importData(){
+  var txt=document.getElementById('import-text').value.trim();
+  var msg=document.getElementById('import-msg');
+  if(!txt){showToast('لطفاً کد JSON را وارد کنید');return;}
+  try{
+    var d=JSON.parse(txt);
+    if(d.products){products=d.products;saveProducts();}
+    if(d.orders){orders=d.orders;saveOrders();}
+    if(d.cfg){Object.assign(CFG,d.cfg);localStorage.setItem('ben_cfg',JSON.stringify(CFG));}
+    renderProducts('all'); updateFeatured();
+    msg.textContent='✓ داده‌ها با موفقیت وارد شدند'; msg.style.display='inline';
+    setTimeout(function(){msg.style.display='none';},3000);
+    document.getElementById('import-text').value='';
+  }catch(e){showToast('خطا: کد JSON نامعتبر است');}
+}
 init();
 </script>
 </body>
