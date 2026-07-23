@@ -3,18 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Benjamin — Fine Spirits & Wine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Tajawal:wght@400;500;700;900&family=Cairo:wght@400;600;700;900&family=Almarai:wght@400;700;800&display=swap" rel="stylesheet">
+<title>کافه بن — قهوه تخصصی</title>
 <style>
-:root{--gold:#c9a84c;--gold-light:#e8c96a;--dark:#0d0d0d;--dark2:#0a1a0a;--dark3:#111811;--dark4:#1a2a1a;--text:#f0ead6;--text2:#a89880;--border:#1e2e1e;}
+:root{--gold:#c9a84c;--gold-light:#e8c96a;--dark:#0d0d0d;--dark2:#0a1a0a;--dark3:#111811;--dark4:#1a2a1a;--text:#f0ead6;--text2:#a89880;--border:#1e2e1e;--font-family:'Vazirmatn',Tahoma,sans-serif;}
 *{margin:0;padding:0;box-sizing:border-box;}
-body{background:var(--dark);color:var(--text);font-family:'Segoe UI',Tahoma,sans-serif;min-height:100vh;}
+body{background:var(--dark);color:var(--text);font-family:var(--font-family);min-height:100vh;}
 .hidden{display:none!important;}
-/* AGE GATE */
-#age-gate{position:fixed;inset:0;background:#050e05;display:flex;align-items:center;justify-content:center;z-index:9999;}
-.age-box{text-align:center;padding:40px;max-width:400px;border:1px solid var(--gold);border-radius:14px;background:var(--dark2);}
-.age-box h2{font-size:2rem;color:var(--gold);margin-bottom:12px;}
-.age-box p{color:var(--text2);margin-bottom:28px;line-height:1.7;}
-.age-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
 /* WELCOME */
 #welcome-modal{position:fixed;inset:0;background:rgba(0,10,0,.9);display:flex;align-items:center;justify-content:center;z-index:9998;}
 .welcome-box{background:var(--dark3);border:1px solid var(--gold);border-radius:16px;padding:36px;max-width:440px;width:90%;text-align:center;}
@@ -42,6 +39,7 @@ header{background:rgba(5,20,5,.95);backdrop-filter:blur(10px);border-bottom:1px 
 .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(201,168,76,.06) 0%,transparent 70%);}
 .hero-badge{display:inline-block;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.3);color:var(--gold);font-size:.78rem;padding:4px 14px;border-radius:20px;margin-bottom:18px;letter-spacing:1px;}
 .hero h1{font-size:2.6rem;font-weight:900;line-height:1.35;margin-bottom:16px;position:relative;}
+.hero-heading{font-family:var(--font-family);font-weight:900;letter-spacing:0;text-shadow:0 2px 18px rgba(201,168,76,.25);}
 .hero h1 span{color:var(--gold);}
 .hero p{color:var(--text2);font-size:.98rem;max-width:500px;margin:0 auto 32px;line-height:1.9;position:relative;}
 .dots{display:flex;justify-content:center;gap:8px;margin-top:24px;}
@@ -57,6 +55,7 @@ header{background:rgba(5,20,5,.95);backdrop-filter:blur(10px);border-bottom:1px 
 .cat-card:hover,.cat-card.active{border-color:var(--gold);background:#0f2010;box-shadow:0 0 20px rgba(201,168,76,.1);}
 .cat-card.active .cat-label{color:var(--gold);}
 .cat-icon{font-size:2.2rem;margin-bottom:8px;}
+.cat-icon img{width:46px;height:46px;object-fit:cover;border-radius:10px;margin:0 auto;display:block;}
 .cat-label{font-size:.85rem;font-weight:700;}
 .cat-sub{font-size:.73rem;color:#556655;margin-top:4px;}
 /* PRODUCTS */
@@ -145,24 +144,27 @@ header{background:rgba(5,20,5,.95);backdrop-filter:blur(10px);border-bottom:1px 
 .site-footer{text-align:center;padding:24px 20px 6px;color:var(--text2);font-size:.78rem;border-top:1px solid var(--border);}
 .footer-gear-btn{display:block;margin:0 auto;background:none;border:none;cursor:pointer;opacity:.25;font-size:1.2rem;padding:10px;transition:opacity .3s;color:var(--text2);}
 .footer-gear-btn:hover{opacity:.6;}
+.support-bubble{position:fixed;bottom:20px;left:16px;width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 18px rgba(0,0,0,.5);z-index:400;transition:.2s;}
+.support-bubble:hover{transform:translateY(-3px);}
 </style>
 <style>
-/* HACKER LOGIN */
-#hacker-login{position:fixed;inset:0;background:#000;display:flex;align-items:center;justify-content:center;z-index:8000;direction:ltr;}
-.hacker-wrap{position:relative;width:100%;max-width:380px;padding:16px;}
-.hacker-box{border:1px solid #00ff41;border-radius:3px;padding:40px 36px;background:#000;box-shadow:0 0 40px rgba(0,255,65,.12),inset 0 0 40px rgba(0,255,65,.02);}
-.hacker-title{font-family:'Courier New',monospace;font-size:1.2rem;color:#00ff41;margin-bottom:6px;letter-spacing:3px;min-height:1.5em;}
-.hacker-cursor{animation:blink .8s infinite;color:#00ff41;}
+/* HACKER LOGIN (black/gray theme) */
+#hacker-login{position:fixed;inset:0;background:#000;display:flex;align-items:center;justify-content:center;z-index:8000;direction:ltr;overflow:hidden;}
+#matrix-canvas{position:absolute;top:0;left:0;width:100%;height:100%;opacity:.5;}
+.hacker-wrap{position:relative;width:100%;max-width:380px;padding:16px;z-index:2;}
+.hacker-box{border:1px solid #666;border-radius:3px;padding:40px 36px;background:#0a0a0a;box-shadow:0 0 40px rgba(200,200,200,.08),inset 0 0 40px rgba(255,255,255,.02);}
+.hacker-title{font-family:'Courier New',monospace;font-size:1.2rem;color:#d0d0d0;margin-bottom:6px;letter-spacing:3px;min-height:1.5em;}
+.hacker-cursor{animation:blink .8s infinite;color:#d0d0d0;}
 @keyframes blink{0%,100%{opacity:1;}50%{opacity:0;}}
-.hacker-sub{font-family:'Courier New',monospace;font-size:.72rem;color:#004d15;margin-bottom:30px;letter-spacing:1px;}
-.hacker-line{font-family:'Courier New',monospace;font-size:.75rem;color:#003d10;margin-bottom:20px;}
-.hacker-input{width:100%;background:#000;border:none;border-bottom:1px solid #00ff41;color:#00ff41;font-family:'Courier New',monospace;font-size:1rem;padding:8px 0;outline:none;letter-spacing:2px;margin-bottom:24px;}
-.hacker-input::placeholder{color:#003d10;}
-.hacker-err{color:#ff3333;font-family:'Courier New',monospace;font-size:.78rem;margin-bottom:14px;display:none;}
-.hacker-btn{width:100%;background:transparent;border:1px solid #00ff41;color:#00ff41;font-family:'Courier New',monospace;font-size:.95rem;padding:12px;cursor:pointer;letter-spacing:4px;transition:.2s;}
-.hacker-btn:hover{background:#00ff41;color:#000;}
-.hacker-close{position:absolute;top:20px;left:20px;background:none;border:none;color:#003d10;font-size:1rem;cursor:pointer;font-family:'Courier New',monospace;}
-.hacker-close:hover{color:#00ff41;}
+.hacker-sub{font-family:'Courier New',monospace;font-size:.72rem;color:#555;margin-bottom:30px;letter-spacing:1px;}
+.hacker-line{font-family:'Courier New',monospace;font-size:.75rem;color:#444;margin-bottom:20px;}
+.hacker-input{width:100%;background:#000;border:none;border-bottom:1px solid #666;color:#e0e0e0;font-family:'Courier New',monospace;font-size:1rem;padding:8px 0;outline:none;letter-spacing:2px;margin-bottom:24px;}
+.hacker-input::placeholder{color:#444;}
+.hacker-err{color:#ff5555;font-family:'Courier New',monospace;font-size:.78rem;margin-bottom:14px;display:none;}
+.hacker-btn{width:100%;background:transparent;border:1px solid #888;color:#ddd;font-family:'Courier New',monospace;font-size:.95rem;padding:12px;cursor:pointer;letter-spacing:4px;transition:.2s;}
+.hacker-btn:hover{background:#ccc;color:#000;}
+.hacker-close{position:absolute;top:20px;left:20px;background:none;border:none;color:#444;font-size:1rem;cursor:pointer;font-family:'Courier New',monospace;}
+.hacker-close:hover{color:#ccc;}
 /* ADMIN DASHBOARD */
 #admin-section{background:#0a0a0a;min-height:100vh;color:#e0e0e0;}
 .admin-nav{background:#0f0f0f;border-bottom:1px solid #222;padding:0 16px;display:flex;align-items:center;gap:2px;height:54px;overflow-x:auto;}
@@ -187,31 +189,42 @@ header{background:rgba(5,20,5,.95);backdrop-filter:blur(10px);border-bottom:1px 
 .btn-red{background:#c62828;color:#fff;border:none;padding:6px 13px;border-radius:6px;cursor:pointer;font-size:.78rem;}
 .btn-green{background:#2e7d32;color:#fff;border:none;padding:6px 13px;border-radius:6px;cursor:pointer;font-size:.78rem;margin-left:4px;}
 .sync-note{background:#0a0a0a;border:1px solid #222;border-radius:8px;padding:12px 16px;font-size:.8rem;color:#555;margin-bottom:16px;line-height:1.8;}
+/* DASHBOARD V2 */
+.dash-banner{background:linear-gradient(135deg,#1c1600 0%,#0a0a0a 55%,#101a10 100%);border:1px solid #2a2410;border-radius:20px;padding:28px 30px;margin-bottom:24px;position:relative;overflow:hidden;}
+.dash-banner::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 88% 15%,rgba(201,168,76,.22),transparent 55%);}
+.dash-banner::after{content:'';position:absolute;left:-40px;bottom:-60px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,.12),transparent 70%);}
+.dash-banner-inner{position:relative;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;}
+.dash-banner h2{font-size:1.4rem;color:#fff;margin-bottom:6px;font-weight:800;}
+.dash-banner p{color:#8a8a8a;font-size:.86rem;}
+.dash-banner-badge{background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.4);color:var(--gold);font-size:.76rem;padding:6px 16px;border-radius:20px;font-weight:700;white-space:nowrap;}
+.stats-grid-v2{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin-bottom:22px;}
+.stat-card-v2{display:flex;align-items:center;gap:14px;background:#121212;border:1px solid #232323;border-radius:16px;padding:18px;position:relative;overflow:hidden;transition:.25s;}
+.stat-card-v2:hover{transform:translateY(-4px);box-shadow:0 10px 24px rgba(0,0,0,.4);}
+.stat-icon-v2{width:48px;height:48px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;}
+.stat-blue .stat-icon-v2{background:rgba(66,133,244,.15);}
+.stat-blue:hover{border-color:rgba(66,133,244,.5);}
+.stat-purple .stat-icon-v2{background:rgba(156,102,224,.15);}
+.stat-purple:hover{border-color:rgba(156,102,224,.5);}
+.stat-orange .stat-icon-v2{background:rgba(255,152,0,.15);}
+.stat-orange:hover{border-color:rgba(255,152,0,.5);}
+.stat-green .stat-icon-v2{background:rgba(76,175,80,.15);}
+.stat-green:hover{border-color:rgba(76,175,80,.5);}
+.stat-gold .stat-icon-v2{background:rgba(201,168,76,.18);}
+.stat-gold:hover{border-color:rgba(201,168,76,.6);}
+.dash-orders-box h3{display:flex;align-items:center;justify-content:space-between;}
+.dash-tag{font-size:.68rem;background:rgba(201,168,76,.14);color:var(--gold);border:1px solid rgba(201,168,76,.3);padding:2px 10px;border-radius:20px;}
 input[type=text],input[type=password],input[type=number],select,textarea{direction:rtl;}
 @keyframes fadeInUp{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
 </style>
 </head>
 <body>
 
-<!-- AGE GATE -->
-<div id="age-gate">
-  <div class="age-box">
-    <div style="font-size:3.5rem;margin-bottom:12px;">🔞</div>
-    <h2>+18</h2>
-    <p>این سایت مربوط به فروش نوشیدنی‌های الکلی است.<br>ورود فقط برای افراد بالای ۱۸ سال مجاز است.</p>
-    <div class="age-btns">
-      <button class="btn-gold" onclick="confirmAge()">بله، ۱۸ سال دارم</button>
-      <button class="btn-outline" onclick="window.location='https://www.google.com'">خیر، خروج</button>
-    </div>
-  </div>
-</div>
-
 <!-- WELCOME -->
 <div id="welcome-modal" class="hidden">
   <div class="welcome-box">
-    <div style="font-size:2.8rem;margin-bottom:14px;">🚚</div>
-    <h3>خوش آمدید به بنجامین!</h3>
-    <p>ارسال سفارش‌ها فقط در سطح شهر <strong style="color:var(--gold);">مشهد</strong> انجام می‌شود.<br>
+    <div style="font-size:2.8rem;margin-bottom:14px;">☕</div>
+    <h3 id="welcome-title-text">خوش آمدید به کافه بن!</h3>
+    <p id="welcome-body-text">ارسال سفارش‌ها در سطح شهر <strong style="color:var(--gold);">مشهد</strong> انجام می‌شود.<br>
     زمان تحویل زیر <strong style="color:var(--gold);">۳ ساعت</strong> — هزینه ارسال بر اساس منطقه شما متفاوت است.</p>
     <button class="btn-gold" onclick="closeWelcome()">متوجه شدم، ورود به فروشگاه</button>
   </div>
@@ -219,6 +232,7 @@ input[type=text],input[type=password],input[type=number],select,textarea{directi
 
 <!-- HACKER LOGIN -->
 <div id="hacker-login" class="hidden">
+  <canvas id="matrix-canvas"></canvas>
   <div class="hacker-wrap">
     <button class="hacker-close" onclick="closeHackerLogin()">[ X ]</button>
     <div class="hacker-box">
@@ -236,15 +250,16 @@ input[type=text],input[type=password],input[type=number],select,textarea{directi
 <div id="shop-section">
   <header>
     <div class="logo">
-      <div class="logo-icon">B</div>
+      <div class="logo-icon" id="logo-icon-letter">B</div>
+      <img id="logo-icon-img" src="" class="hidden" style="width:42px;height:42px;border-radius:50%;object-fit:cover;box-shadow:0 0 12px rgba(201,168,76,.4);">
       <div>
-        <div class="logo-text">بنجامین</div>
-        <div class="logo-sub">FINE SPIRITS & WINE</div>
+        <div class="logo-text" id="site-brand-name">بنجامین</div>
+        <div class="logo-sub">SPECIALTY COFFEE</div>
       </div>
     </div>
     <div class="header-actions">
-      <button class="cart-btn" onclick="openCart()">
-        🛍️ سبد خرید
+      <button class="cart-btn" onclick="openCart()" style="padding:9px 14px;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1.4" fill="#000"/><circle cx="19" cy="21" r="1.4" fill="#000"/><path d="M2 3h2l2.4 12.4a2 2 0 0 0 2 1.6h8.6a2 2 0 0 0 2-1.6L21 7H6"/></svg>
         <span class="cart-count" id="cart-count">0</span>
       </button>
     </div>
@@ -252,9 +267,9 @@ input[type=text],input[type=password],input[type=number],select,textarea{directi
 
   <!-- HERO -->
   <div class="hero">
-    <div class="hero-badge">✦ BENJAMIN MASHHAD</div>
-    <h1>کیفیت و <span>اصالت</span><br>در هر قطره</h1>
-    <p>مجموعه‌ای منتخب از بهترین نوشیدنی‌های الکلی<br>از برندهای معتبر دنیا</p>
+    <div class="hero-badge" id="hero-badge-text">✦ Benjamin</div>
+    <h1 class="hero-heading">کیفیت و <span>اصالت</span><br>در هر جرعه</h1>
+    <p id="hero-subtitle-text">خریدی مطمئن و معتبر</p>
     <button class="btn-gold" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">مشاهده مجموعه</button>
     <div class="dots"><div class="dot active"></div><div class="dot"></div><div class="dot"></div></div>
   </div>
@@ -263,13 +278,13 @@ input[type=text],input[type=password],input[type=number],select,textarea{directi
   <div class="sec-title"><h2>دسته‌بندی محصولات</h2><p>محصول مورد نظر خود را انتخاب کنید</p></div>
   <div class="cats">
     <div class="cat-card active" onclick="filterCat('all',this)">
-      <div class="cat-icon">🍾</div><div class="cat-label">همه موارد</div><div class="cat-sub">مشاهده همه</div>
+      <div class="cat-icon" id="cat-icon-all">☕</div><div class="cat-label">همه موارد</div><div class="cat-sub">مشاهده همه</div>
     </div>
-    <div class="cat-card" onclick="filterCat('whiskey',this)">
-      <div class="cat-icon">🥃</div><div class="cat-label">ویسکی</div><div class="cat-sub">مشاهده محصولات</div>
+    <div class="cat-card" onclick="filterCat('p1',this)">
+      <div class="cat-icon" id="cat-icon-p1">🫘</div><div class="cat-label" id="cat-label-p1">محصول ۱</div><div class="cat-sub">مشاهده محصولات</div>
     </div>
-    <div class="cat-card" onclick="filterCat('vodka',this)">
-      <div class="cat-icon">🍸</div><div class="cat-label">ودکا</div><div class="cat-sub">مشاهده محصولات</div>
+    <div class="cat-card" onclick="filterCat('p2',this)">
+      <div class="cat-icon" id="cat-icon-p2">☕</div><div class="cat-label" id="cat-label-p2">محصول ۲</div><div class="cat-sub">مشاهده محصولات</div>
     </div>
   </div>
 
@@ -277,10 +292,10 @@ input[type=text],input[type=password],input[type=number],select,textarea{directi
   <div class="featured-section">
     <div class="sec-title" style="padding-top:0;text-align:right;"><h2>پیشنهاد ویژه</h2><p>منتخب بهترین‌ها برای شما</p></div>
     <div class="featured-card">
-      <div style="font-size:4.5rem;">🥃</div>
+      <div style="font-size:4.5rem;">☕</div>
       <div class="featured-text" style="flex:1;">
-        <h3 id="f-name">ویسکی دالمر ۱۵ ساله</h3>
-        <p id="f-desc">طعم اصالت، انتخابی ماندگار — یکی از برترین ویسکی‌های اسکاتلند</p>
+        <h3 id="f-name">قهوه ویژه</h3>
+        <p id="f-desc">طعم اصالت، انتخابی ماندگار — از بهترین دانه‌های قهوه</p>
       </div>
       <div class="featured-price">
         <div class="lbl">قیمت:</div>
@@ -293,12 +308,27 @@ input[type=text],input[type=password],input[type=number],select,textarea{directi
 
   <!-- PRODUCTS -->
   <div id="products">
-    <div class="sec-title"><h2>ترکیب محصولات</h2><p>برای مشاهده جزئیات روی محصول کلیک کنید</p></div>
+    <div class="sec-title"><h2 id="products-section-title">محصولات</h2><p>برای مشاهده جزئیات روی محصول کلیک کنید</p></div>
     <div class="products-section"><div class="products-grid" id="products-grid"></div></div>
   </div>
 
-  <div class="site-footer">© Benjamin Fine Spirits & Wine — Mashhad | فروش فقط برای افراد بالای ۱۸ سال</div>
+  <div class="site-footer" id="site-footer-text">کلیه حقوق سایت محفوظ است — کافه بنجامین</div>
   <button class="footer-gear-btn" onclick="openHackerLogin()" title="Admin Panel">⚙</button>
+  <a class="support-bubble" id="support-bubble" href="#" target="_blank" title="پشتیبانی">
+    <svg width="30" height="30" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="50" fill="#0d0d0d"/>
+      <g fill="none" stroke="#c9a84c" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="50" y1="26" x2="50" y2="17"/>
+        <circle cx="50" cy="21" r="4.5" fill="#c9a84c" stroke="none"/>
+        <rect x="27" y="35" width="46" height="34" rx="9"/>
+        <line x1="18" y1="48" x2="27" y2="48"/>
+        <line x1="73" y1="48" x2="82" y2="48"/>
+        <circle cx="39" cy="52" r="4" fill="#c9a84c" stroke="none"/>
+        <circle cx="61" cy="52" r="4" fill="#c9a84c" stroke="none"/>
+        <path d="M40 61h20"/>
+      </g>
+    </svg>
+  </a>
 </div>
 
 <!-- PRODUCT MODAL -->
@@ -396,27 +426,39 @@ input[type=text],input[type=password],input[type=number],select,textarea{directi
     <button class="admin-tab" id="tab-btn-accounting" onclick="adminTab('accounting',this)">💰 حسابداری</button>
     <button class="admin-tab" id="tab-btn-crm" onclick="adminTab('crm',this)">👥 CRM</button>
     <button class="admin-tab" id="tab-btn-settings" onclick="adminTab('settings',this)">⚙ تنظیمات</button>
-    <span class="admin-nav-title">Benjamin Admin</span>
+    <div style="display:flex;align-items:center;gap:8px;margin-right:auto;">
+      <img id="admin-logo-img" src="" class="hidden" style="width:28px;height:28px;border-radius:50%;object-fit:cover;box-shadow:0 0 10px rgba(201,168,76,.35);">
+      <span class="admin-nav-title" id="admin-brand-name" style="margin-right:0;">BNE — پنل مدیریت</span>
+    </div>
     <button class="btn-white" style="font-size:.78rem;padding:6px 14px;" onclick="exitAdmin()">← خروج</button>
   </div>
 
   <div id="tab-dashboard" class="admin-content">
-    <div class="stats-grid">
-      <div class="stat-card"><div class="stat-val" id="st-today">۰</div><div class="stat-lbl">بازدید امروز</div></div>
-      <div class="stat-card"><div class="stat-val" id="st-total">۰</div><div class="stat-lbl">بازدید کل</div></div>
-      <div class="stat-card"><div class="stat-val" id="st-pending">۰</div><div class="stat-lbl">در انتظار تایید</div></div>
-      <div class="stat-card"><div class="stat-val" id="st-done">۰</div><div class="stat-lbl">سفارش نهایی</div></div>
-      <div class="stat-card"><div class="stat-val" id="st-revenue">۰</div><div class="stat-lbl">فروش نهایی (تومان)</div></div>
+    <div class="dash-banner">
+      <div class="dash-banner-inner">
+        <div>
+          <h2>سلام 👋 خلاصه وضعیت فروشگاه</h2>
+          <p>نگاهی کلی به بازدید، سفارش‌ها و فروش شما</p>
+        </div>
+        <div class="dash-banner-badge" id="dash-date-badge">امروز</div>
+      </div>
     </div>
-    <div class="admin-box"><h3>آخرین سفارش‌ها</h3><div id="dashboard-orders"></div></div>
+    <div class="stats-grid-v2">
+      <div class="stat-card-v2 stat-blue"><div class="stat-icon-v2">👁️</div><div><div class="stat-val" id="st-today">۰</div><div class="stat-lbl">بازدید امروز</div></div></div>
+      <div class="stat-card-v2 stat-purple"><div class="stat-icon-v2">🌐</div><div><div class="stat-val" id="st-total">۰</div><div class="stat-lbl">بازدید کل</div></div></div>
+      <div class="stat-card-v2 stat-orange"><div class="stat-icon-v2">⏳</div><div><div class="stat-val" id="st-pending">۰</div><div class="stat-lbl">در انتظار تایید</div></div></div>
+      <div class="stat-card-v2 stat-green"><div class="stat-icon-v2">✅</div><div><div class="stat-val" id="st-done">۰</div><div class="stat-lbl">سفارش نهایی</div></div></div>
+      <div class="stat-card-v2 stat-gold"><div class="stat-icon-v2">💰</div><div><div class="stat-val" id="st-revenue">۰</div><div class="stat-lbl">فروش نهایی (تومان)</div></div></div>
+    </div>
+    <div class="admin-box dash-orders-box"><h3><span>🧾 آخرین سفارش‌ها</span><span class="dash-tag" id="dash-orders-count">۰ سفارش</span></h3><div id="dashboard-orders"></div></div>
   </div>
 
   <div id="tab-products" class="admin-content hidden">
     <div class="admin-box">
       <h3>➕ افزودن محصول جدید</h3>
-      <div class="form-group"><label style="color:#666;">نام محصول *</label><input type="text" class="admin-form-input" id="ap-name" placeholder="مثلاً: ویسکی جک دنیلز"></div>
+      <div class="form-group"><label style="color:#666;">نام محصول *</label><input type="text" class="admin-form-input" id="ap-name" placeholder="مثلاً: قهوه اسپرسو ویژه"></div>
       <div class="form-group"><label style="color:#666;">دسته‌بندی</label>
-        <select id="ap-cat" class="admin-form-input"><option value="whiskey">ویسکی</option><option value="vodka">ودکا</option><option value="other">سایر</option></select>
+        <select id="ap-cat" class="admin-form-input"><option value="p1" id="ap-cat-opt-p1">محصول ۱</option><option value="p2" id="ap-cat-opt-p2">محصول ۲</option></select>
       </div>
       <div class="form-group"><label style="color:#666;">قیمت (تومان)</label><input type="number" class="admin-form-input" id="ap-price" placeholder="1500000"></div>
       <div class="form-group"><label style="color:#666;">توضیحات</label><textarea class="admin-form-input" id="ap-desc" style="min-height:65px;resize:vertical;" placeholder="توضیح کوتاه..."></textarea></div>
@@ -428,6 +470,34 @@ input[type=text],input[type=password],input[type=number],select,textarea{directi
       <button class="btn-white" onclick="addProduct()">افزودن محصول</button>
     </div>
     <div class="admin-box"><h3>لیست محصولات</h3><div id="admin-products-list"></div></div>
+    <div class="admin-box">
+      <h3>🗂️ تنظیمات دسته‌بندی</h3>
+      <div style="font-size:.8rem;color:#555;margin-bottom:14px;">نام هر دسته‌بندی را ویرایش کنید (مثلاً به‌جای «محصول ۱»)، برای هر دسته یک تصویر آپلود کنید تا به‌جای آیکون پیش‌فرض نمایش داده شود، و متن بخش محصولات را ویرایش کنید.</div>
+      <div class="form-group">
+        <label style="color:#666;">نام دسته‌بندی اول</label>
+        <input type="text" class="admin-form-input" id="cfg-cat-p1-name" placeholder="محصول ۱">
+      </div>
+      <div class="form-group">
+        <label style="color:#666;">تصویر «دسته‌بندی اول»</label>
+        <input type="file" id="cfg-cat-p1-input" accept="image/*" onchange="previewImg(this,'cfg-cat-p1-preview')" style="background:#0a0a0a;border:1px solid #2a2a2a;color:#888;padding:8px;border-radius:8px;width:100%;">
+        <img id="cfg-cat-p1-preview" src="" style="max-height:80px;margin-top:8px;border-radius:10px;display:none;">
+      </div>
+      <div class="form-group">
+        <label style="color:#666;">نام دسته‌بندی دوم</label>
+        <input type="text" class="admin-form-input" id="cfg-cat-p2-name" placeholder="محصول ۲">
+      </div>
+      <div class="form-group">
+        <label style="color:#666;">تصویر «دسته‌بندی دوم»</label>
+        <input type="file" id="cfg-cat-p2-input" accept="image/*" onchange="previewImg(this,'cfg-cat-p2-preview')" style="background:#0a0a0a;border:1px solid #2a2a2a;color:#888;padding:8px;border-radius:8px;width:100%;">
+        <img id="cfg-cat-p2-preview" src="" style="max-height:80px;margin-top:8px;border-radius:10px;display:none;">
+      </div>
+      <div class="form-group">
+        <label style="color:#666;">عنوان بخش محصولات (بالای لیست محصولات)</label>
+        <input type="text" class="admin-form-input" id="cfg-products-title" placeholder="محصولات">
+      </div>
+      <button class="btn-white" onclick="saveCatImages()">ذخیره تنظیمات دسته‌بندی</button>
+      <span id="cat-img-msg" style="margin-right:12px;font-size:.83rem;color:#4caf50;display:none;">✓ ذخیره شد</span>
+    </div>
   </div>
 
   <div id="tab-orders" class="admin-content hidden">
@@ -446,6 +516,15 @@ input[type=text],input[type=password],input[type=number],select,textarea{directi
       <div class="stat-card"><div class="stat-val" id="acc-orders">۰</div><div class="stat-lbl">تعداد سفارش نهایی</div></div>
       <div class="stat-card"><div class="stat-val" id="acc-avg">۰</div><div class="stat-lbl">میانگین سفارش</div></div>
     </div>
+    <div class="admin-box">
+      <h3>➕ ثبت دستی فروش</h3>
+      <div style="font-size:.8rem;color:#555;margin-bottom:14px;">برای فروش‌هایی که بدون ثبت سفارش آنلاین انجام می‌شن، اینجا به‌صورت دستی ثبت کنید تا در آمار و تاریخچه حسابداری لحاظ بشه.</div>
+      <div class="form-group"><label style="color:#666;">نام مشتری (اختیاری)</label><input type="text" class="admin-form-input" id="man-name" placeholder="نام مشتری"></div>
+      <div class="form-group"><label style="color:#666;">مبلغ (تومان) *</label><input type="number" class="admin-form-input" id="man-amount" placeholder="1500000"></div>
+      <div class="form-group"><label style="color:#666;">توضیحات (اختیاری)</label><input type="text" class="admin-form-input" id="man-desc" placeholder="مثلاً: فروش دو بسته قهوه"></div>
+      <button class="btn-white" onclick="addManualSale()">ثبت فروش</button>
+      <span id="man-msg" style="margin-right:12px;font-size:.83rem;color:#4caf50;display:none;">✓ ثبت شد</span>
+    </div>
     <div class="admin-box"><h3>تاریخچه مالی</h3><div id="accounting-list"></div></div>
   </div>
 
@@ -462,12 +541,29 @@ input[type=text],input[type=password],input[type=number],select,textarea{directi
   <div id="tab-settings" class="admin-content hidden">
     <div class="admin-box">
       <h3>⚙ تنظیمات کلی</h3>
-      <div class="sync-note">⚠️ داده‌ها فقط در <strong>این مرورگر</strong> ذخیره هستند. برای اشتراک‌گذاری بین دستگاه‌ها از Export/Import استفاده کنید.</div>
+      <div class="sync-note" id="cloud-status-note">⏳ در حال بررسی وضعیت همگام‌سازی ابری...</div>
       <div class="form-group"><label style="color:#666;">نام سایت</label><input type="text" class="admin-form-input" id="cfg-site-name"></div>
-      <div class="form-group"><label style="color:#666;">آیدی تلگرام پشتیبانی</label><input type="text" class="admin-form-input" id="cfg-tg-id" placeholder="@username"></div>
+      <div class="form-group"><label style="color:#666;">آیدی یا لینک تلگرام پشتیبانی (همچنین برای دکمه‌ی شناور پشتیبانی استفاده می‌شود)</label><input type="text" class="admin-form-input" id="cfg-tg-id" placeholder="@username یا https://t.me/..."></div>
+      <div class="form-group"><label style="color:#666;">متن نشان بالای هدر (Hero Badge)</label><input type="text" class="admin-form-input" id="cfg-hero-badge" placeholder="✦ Benjamin"></div>
+      <div class="form-group"><label style="color:#666;">متن زیرعنوان صفحه اصلی</label><input type="text" class="admin-form-input" id="cfg-hero-subtitle" placeholder="خریدی مطمئن و معتبر"></div>
+      <div class="form-group"><label style="color:#666;">عنوان پیام خوش‌آمدگویی (پاپ‌آپ اول ورود به سایت)</label><input type="text" class="admin-form-input" id="cfg-welcome-title" placeholder="خوش آمدید به کافه بن!"></div>
+      <div class="form-group"><label style="color:#666;">متن پیام خوش‌آمدگویی</label><textarea class="admin-form-input" id="cfg-welcome-text" style="min-height:80px;resize:vertical;" placeholder="متن خوش‌آمدگویی..."></textarea></div>
+      <div class="form-group"><label style="color:#666;">فونت سایت</label>
+        <select id="cfg-font-family" class="admin-form-input"></select>
+      </div>
       <div class="form-group"><label style="color:#666;">رمز عبور جدید ادمین (خالی = بدون تغییر)</label><input type="password" class="admin-form-input" id="cfg-pass" placeholder="رمز جدید..."></div>
       <button class="btn-white" onclick="saveSettings()">ذخیره تنظیمات</button>
       <span id="settings-msg" style="margin-right:12px;font-size:.83rem;color:#4caf50;display:none;">✓ ذخیره شد</span>
+    </div>
+    <div class="admin-box">
+      <h3>🖼️ لوگوی سایت</h3>
+      <div class="form-group">
+        <label style="color:#666;">تصویر لوگو (کنار اسم سایت نمایش داده می‌شود)</label>
+        <input type="file" id="cfg-logo-input" accept="image/*" onchange="previewImg(this,'cfg-logo-preview')" style="background:#0a0a0a;border:1px solid #2a2a2a;color:#888;padding:8px;border-radius:8px;width:100%;">
+        <img id="cfg-logo-preview" src="" style="max-height:80px;margin-top:8px;border-radius:50%;display:none;">
+      </div>
+      <button class="btn-white" onclick="saveLogo()">ذخیره لوگو</button>
+      <span id="logo-msg" style="margin-right:12px;font-size:.83rem;color:#4caf50;display:none;">✓ ذخیره شد</span>
     </div>
     <div class="admin-box">
       <h3>👤 رمز دسترسی نقش‌ها</h3>
@@ -499,8 +595,59 @@ input[type=text],input[type=password],input[type=number],select,textarea{directi
   </div>
 </div>
 
+<!-- ============================================================
+  CLOUD SYNC (fixes "order placed on one phone doesn't show on another")
+  ------------------------------------------------------------
+  The old version only saved data with localStorage, which lives
+  inside ONE browser on ONE device. That is exactly why an order
+  placed on a customer's phone never appeared in the dashboard on
+  your phone — there is no shared server involved.
+
+  To fix this for real (not just patch it), this page now uses
+  Google Firebase's free Realtime Database as a small shared backend.
+  Setup (~5 minutes, free, no credit card required):
+    1. Go to https://console.firebase.google.com → "Add project"
+    2. In the project, open "Build → Realtime Database" → "Create Database"
+       → choose a region → start in "Test mode" (you can lock it down later)
+    3. Open Project settings (gear icon) → "Your apps" → Web app (</>) 
+       → register the app → copy the firebaseConfig object shown there
+    4. Paste your own values into FIREBASE_CONFIG below, replacing the
+       placeholders. Save this file and re-upload it wherever you host it.
+  Until you do this, the site still works but falls back to the old
+  per-device localStorage behavior (so sync across devices won't work
+  until FIREBASE_CONFIG is filled in).
+============================================================= -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
 <script>
-var CFG={siteName:'Benjamin Fine Spirits & Wine',tgId:'@Benjamin_BAH',adminPass:'admin123',opPass:'op123',accPass:'acc123'};
+var FIREBASE_CONFIG={
+  apiKey:"YOUR_API_KEY",
+  authDomain:"YOUR_PROJECT.firebaseapp.com",
+  databaseURL:"https://YOUR_PROJECT-default-rtdb.firebaseio.com",
+  projectId:"YOUR_PROJECT",
+  storageBucket:"YOUR_PROJECT.appspot.com",
+  messagingSenderId:"YOUR_SENDER_ID",
+  appId:"YOUR_APP_ID"
+};
+var cloudEnabled=false, db=null;
+try{
+  if(FIREBASE_CONFIG.apiKey && FIREBASE_CONFIG.apiKey!=='YOUR_API_KEY' && window.firebase){
+    firebase.initializeApp(FIREBASE_CONFIG);
+    db=firebase.database();
+    cloudEnabled=true;
+  }
+}catch(e){console.warn('Cloud sync not active:',e);}
+</script>
+
+<script>
+var CFG={siteName:'کافه بنجامین',tgId:'https://t.me/+WbbJSx66mMk5Mzgy',adminPass:'admin123',opPass:'op123',accPass:'acc123',logo:'',catImgP1:'',catImgP2:'',heroBadge:'✦ Benjamin',heroSubtitle:'خریدی مطمئن و معتبر',productsTitle:'محصولات',fontFamily:'Vazirmatn',catNameP1:'محصول ۱',catNameP2:'محصول ۲',welcomeTitle:'خوش آمدید به کافه بن!',welcomeText:'ارسال سفارش‌ها در سطح شهر <strong style="color:#c9a84c;">مشهد</strong> انجام می‌شود.\nزمان تحویل زیر <strong style="color:#c9a84c;">۳ ساعت</strong> — هزینه ارسال بر اساس منطقه شما متفاوت است.',adminBrandName:'BNE'};
+var FONT_OPTIONS=[
+  {val:'Vazirmatn',label:'وزیرمتن (مدرن و پرکاربرد)'},
+  {val:'IBM Plex Sans Arabic',label:'IBM Plex Sans Arabic'},
+  {val:'Tajawal',label:'تجاول (Tajawal)'},
+  {val:'Cairo',label:'قاهره (Cairo)'},
+  {val:'Almarai',label:'المرعی (Almarai)'}
+];
 var ZONES=[
   {area:'احمدآباد مشروطه',zone:'low',price:100000},{area:'بهمن',zone:'low',price:100000},
   {area:'شاهد',zone:'low',price:100000},{area:'سجاد (قسمت دور)',zone:'low',price:100000},
@@ -520,44 +667,73 @@ var ZONES=[
 ];
 var ZONE_LABEL={low:'مناطق پایین شهر',mid:'مرکز شهر',high:'مناطق بالای شهر'};
 var ZONE_CLASS={low:'zone-low',mid:'zone-mid',high:'zone-high'};
-var products=[],cart=[],orders=[],currentProduct=null,currentRole=null,selectedZone=null,hackerTyped=false;
+var products=[],cart=[],orders=[],currentProduct=null,currentRole=null,selectedZone=null,hackerTyped=false,currentCat='all';
 
 function init(){
   var c=localStorage.getItem('ben_cfg'); if(c)Object.assign(CFG,JSON.parse(c));
+  applyBranding();
   var p=localStorage.getItem('ben_products');
   if(p){products=JSON.parse(p);}else{
     products=[
-      {id:1,name:'ویسکی دالمر ۱۵ ساله',cat:'whiskey',price:1750000,desc:'طعم اصالت — یکی از برترین ویسکی‌های اسکاتلند با بلوغ ۱۵ ساله',img:''},
-      {id:2,name:'ویسکی جک دنیلز',cat:'whiskey',price:1200000,desc:'ویسکی تنسی اصل — محبوب‌ترین ویسکی آمریکایی',img:''},
-      {id:3,name:'ودکا گری گوز',cat:'vodka',price:950000,desc:'ودکای فرانسوی ممتاز — تهیه‌شده از گندم‌های برتر',img:''},
-      {id:4,name:'ودکا بلوگا',cat:'vodka',price:1100000,desc:'ودکای روسی اصیل — با خلوص بالا و طعم بی‌نظیر',img:''}
+      {id:1,name:'قهوه اسپرسو ویژه',cat:'p1',price:175000,desc:'میکس اسپرسو تخصصی — برشته‌کاری تازه، طعم متعادل و بادی بالا',img:''},
+      {id:2,name:'قهوه فیلتر تک‌خاستگاه',cat:'p1',price:210000,desc:'دانه‌ی تک‌خاستگاه با نُت‌های میوه‌ای و اسیدیته ملایم',img:''},
+      {id:3,name:'کپسول نسپرسو سازگار',cat:'p2',price:95000,desc:'بسته ۱۰ عددی کپسول سازگار با دستگاه‌های نسپرسو',img:''},
+      {id:4,name:'دمنوش سرد کولد برو',cat:'p2',price:120000,desc:'قهوه دم‌سرد آماده — طعم ملایم و کافئین پایدار',img:''}
     ];
     saveProducts();
   }
   var o=localStorage.getItem('ben_orders'); if(o)orders=JSON.parse(o);
   trackVisit();
-  var age=localStorage.getItem('ben_age');
-  if(age){
-    hide('age-gate');
-    if(!sessionStorage.getItem('ben_welcome'))show('welcome-modal');
-    else hide('welcome-modal');
-  }
+  if(!sessionStorage.getItem('ben_welcome'))show('welcome-modal');
+  else hide('welcome-modal');
   renderProducts('all'); updateFeatured();
   document.addEventListener('click',function(e){
     var dd=document.getElementById('delivery-dropdown');
     var src=document.getElementById('delivery-search');
     if(dd&&src&&!src.contains(e.target)&&!dd.contains(e.target))dd.classList.remove('open');
   });
+
+  // Realtime cloud sync: whenever ANY device writes an order or product
+  // change, every other open device (including your admin dashboard)
+  // picks it up automatically — this is what actually fixes cross-device sync.
+  if(cloudEnabled){
+    db.ref('products').on('value',function(snap){
+      var v=snap.val();
+      if(v){products=v;localStorage.setItem('ben_products',JSON.stringify(products));}
+      renderProducts(currentCat); updateFeatured();
+      if(document.getElementById('admin-products-list'))renderAdminProducts();
+    });
+    db.ref('orders').on('value',function(snap){
+      var v=snap.val();
+      if(v){orders=v;localStorage.setItem('ben_orders',JSON.stringify(orders));}
+      renderDash(); renderOrders(); renderAccounting(); renderCRM();
+    });
+    db.ref('cfg').on('value',function(snap){
+      var v=snap.val();
+      if(v){Object.assign(CFG,v);localStorage.setItem('ben_cfg',JSON.stringify(CFG));applyBranding();}
+    });
+  }
 }
 function show(id){document.getElementById(id).classList.remove('hidden');}
 function hide(id){document.getElementById(id).classList.add('hidden');}
 function openModal(id){show(id);}
 function closeModal(id){hide(id);}
 function formatPrice(n){return Number(n||0).toLocaleString('fa-IR');}
-function catName(c){return c==='whiskey'?'ویسکی':c==='vodka'?'ودکا':'سایر';}
-function getCatEmoji(c){return c==='whiskey'?'🥃':c==='vodka'?'🍸':'🍾';}
-function saveProducts(){localStorage.setItem('ben_products',JSON.stringify(products));}
-function saveOrders(){localStorage.setItem('ben_orders',JSON.stringify(orders));}
+function catName(c){return c==='p1'?CFG.catNameP1:c==='p2'?CFG.catNameP2:'سایر';}
+function getCatEmoji(c){return c==='p1'?'🫘':c==='p2'?'☕':'☕';}
+function getSupportLink(){
+  var t=(CFG.tgId||'').trim();
+  if(!t)return 'https://t.me/';
+  return t.indexOf('http')===0?t:'https://t.me/'+t.replace('@','');
+}
+function saveProducts(){
+  localStorage.setItem('ben_products',JSON.stringify(products));
+  if(cloudEnabled)db.ref('products').set(products).catch(function(e){console.warn('cloud save failed',e);});
+}
+function saveOrders(){
+  localStorage.setItem('ben_orders',JSON.stringify(orders));
+  if(cloudEnabled)db.ref('orders').set(orders).catch(function(e){console.warn('cloud save failed',e);});
+}
 function showToast(msg){
   var t=document.createElement('div');
   t.style.cssText='position:fixed;bottom:28px;right:18px;background:var(--gold);color:#000;padding:10px 20px;border-radius:10px;font-weight:800;z-index:9900;font-size:.88rem;animation:fadeInUp .3s;';
@@ -577,7 +753,6 @@ function trackVisit(){
 function getTodayV(){return JSON.parse(localStorage.getItem('ben_today_'+new Date().toDateString())||'[]').length;}
 function getTotalV(){return JSON.parse(localStorage.getItem('ben_all_visitors')||'[]').length;}
 
-function confirmAge(){localStorage.setItem('ben_age','1');hide('age-gate');show('welcome-modal');}
 function closeWelcome(){sessionStorage.setItem('ben_welcome','1');hide('welcome-modal');}
 
 function renderProducts(cat){
@@ -597,11 +772,12 @@ function renderProducts(cat){
   }).join('');
 }
 function filterCat(cat,el){
+  currentCat=cat;
   document.querySelectorAll('.cat-card').forEach(function(c){c.classList.remove('active');});
   el.classList.add('active'); renderProducts(cat);
 }
 function updateFeatured(){
-  var p=products.find(function(x){return x.cat==='whiskey';})||products[0];
+  var p=products.find(function(x){return x.cat==='p1';})||products[0];
   if(!p)return;
   document.getElementById('f-name').textContent=p.name;
   document.getElementById('f-desc').textContent=p.desc||'';
@@ -718,15 +894,15 @@ function submitOrder(){
 function buildInvoice(order){
   var tg=CFG.tgId;
   var lnk=document.getElementById('tg-link');
-  if(lnk){lnk.textContent=tg;lnk.href='https://t.me/'+tg.replace('@','');}
+  if(lnk){lnk.textContent=tg;lnk.href=getSupportLink();}
   var rows=order.items.map(function(it){
     return '<tr><td>'+it.name+'</td><td style="text-align:center">'+it.qty+'</td>'
       +'<td style="text-align:left">'+formatPrice(it.price)+' تومان</td>'
       +'<td style="text-align:left">'+formatPrice(it.price*it.qty)+' تومان</td></tr>';
   }).join('');
   document.getElementById('invoice-content').innerHTML=
-    '<div class="invoice"><div class="inv-header"><div class="inv-logo">BENJAMIN</div>'
-    +'<div class="inv-sub">FINE SPIRITS &amp; WINE — MASHHAD</div></div>'
+    '<div class="invoice"><div class="inv-header"><div class="inv-logo">کافه بن</div>'
+    +'<div class="inv-sub">SPECIALTY COFFEE — MASHHAD</div></div>'
     +'<div class="inv-meta"><div><strong>فاکتور:</strong> '+order.id+'</div><div><strong>تاریخ:</strong> '+order.date+'</div></div>'
     +'<div style="background:#f9f5ed;border-radius:8px;padding:12px 14px;margin-bottom:14px;font-size:.82rem;line-height:1.9;">'
     +'<strong>اطلاعات مشتری:</strong><br>'
@@ -747,7 +923,7 @@ function buildInvoice(order){
 function printInvoice(){
   var c=document.getElementById('invoice-content').innerHTML;
   var w=window.open('','_blank');
-  w.document.write('<html dir="rtl"><head><meta charset="UTF-8"><title>فاکتور Benjamin</title>'
+  w.document.write('<html dir="rtl"><head><meta charset="UTF-8"><title>فاکتور کافه بن</title>'
     +'<style>body{font-family:Tahoma,sans-serif;background:#fff;padding:20px;}'
     +'.invoice{max-width:600px;margin:0 auto;padding:24px;}'
     +'.inv-header{text-align:center;border-bottom:2px solid #c9a84c;padding-bottom:14px;margin-bottom:14px;}'
@@ -764,7 +940,7 @@ function printInvoice(){
     +'</style></head><body>'+c+'</body></html>');
   w.document.close(); w.focus(); setTimeout(function(){w.print();},400);
 }
-function openTelegram(){window.open('https://t.me/'+CFG.tgId.replace('@',''),'_blank');}
+function openTelegram(){window.open(getSupportLink(),'_blank');}
 </script>
 
 <script>
@@ -772,13 +948,53 @@ function openHackerLogin(){
   show('hacker-login');
   document.getElementById('hacker-pass').value='';
   document.getElementById('hacker-err').style.display='none';
-  if(!hackerTyped){hackerTyped=true;typewriter('BENJAMIN ADMIN PANEL','hacker-typed',75);}
+  if(!hackerTyped){hackerTyped=true;typewriter('BNE ADMIN PANEL','hacker-typed',75);}
   setTimeout(function(){document.getElementById('hacker-pass').focus();},200);
+  startMatrixRain();
 }
-function closeHackerLogin(){hide('hacker-login');}
+function closeHackerLogin(){hide('hacker-login');stopMatrixRain();}
 function typewriter(text,elId,spd){
   var el=document.getElementById(elId); el.textContent=''; var i=0;
   var t=setInterval(function(){if(i<text.length){el.textContent+=text[i];i++;}else clearInterval(t);},spd);
+}
+var matrixCtx=null,matrixCols=[],matrixAnimId=null,matrixResizeBound=false;
+function startMatrixRain(){
+  var canvas=document.getElementById('matrix-canvas');
+  if(!canvas)return;
+  canvas.width=window.innerWidth; canvas.height=window.innerHeight;
+  matrixCtx=canvas.getContext('2d');
+  matrixCtx.fillStyle='#000'; matrixCtx.fillRect(0,0,canvas.width,canvas.height);
+  var fontSize=15;
+  var cols=Math.ceil(canvas.width/fontSize);
+  matrixCols=new Array(cols).fill(0).map(function(){return Math.floor(Math.random()*-40);});
+  var chars='01アイウエオカキクケコサシスセソABCDEFGHIJKLMNOPQRSTUVWXYZ$#%&*<>+-/'.split('');
+  if(matrixAnimId)cancelAnimationFrame(matrixAnimId);
+  function draw(){
+    matrixCtx.fillStyle='rgba(0,0,0,.09)';
+    matrixCtx.fillRect(0,0,canvas.width,canvas.height);
+    matrixCtx.font=fontSize+'px monospace';
+    for(var i=0;i<matrixCols.length;i++){
+      var ch=chars[Math.floor(Math.random()*chars.length)];
+      var y=matrixCols[i]*fontSize;
+      var r=Math.random();
+      matrixCtx.fillStyle=r>0.965?'#e8e8e8':r>0.85?'#999999':'#3a3a3a';
+      matrixCtx.fillText(ch,i*fontSize,y);
+      if(y>canvas.height&&Math.random()>0.975)matrixCols[i]=0;
+      matrixCols[i]++;
+    }
+    matrixAnimId=requestAnimationFrame(draw);
+  }
+  draw();
+  if(!matrixResizeBound){
+    matrixResizeBound=true;
+    window.addEventListener('resize',function(){
+      if(!document.getElementById('hacker-login').classList.contains('hidden'))startMatrixRain();
+    });
+  }
+}
+function stopMatrixRain(){
+  if(matrixAnimId)cancelAnimationFrame(matrixAnimId);
+  matrixAnimId=null;
 }
 function doHackerLogin(){
   var pass=document.getElementById('hacker-pass').value;
@@ -820,7 +1036,7 @@ function adminTab(name,el){
   });
   var tgt=document.getElementById('tab-'+name); if(tgt)tgt.classList.remove('hidden');
   if(name==='dashboard')renderDash();
-  if(name==='products')renderAdminProducts();
+  if(name==='products'){renderAdminProducts();loadCatSettings();}
   if(name==='orders')renderOrders();
   if(name==='accounting')renderAccounting();
   if(name==='crm')renderCRM();
@@ -835,13 +1051,15 @@ function renderDash(){
   document.getElementById('st-pending').textContent=pending.toLocaleString('fa-IR');
   document.getElementById('st-done').textContent=done.toLocaleString('fa-IR');
   document.getElementById('st-revenue').textContent=formatPrice(rev);
+  var db=document.getElementById('dash-date-badge'); if(db)db.textContent=new Date().toLocaleDateString('fa-IR',{year:'numeric',month:'long',day:'numeric'});
+  var dc=document.getElementById('dash-orders-count'); if(dc)dc.textContent=orders.length.toLocaleString('fa-IR')+' سفارش';
   var el=document.getElementById('dashboard-orders');
   el.innerHTML=orders.slice(0,5).length?buildOrderTable(orders.slice(0,5),true):'<div style="color:#444;text-align:center;padding:20px;">سفارشی ثبت نشده</div>';
 }
 function buildOrderTable(list,mini){
   return '<div style="overflow-x:auto;"><table class="admin-table" style="width:100%;min-width:480px"><thead><tr>'
     +'<th>شماره</th><th>مشتری</th><th>مبلغ</th><th>وضعیت</th>'
-    +(mini?'':'<th>تاریخ</th><th>عملیات</th>')
+    +(mini?'':'<th>تاریخ</th>')+'<th>عملیات</th>'
     +'</tr></thead><tbody>'
     +list.map(function(o){
       var bc=o.status==='done'?'badge-done':o.status==='cancel'?'badge-cancel':'badge-pending';
@@ -852,16 +1070,40 @@ function buildOrderTable(list,mini){
         +'<td style="color:#e0e0e0;">'+formatPrice(o.total)+'</td>'
         +'<td><span class="badge '+bc+'">'+bl+'</span></td>'
         +(mini?'':'<td style="font-size:.73rem;color:#444;">'+o.date+'</td>')
-        +(mini?'':'<td style="white-space:nowrap;">'
+        +'<td style="white-space:nowrap;">'
           +(o.status==='pending'?'<button class="btn-green" onclick="changeStatus(\''+o.id+'\',\'done\')">✓ تایید</button>':'')
           +(o.status==='pending'?'<button class="btn-red" onclick="changeStatus(\''+o.id+'\',\'cancel\')">✕ لغو</button>':'')
-          +'</td>')
+          +(o.status!=='pending'?'<span style="color:#444;font-size:.75rem;">—</span>':'')
+          +'</td>'
         +'</tr>';
     }).join('')+'</tbody></table></div>';
 }
 function changeStatus(id,status){
   var o=orders.find(function(x){return x.id===id;}); if(o)o.status=status;
   saveOrders(); renderOrders(); renderAccounting(); renderDash();
+}
+function addManualSale(){
+  var name=document.getElementById('man-name').value.trim()||'مشتری';
+  var amount=parseInt(document.getElementById('man-amount').value)||0;
+  var desc=document.getElementById('man-desc').value.trim();
+  if(!amount){showToast('لطفاً مبلغ را وارد کنید');return;}
+  var order={
+    id:'MANUAL-'+Date.now().toString(36).toUpperCase(),
+    date:new Date().toLocaleString('fa-IR'),dateRaw:Date.now(),
+    customer:{name:name,phone:'—',tg:'—'},
+    items:[{name:desc||'فروش دستی',price:amount,qty:1}],
+    subtotal:amount,delivery:0,
+    deliveryArea:'فروش دستی',deliveryZoneLabel:'—',
+    total:amount,status:'done',manual:true
+  };
+  orders.unshift(order); saveOrders();
+  renderDash(); renderOrders(); renderAccounting(); renderCRM();
+  document.getElementById('man-name').value='';
+  document.getElementById('man-amount').value='';
+  document.getElementById('man-desc').value='';
+  var m=document.getElementById('man-msg'); m.style.display='inline';
+  setTimeout(function(){m.style.display='none';},2500);
+  showToast('✓ فروش ثبت شد');
 }
 function renderOrders(){
   var el=document.getElementById('orders-list'); if(!el)return;
@@ -961,13 +1203,35 @@ function previewImg(input,prevId){
 function loadSettings(){
   var n=document.getElementById('cfg-site-name'),t=document.getElementById('cfg-tg-id');
   if(n)n.value=CFG.siteName; if(t)t.value=CFG.tgId;
+  var hb=document.getElementById('cfg-hero-badge'); if(hb)hb.value=CFG.heroBadge;
+  var hs=document.getElementById('cfg-hero-subtitle'); if(hs)hs.value=CFG.heroSubtitle;
+  var wtt=document.getElementById('cfg-welcome-title'); if(wtt)wtt.value=CFG.welcomeTitle;
+  var wtx=document.getElementById('cfg-welcome-text'); if(wtx)wtx.value=CFG.welcomeText;
+  var fs=document.getElementById('cfg-font-family');
+  if(fs){
+    fs.innerHTML=FONT_OPTIONS.map(function(f){return '<option value="'+f.val+'">'+f.label+'</option>';}).join('');
+    fs.value=CFG.fontFamily||'Vazirmatn';
+  }
+  var note=document.getElementById('cloud-status-note');
+  if(note){
+    note.innerHTML=cloudEnabled
+      ?'✅ همگام‌سازی ابری فعال است — سفارش‌ها و محصولات بین همه‌ی دستگاه‌ها به‌صورت لحظه‌ای همگام می‌شوند.'
+      :'⚠️ همگام‌سازی ابری هنوز فعال نیست — داده‌ها فقط در <strong>این مرورگر</strong> ذخیره می‌شوند (سفارش ثبت‌شده از یک گوشی، در داشبورد گوشی دیگر دیده نمی‌شود). برای فعال‌سازی، مقادیر FIREBASE_CONFIG را در بالای فایل HTML با اطلاعات پروژه‌ی رایگان Firebase خودتان جایگزین کنید. تا آن زمان می‌توانید موقتاً از Export/Import زیر استفاده کنید.';
+  }
 }
 function saveSettings(){
   CFG.siteName=document.getElementById('cfg-site-name').value;
   CFG.tgId=document.getElementById('cfg-tg-id').value;
+  CFG.heroBadge=document.getElementById('cfg-hero-badge').value||CFG.heroBadge;
+  CFG.heroSubtitle=document.getElementById('cfg-hero-subtitle').value||CFG.heroSubtitle;
+  var wtt=document.getElementById('cfg-welcome-title'); if(wtt&&wtt.value.trim())CFG.welcomeTitle=wtt.value.trim();
+  var wtx=document.getElementById('cfg-welcome-text'); if(wtx&&wtx.value.trim())CFG.welcomeText=wtx.value.trim();
+  var fs=document.getElementById('cfg-font-family'); if(fs&&fs.value)CFG.fontFamily=fs.value;
   var np=document.getElementById('cfg-pass').value; if(np)CFG.adminPass=np;
   localStorage.setItem('ben_cfg',JSON.stringify(CFG));
+  if(cloudEnabled)db.ref('cfg').set(CFG).catch(function(e){console.warn('cloud save failed',e);});
   document.title=CFG.siteName;
+  applyBranding();
   var m=document.getElementById('settings-msg'); m.style.display='inline';
   setTimeout(function(){m.style.display='none';},2500);
 }
@@ -975,8 +1239,59 @@ function saveRolePasswords(){
   var op=document.getElementById('cfg-op-pass').value,ac=document.getElementById('cfg-acc-pass').value;
   if(op)CFG.opPass=op; if(ac)CFG.accPass=ac;
   localStorage.setItem('ben_cfg',JSON.stringify(CFG));
+  if(cloudEnabled)db.ref('cfg').set(CFG).catch(function(e){console.warn('cloud save failed',e);});
   var m=document.getElementById('role-msg'); m.style.display='inline';
   setTimeout(function(){m.style.display='none';},2500);
+}
+function saveLogo(){
+  var prev=document.getElementById('cfg-logo-preview');
+  if(prev&&prev.style.display!=='none'&&prev.src){CFG.logo=prev.src;}
+  localStorage.setItem('ben_cfg',JSON.stringify(CFG));
+  if(cloudEnabled)db.ref('cfg').set(CFG).catch(function(e){console.warn('cloud save failed',e);});
+  applyBranding();
+  var m=document.getElementById('logo-msg'); m.style.display='inline';
+  setTimeout(function(){m.style.display='none';},2500);
+}
+function saveCatImages(){
+  var p1=document.getElementById('cfg-cat-p1-preview'),p2=document.getElementById('cfg-cat-p2-preview');
+  if(p1&&p1.style.display!=='none'&&p1.src)CFG.catImgP1=p1.src;
+  if(p2&&p2.style.display!=='none'&&p2.src)CFG.catImgP2=p2.src;
+  var n1=document.getElementById('cfg-cat-p1-name'); if(n1&&n1.value.trim())CFG.catNameP1=n1.value.trim();
+  var n2=document.getElementById('cfg-cat-p2-name'); if(n2&&n2.value.trim())CFG.catNameP2=n2.value.trim();
+  var pt=document.getElementById('cfg-products-title'); if(pt&&pt.value.trim())CFG.productsTitle=pt.value.trim();
+  localStorage.setItem('ben_cfg',JSON.stringify(CFG));
+  if(cloudEnabled)db.ref('cfg').set(CFG).catch(function(e){console.warn('cloud save failed',e);});
+  renderProducts(currentCat); renderAdminProducts();
+  applyBranding();
+  var m=document.getElementById('cat-img-msg'); m.style.display='inline';
+  setTimeout(function(){m.style.display='none';},2500);
+}
+function loadCatSettings(){
+  var n1=document.getElementById('cfg-cat-p1-name'),n2=document.getElementById('cfg-cat-p2-name');
+  if(n1)n1.value=CFG.catNameP1; if(n2)n2.value=CFG.catNameP2;
+  var pt=document.getElementById('cfg-products-title'); if(pt)pt.value=CFG.productsTitle;
+}
+function applyBranding(){
+  document.documentElement.style.setProperty('--font-family',"'"+(CFG.fontFamily||'Vazirmatn')+"', Tahoma, sans-serif");
+  var li=document.getElementById('logo-icon-img'),ll=document.getElementById('logo-icon-letter');
+  if(CFG.logo){li.src=CFG.logo;li.classList.remove('hidden');ll.classList.add('hidden');}
+  else{li.classList.add('hidden');ll.classList.remove('hidden');}
+  var c1=document.getElementById('cat-icon-p1'),c2=document.getElementById('cat-icon-p2');
+  if(c1)c1.innerHTML=CFG.catImgP1?'<img src="'+CFG.catImgP1+'">':'🫘';
+  if(c2)c2.innerHTML=CFG.catImgP2?'<img src="'+CFG.catImgP2+'">':'☕';
+  var hb=document.getElementById('hero-badge-text'); if(hb)hb.textContent=CFG.heroBadge;
+  var hs=document.getElementById('hero-subtitle-text'); if(hs)hs.textContent=CFG.heroSubtitle;
+  var pt=document.getElementById('products-section-title'); if(pt)pt.textContent=CFG.productsTitle;
+  var cl1=document.getElementById('cat-label-p1'); if(cl1)cl1.textContent=CFG.catNameP1;
+  var cl2=document.getElementById('cat-label-p2'); if(cl2)cl2.textContent=CFG.catNameP2;
+  var op1=document.getElementById('ap-cat-opt-p1'); if(op1)op1.textContent=CFG.catNameP1;
+  var op2=document.getElementById('ap-cat-opt-p2'); if(op2)op2.textContent=CFG.catNameP2;
+  var wt=document.getElementById('welcome-title-text'); if(wt)wt.textContent=CFG.welcomeTitle;
+  var wb=document.getElementById('welcome-body-text'); if(wb)wb.innerHTML=(CFG.welcomeText||'').replace(/\n/g,'<br>');
+  var abn=document.getElementById('admin-brand-name'); if(abn)abn.textContent=CFG.adminBrandName+' — پنل مدیریت';
+  var ali=document.getElementById('admin-logo-img');
+  if(ali){ if(CFG.logo){ali.src=CFG.logo;ali.classList.remove('hidden');} else {ali.classList.add('hidden');} }
+  var sb=document.getElementById('support-bubble'); if(sb)sb.href=getSupportLink();
 }
 function exportData(){
   var data={products:products,orders:orders,cfg:CFG,exported:new Date().toLocaleString('fa-IR')};
