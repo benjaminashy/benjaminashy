@@ -18,11 +18,27 @@ body{background:var(--dark);color:var(--text);font-family:var(--font-family);min
 .welcome-box h3{color:var(--gold);font-size:1.5rem;margin-bottom:14px;}
 .welcome-box p{color:var(--text2);line-height:1.9;margin-bottom:24px;font-size:.95rem;}
 /* HEADER */
-header{background:rgba(5,20,5,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:0 20px;position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;height:62px;}
-.logo{display:flex;align-items:center;gap:12px;}
-.logo-icon{width:42px;height:42px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.2rem;color:#000;box-shadow:0 0 12px rgba(201,168,76,.4);}
-.logo-text{font-size:1.2rem;font-weight:800;color:var(--gold);}
-.logo-sub{font-size:.6rem;color:var(--text2);letter-spacing:1px;}
+header{background:rgba(5,20,5,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:0 20px;position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;height:62px;overflow:hidden;}
+header::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 0%,rgba(201,168,76,.16) 45%,rgba(232,201,106,.28) 50%,rgba(201,168,76,.16) 55%,transparent 100%);background-size:220% 100%;animation:headerSweep 7s linear infinite;pointer-events:none;}
+header::after{content:'';position:absolute;left:0;right:0;bottom:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold-light),var(--gold),var(--gold-light),transparent);background-size:200% 100%;animation:headerSweep 4.5s linear infinite;pointer-events:none;}
+@keyframes headerSweep{0%{background-position:200% 0;}100%{background-position:-20% 0;}}
+.logo{display:flex;align-items:center;gap:12px;position:relative;z-index:1;}
+.logo-icon{width:42px;height:42px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.2rem;color:#000;box-shadow:0 0 12px rgba(201,168,76,.4);position:relative;}
+.logo-icon::before{content:'';position:absolute;inset:-5px;border-radius:50%;border:1.5px solid rgba(201,168,76,.55);animation:logoPulse 2.4s ease-out infinite;}
+@keyframes logoPulse{0%{transform:scale(.85);opacity:.9;}100%{transform:scale(1.35);opacity:0;}}
+.logo-text{font-size:1.2rem;font-weight:800;color:var(--gold);background:linear-gradient(90deg,var(--gold) 0%,var(--gold-light) 25%,var(--gold) 50%,var(--gold-light) 75%,var(--gold) 100%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:textShine 5s linear infinite;}
+@keyframes textShine{0%{background-position:250% 0;}100%{background-position:-50% 0;}}
+.logo-sub{font-size:.6rem;color:var(--text2);letter-spacing:1px;position:relative;z-index:1;}
+.header-actions{position:relative;z-index:1;}
+@media (prefers-reduced-motion:reduce){header::before,header::after,.logo-icon::before,.logo-text{animation:none;}}
+/* SCROLL MOTION */
+#scroll-progress{position:fixed;top:62px;left:0;height:3px;width:0%;background:linear-gradient(90deg,var(--gold),var(--gold-light),var(--gold));z-index:99;box-shadow:0 0 8px rgba(201,168,76,.6);}
+.hero{will-change:transform,opacity;}
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .8s cubic-bezier(.16,.8,.3,1),transform .8s cubic-bezier(.16,.8,.3,1);}
+.reveal.in-view{opacity:1;transform:translateY(0);}
+.reveal-scale{opacity:0;transform:scale(.92) translateY(20px);transition:opacity .7s cubic-bezier(.16,.8,.3,1),transform .7s cubic-bezier(.16,.8,.3,1);}
+.reveal-scale.in-view{opacity:1;transform:scale(1) translateY(0);}
+@media (prefers-reduced-motion:reduce){.reveal,.reveal-scale{opacity:1!important;transform:none!important;transition:none!important;}#scroll-progress{display:none;}.hero{transform:none!important;}}
 .header-actions{display:flex;align-items:center;gap:10px;}
 /* BUTTONS */
 .btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:#000;border:none;padding:11px 24px;border-radius:10px;font-size:.95rem;cursor:pointer;font-weight:800;transition:.2s;letter-spacing:.5px;}
@@ -264,6 +280,7 @@ input[type=text],input[type=password],input[type=number],select,textarea{directi
       </button>
     </div>
   </header>
+  <div id="scroll-progress"></div>
 
   <!-- HERO -->
   <div class="hero">
@@ -275,23 +292,23 @@ input[type=text],input[type=password],input[type=number],select,textarea{directi
   </div>
 
   <!-- CATEGORIES -->
-  <div class="sec-title"><h2>دسته‌بندی محصولات</h2><p>محصول مورد نظر خود را انتخاب کنید</p></div>
+  <div class="sec-title reveal"><h2>دسته‌بندی محصولات</h2><p>محصول مورد نظر خود را انتخاب کنید</p></div>
   <div class="cats">
-    <div class="cat-card active" onclick="filterCat('all',this)">
+    <div class="cat-card active reveal-scale" onclick="filterCat('all',this)">
       <div class="cat-icon" id="cat-icon-all">☕</div><div class="cat-label">همه موارد</div><div class="cat-sub">مشاهده همه</div>
     </div>
-    <div class="cat-card" onclick="filterCat('p1',this)">
+    <div class="cat-card reveal-scale" style="transition-delay:.08s" onclick="filterCat('p1',this)">
       <div class="cat-icon" id="cat-icon-p1">🫘</div><div class="cat-label" id="cat-label-p1">محصول ۱</div><div class="cat-sub">مشاهده محصولات</div>
     </div>
-    <div class="cat-card" onclick="filterCat('p2',this)">
+    <div class="cat-card reveal-scale" style="transition-delay:.16s" onclick="filterCat('p2',this)">
       <div class="cat-icon" id="cat-icon-p2">☕</div><div class="cat-label" id="cat-label-p2">محصول ۲</div><div class="cat-sub">مشاهده محصولات</div>
     </div>
   </div>
 
   <!-- FEATURED -->
   <div class="featured-section">
-    <div class="sec-title" style="padding-top:0;text-align:right;"><h2>پیشنهاد ویژه</h2><p>منتخب بهترین‌ها برای شما</p></div>
-    <div class="featured-card">
+    <div class="sec-title reveal" style="padding-top:0;text-align:right;"><h2>پیشنهاد ویژه</h2><p>منتخب بهترین‌ها برای شما</p></div>
+    <div class="featured-card reveal-scale">
       <div style="font-size:4.5rem;">☕</div>
       <div class="featured-text" style="flex:1;">
         <h3 id="f-name">قهوه ویژه</h3>
@@ -308,11 +325,11 @@ input[type=text],input[type=password],input[type=number],select,textarea{directi
 
   <!-- PRODUCTS -->
   <div id="products">
-    <div class="sec-title"><h2 id="products-section-title">محصولات</h2><p>برای مشاهده جزئیات روی محصول کلیک کنید</p></div>
+    <div class="sec-title reveal"><h2 id="products-section-title">محصولات</h2><p>برای مشاهده جزئیات روی محصول کلیک کنید</p></div>
     <div class="products-section"><div class="products-grid" id="products-grid"></div></div>
   </div>
 
-  <div class="site-footer" id="site-footer-text">کلیه حقوق سایت محفوظ است — کافه بنجامین</div>
+  <div class="site-footer reveal" id="site-footer-text">کلیه حقوق سایت محفوظ است — کافه بنجامین</div>
   <button class="footer-gear-btn" onclick="openHackerLogin()" title="Admin Panel">⚙</button>
   <a class="support-bubble" id="support-bubble" href="#" target="_blank" title="پشتیبانی">
     <svg width="30" height="30" viewBox="0 0 100 100">
@@ -413,6 +430,12 @@ input[type=text],input[type=password],input[type=number],select,textarea{directi
         <button class="btn-gold" style="flex:1;" onclick="printInvoice()">🖨️ پرینت فاکتور</button>
         <button class="btn-outline" style="flex:1;" onclick="openTelegram()">📲 ارسال در تلگرام</button>
       </div>
+      <button class="btn-gold" style="width:100%;margin-top:10px;" onclick="confirmSupportFollowup()">✅ تایید و پیگیری از طرف پشتیبانی سایت</button>
+      <div style="margin-top:14px;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:.78rem;line-height:2;color:var(--text2);text-align:center;">
+        پشتیبانی با بالاترین سرعت ممکن، از طریق تلگرام با شما در تماس خواهد بود.<br>
+        در صورت نیاز به استعلام قیمت یا پشتیبانی سریع‌تر، همین حالا در تلگرام پیام دهید.<br>
+        با تشکر 🌿
+      </div>
     </div>
   </div>
 </div>
@@ -434,6 +457,7 @@ input[type=text],input[type=password],input[type=number],select,textarea{directi
   </div>
 
   <div id="tab-dashboard" class="admin-content">
+    <div id="sync-status-banner" style="display:flex;align-items:center;gap:10px;padding:12px 16px;border-radius:10px;margin-bottom:16px;font-size:.8rem;line-height:1.9;"></div>
     <div class="dash-banner">
       <div class="dash-banner-inner">
         <div>
@@ -687,6 +711,7 @@ function init(){
   if(!sessionStorage.getItem('ben_welcome'))show('welcome-modal');
   else hide('welcome-modal');
   renderProducts('all'); updateFeatured();
+  initScrollEffects();
   document.addEventListener('click',function(e){
     var dd=document.getElementById('delivery-dropdown');
     var src=document.getElementById('delivery-search');
@@ -712,6 +737,40 @@ function init(){
       var v=snap.val();
       if(v){Object.assign(CFG,v);localStorage.setItem('ben_cfg',JSON.stringify(CFG));applyBranding();}
     });
+  }
+}
+function observeReveals(){
+  if(!window._revealIO)return;
+  document.querySelectorAll('.reveal:not(.in-view), .reveal-scale:not(.in-view)').forEach(function(el){window._revealIO.observe(el);});
+}
+function initScrollEffects(){
+  var bar=document.getElementById('scroll-progress');
+  var hero=document.querySelector('.hero');
+  var ticking=false;
+  function update(){
+    ticking=false;
+    var st=document.documentElement.scrollTop||document.body.scrollTop;
+    var full=(document.documentElement.scrollHeight||document.body.scrollHeight)-document.documentElement.clientHeight;
+    var pct=full>0?Math.min(st/full*100,100):0;
+    if(bar)bar.style.width=pct+'%';
+    if(hero){
+      var hh=hero.offsetHeight||420;
+      var p=Math.min(st/hh,1);
+      hero.style.transform='translateY('+(p*36)+'px)';
+      hero.style.opacity=String(1-p*.65);
+    }
+  }
+  window.addEventListener('scroll',function(){if(!ticking){requestAnimationFrame(update);ticking=true;}},{passive:true});
+  update();
+  if('IntersectionObserver' in window){
+    window._revealIO=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){en.target.classList.add('in-view');window._revealIO.unobserve(en.target);}
+      });
+    },{threshold:.12,rootMargin:'0px 0px -60px 0px'});
+    observeReveals();
+  }else{
+    document.querySelectorAll('.reveal,.reveal-scale').forEach(function(el){el.classList.add('in-view');});
   }
 }
 function show(id){document.getElementById(id).classList.remove('hidden');}
@@ -759,8 +818,8 @@ function renderProducts(cat){
   var grid=document.getElementById('products-grid');
   var list=cat==='all'?products:products.filter(function(p){return p.cat===cat;});
   if(!list.length){grid.innerHTML='<div style="color:var(--text2);text-align:center;padding:50px;grid-column:1/-1;">محصولی در این دسته‌بندی یافت نشد</div>';return;}
-  grid.innerHTML=list.map(function(p){
-    return '<div class="product-card" onclick="openProduct('+p.id+')">'
+  grid.innerHTML=list.map(function(p,i){
+    return '<div class="product-card reveal-scale" style="transition-delay:'+Math.min(i*.06,.4)+'s" onclick="openProduct('+p.id+')">'
       +'<div class="product-img">'+(p.img?'<img src="'+p.img+'" alt="'+p.name+'" loading="lazy">':getCatEmoji(p.cat))+'</div>'
       +'<div class="product-info">'
       +'<span class="cat-badge">'+catName(p.cat)+'</span>'
@@ -770,6 +829,7 @@ function renderProducts(cat){
       +'<button class="btn-add" onclick="event.stopPropagation();addDirect('+p.id+')">افزودن به سبد</button>'
       +'</div></div>';
   }).join('');
+  observeReveals();
 }
 function filterCat(cat,el){
   currentCat=cat;
@@ -941,6 +1001,10 @@ function printInvoice(){
   w.document.close(); w.focus(); setTimeout(function(){w.print();},400);
 }
 function openTelegram(){window.open(getSupportLink(),'_blank');}
+function confirmSupportFollowup(){
+  showToast('✓ سفارش شما برای پیگیری به پشتیبانی ارسال شد');
+  window.open(getSupportLink(),'_blank');
+}
 </script>
 
 <script>
@@ -1043,6 +1107,16 @@ function adminTab(name,el){
   if(name==='settings')loadSettings();
 }
 function renderDash(){
+  var sb=document.getElementById('sync-status-banner');
+  if(sb){
+    if(cloudEnabled){
+      sb.style.background='rgba(76,175,80,.1)';sb.style.border='1px solid rgba(76,175,80,.4)';sb.style.color='#8fd39a';
+      sb.innerHTML='🟢 <strong>همگام‌سازی ابری فعال است</strong> — سفارش‌های ثبت‌شده از هر گوشی یا سیستمی، همین‌جا و در همه دستگاه‌ها نمایش داده می‌شود.';
+    }else{
+      sb.style.background='rgba(220,80,60,.1)';sb.style.border='1px solid rgba(220,80,60,.4)';sb.style.color='#e08a7a';
+      sb.innerHTML='🔴 <strong>همگام‌سازی ابری غیرفعال است</strong> — سفارش‌ها فقط روی همین مرورگر/دستگاه ذخیره می‌شوند و به داشبورد شما روی دستگاه دیگر نمی‌رسند. برای رفع قطعی این مشکل باید FIREBASE_CONFIG را در فایل سایت با اطلاعات پروژه Firebase خودتان پر کنید (راهنما در بالای همین فایل، قسمت CLOUD SYNC).';
+    }
+  }
   document.getElementById('st-today').textContent=getTodayV().toLocaleString('fa-IR');
   document.getElementById('st-total').textContent=getTotalV().toLocaleString('fa-IR');
   var pending=orders.filter(function(o){return o.status==='pending';}).length;
