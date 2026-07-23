@@ -627,40 +627,73 @@ input[type=text],input[type=password],input[type=number],select,textarea{directi
   placed on a customer's phone never appeared in the dashboard on
   your phone — there is no shared server involved.
 
-  To fix this for real (not just patch it), this page now uses
-  Google Firebase's free Realtime Database as a small shared backend.
-  Setup (~5 minutes, free, no credit card required):
-    1. Go to https://console.firebase.google.com → "Add project"
-    2. In the project, open "Build → Realtime Database" → "Create Database"
-       → choose a region → start in "Test mode" (you can lock it down later)
-    3. Open Project settings (gear icon) → "Your apps" → Web app (</>) 
-       → register the app → copy the firebaseConfig object shown there
-    4. Paste your own values into FIREBASE_CONFIG below, replacing the
-       placeholders. Save this file and re-upload it wherever you host it.
-  Until you do this, the site still works but falls back to the old
-  per-device localStorage behavior (so sync across devices won't work
-  until FIREBASE_CONFIG is filled in).
+  This page now uses Supabase (a hosted Postgres database) as a small
+  shared backend. Data is stored as JSON rows in a single table named
+  "site_data" with columns: key (text, primary key) and value (jsonb).
+  Three rows are used: key='products', key='orders', key='cfg'.
+
+  Required one-time setup in your Supabase project's SQL editor:
+    create table if not exists site_data (
+      key text primary key,
+      value jsonb,
+      updated_at timestamptz default now()
+    );
+    alter table site_data enable row level security;
+    create policy "public read" on site_data for select using (true);
+    create policy "public write" on site_data for insert with check (true);
+    create policy "public update" on site_data for update using (true);
+    alter publication supabase_realtime add table site_data;
+  (These policies allow anyone with the publishable key to read/write —
+  fine for a small shop dashboard, but note it is not access-restricted
+  at the database level; the site's own admin password is what gates
+  the dashboard UI.)
 ============================================================= -->
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-var FIREBASE_CONFIG={
-  apiKey:"YOUR_API_KEY",
-  authDomain:"YOUR_PROJECT.firebaseapp.com",
-  databaseURL:"https://YOUR_PROJECT-default-rtdb.firebaseio.com",
-  projectId:"YOUR_PROJECT",
-  storageBucket:"YOUR_PROJECT.appspot.com",
-  messagingSenderId:"YOUR_SENDER_ID",
-  appId:"YOUR_APP_ID"
-};
-var cloudEnabled=false, db=null;
+var SUPABASE_URL="https://kgozwmrntqrwcydaxdhm.supabase.co";
+var SUPABASE_KEY="sb_publishable_dDcgMafe6ufH7YFDwc7Tvw_TsywuzGD";
+var SUPABASE_TABLE="site_data";
+var cloudEnabled=false, supabaseClient=null;
 try{
-  if(FIREBASE_CONFIG.apiKey && FIREBASE_CONFIG.apiKey!=='YOUR_API_KEY' && window.firebase){
-    firebase.initializeApp(FIREBASE_CONFIG);
-    db=firebase.database();
+  if(SUPABASE_URL && SUPABASE_KEY && window.supabase){
+    supabaseClient=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
     cloudEnabled=true;
   }
 }catch(e){console.warn('Cloud sync not active:',e);}
+
+// Thin shim so the rest of the app can keep using the same
+// db.ref('products').set(...) / db.ref('products').on('value',cb)
+// calls it already used with Firebase — only this block changed.
+var db={
+  ref:function(key){
+    return {
+      set:function(value){
+        if(!cloudEnabled)return Promise.resolve();
+        return supabaseClient.from(SUPABASE_TABLE)
+          .upsert({key:key,value:value,updated_at:new Date().toISOString()},{onConflict:'key'})
+          .then(function(res){ if(res.error)throw res.error; return res; });
+      },
+      on:function(eventName,callback){
+        if(!cloudEnabled)return;
+        supabaseClient.from(SUPABASE_TABLE).select('value').eq('key',key).maybeSingle()
+          .then(function(res){
+            if(res.data&&res.data.value!==undefined){
+              callback({val:function(){return res.data.value;}});
+            }
+          })
+          .catch(function(e){console.warn('cloud load failed',e);});
+        try{
+          supabaseClient.channel('site_data_'+key)
+            .on('postgres_changes',{event:'*',schema:'public',table:SUPABASE_TABLE,filter:'key=eq.'+key},function(payload){
+              var v=payload.new&&payload.new.value;
+              if(v!==undefined)callback({val:function(){return v;}});
+            })
+            .subscribe();
+        }catch(e){console.warn('realtime subscribe failed',e);}
+      }
+    };
+  }
+};
 </script>
 
 <script>
@@ -1114,7 +1147,7 @@ function renderDash(){
       sb.innerHTML='🟢 <strong>همگام‌سازی ابری فعال است</strong> — سفارش‌های ثبت‌شده از هر گوشی یا سیستمی، همین‌جا و در همه دستگاه‌ها نمایش داده می‌شود.';
     }else{
       sb.style.background='rgba(220,80,60,.1)';sb.style.border='1px solid rgba(220,80,60,.4)';sb.style.color='#e08a7a';
-      sb.innerHTML='🔴 <strong>همگام‌سازی ابری غیرفعال است</strong> — سفارش‌ها فقط روی همین مرورگر/دستگاه ذخیره می‌شوند و به داشبورد شما روی دستگاه دیگر نمی‌رسند. برای رفع قطعی این مشکل باید FIREBASE_CONFIG را در فایل سایت با اطلاعات پروژه Firebase خودتان پر کنید (راهنما در بالای همین فایل، قسمت CLOUD SYNC).';
+      sb.innerHTML='🔴 <strong>همگام‌سازی ابری غیرفعال است</strong> — سفارش‌ها فقط روی همین مرورگر/دستگاه ذخیره می‌شوند و به داشبورد شما روی دستگاه دیگر نمی‌رسند. برای رفع قطعی این مشکل باید SUPABASE_URL و SUPABASE_KEY را در فایل سایت با اطلاعات پروژه Supabase خودتان پر کنید و جدول site_data را بسازید (راهنما در بالای همین فایل، قسمت CLOUD SYNC).';
     }
   }
   document.getElementById('st-today').textContent=getTodayV().toLocaleString('fa-IR');
@@ -1289,8 +1322,8 @@ function loadSettings(){
   var note=document.getElementById('cloud-status-note');
   if(note){
     note.innerHTML=cloudEnabled
-      ?'✅ همگام‌سازی ابری فعال است — سفارش‌ها و محصولات بین همه‌ی دستگاه‌ها به‌صورت لحظه‌ای همگام می‌شوند.'
-      :'⚠️ همگام‌سازی ابری هنوز فعال نیست — داده‌ها فقط در <strong>این مرورگر</strong> ذخیره می‌شوند (سفارش ثبت‌شده از یک گوشی، در داشبورد گوشی دیگر دیده نمی‌شود). برای فعال‌سازی، مقادیر FIREBASE_CONFIG را در بالای فایل HTML با اطلاعات پروژه‌ی رایگان Firebase خودتان جایگزین کنید. تا آن زمان می‌توانید موقتاً از Export/Import زیر استفاده کنید.';
+      ?'✅ همگام‌سازی ابری (Supabase) فعال است — سفارش‌ها و محصولات بین همه‌ی دستگاه‌ها همگام می‌شوند.'
+      :'⚠️ همگام‌سازی ابری هنوز فعال نیست — داده‌ها فقط در <strong>این مرورگر</strong> ذخیره می‌شوند (سفارش ثبت‌شده از یک گوشی، در داشبورد گوشی دیگر دیده نمی‌شود). برای فعال‌سازی، مقادیر SUPABASE_URL و SUPABASE_KEY را در بالای فایل HTML با اطلاعات پروژه‌ی Supabase خودتان جایگزین کنید و جدول site_data را بسازید. تا آن زمان می‌توانید موقتاً از Export/Import زیر استفاده کنید.';
   }
 }
 function saveSettings(){
