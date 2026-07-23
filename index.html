@@ -238,7 +238,8 @@ input[type=text],input[type=password],input[type=number],select,textarea{directi
 <!-- WELCOME -->
 <div id="welcome-modal" class="hidden">
   <div class="welcome-box">
-    <div style="font-size:2.8rem;margin-bottom:14px;">☕</div>
+    <div id="welcome-icon-emoji" style="font-size:2.8rem;margin-bottom:14px;">☕</div>
+    <img id="welcome-icon-img" src="" class="hidden" style="width:64px;height:64px;border-radius:50%;object-fit:cover;margin:0 auto 14px;display:block;box-shadow:0 0 14px rgba(201,168,76,.35);">
     <h3 id="welcome-title-text">خوش آمدید به کافه بن!</h3>
     <p id="welcome-body-text">ارسال سفارش‌ها در سطح شهر <strong style="color:var(--gold);">مشهد</strong> انجام می‌شود.<br>
     زمان تحویل زیر <strong style="color:var(--gold);">۳ ساعت</strong> — هزینه ارسال بر اساس منطقه شما متفاوت است.</p>
@@ -407,7 +408,7 @@ input[type=text],input[type=password],input[type=number],select,textarea{directi
     <div class="modal-body">
       <div class="form-group"><label>نام و نام خانوادگی *</label><input type="text" id="co-name" placeholder="مثلاً: علی محمدی"></div>
       <div class="form-group"><label>شماره موبایل *</label><input type="text" id="co-phone" placeholder="09XXXXXXXXX"></div>
-      <div class="form-group"><label>آیدی تلگرام (اختیاری)</label><input type="text" id="co-tg" placeholder="@username"></div>
+      <div class="form-group"><label>آیدی تلگرام *</label><input type="text" id="co-tg" placeholder="@username"></div>
       <div class="form-group"><label>آدرس کامل *</label><textarea id="co-address" placeholder="مشهد، خیابان ..."></textarea></div>
       <div class="form-group"><label>توضیحات (اختیاری)</label><textarea id="co-note" placeholder="..."></textarea></div>
       <button class="btn-gold" style="width:100%;" onclick="submitOrder()">ثبت سفارش و دریافت فاکتور ←</button>
@@ -581,8 +582,9 @@ input[type=text],input[type=password],input[type=number],select,textarea{directi
     </div>
     <div class="admin-box">
       <h3>🖼️ لوگوی سایت</h3>
+      <div class="sync-note">این لوگو هم کنار اسم سایت در بالای صفحه، و هم به‌جای آیکون ☕ در پیام خوش‌آمدگویی (اولین پاپ‌آپی که کاربر می‌بینه) نمایش داده می‌شود.</div>
       <div class="form-group">
-        <label style="color:#666;">تصویر لوگو (کنار اسم سایت نمایش داده می‌شود)</label>
+        <label style="color:#666;">تصویر لوگو (کنار اسم سایت و در پیام خوش‌آمدگویی نمایش داده می‌شود)</label>
         <input type="file" id="cfg-logo-input" accept="image/*" onchange="previewImg(this,'cfg-logo-preview')" style="background:#0a0a0a;border:1px solid #2a2a2a;color:#888;padding:8px;border-radius:8px;width:100%;">
         <img id="cfg-logo-preview" src="" style="max-height:80px;margin-top:8px;border-radius:50%;display:none;">
       </div>
@@ -965,7 +967,7 @@ function submitOrder(){
   var tg=document.getElementById('co-tg').value.trim();
   var addr=document.getElementById('co-address').value.trim();
   var note=document.getElementById('co-note').value.trim();
-  if(!name||!phone||!addr){showToast('لطفاً فیلدهای ستاره‌دار را پر کنید');return;}
+  if(!name||!phone||!tg||!addr){showToast('لطفاً فیلدهای ستاره‌دار را پر کنید');return;}
   var sub=getSub(),dc=selectedZone?selectedZone.price:0,total=sub+dc;
   var orderId='BEN-'+Date.now().toString(36).toUpperCase();
   var order={
@@ -994,7 +996,7 @@ function buildInvoice(order){
       +'<td style="text-align:left">'+formatPrice(it.price*it.qty)+' تومان</td></tr>';
   }).join('');
   document.getElementById('invoice-content').innerHTML=
-    '<div class="invoice"><div class="inv-header"><div class="inv-logo">کافه بن</div>'
+    '<div class="invoice"><div class="inv-header"><div class="inv-logo">BENJAMIN</div>'
     +'<div class="inv-sub">SPECIALTY COFFEE — MASHHAD</div></div>'
     +'<div class="inv-meta"><div><strong>فاکتور:</strong> '+order.id+'</div><div><strong>تاریخ:</strong> '+order.date+'</div></div>'
     +'<div style="background:#f9f5ed;border-radius:8px;padding:12px 14px;margin-bottom:14px;font-size:.82rem;line-height:1.9;">'
@@ -1016,7 +1018,7 @@ function buildInvoice(order){
 function printInvoice(){
   var c=document.getElementById('invoice-content').innerHTML;
   var w=window.open('','_blank');
-  w.document.write('<html dir="rtl"><head><meta charset="UTF-8"><title>فاکتور کافه بن</title>'
+  w.document.write('<html dir="rtl"><head><meta charset="UTF-8"><title>فاکتور BENJAMIN</title>'
     +'<style>body{font-family:Tahoma,sans-serif;background:#fff;padding:20px;}'
     +'.invoice{max-width:600px;margin:0 auto;padding:24px;}'
     +'.inv-header{text-align:center;border-bottom:2px solid #c9a84c;padding-bottom:14px;margin-bottom:14px;}'
@@ -1383,6 +1385,11 @@ function applyBranding(){
   var li=document.getElementById('logo-icon-img'),ll=document.getElementById('logo-icon-letter');
   if(CFG.logo){li.src=CFG.logo;li.classList.remove('hidden');ll.classList.add('hidden');}
   else{li.classList.add('hidden');ll.classList.remove('hidden');}
+  var wie=document.getElementById('welcome-icon-emoji'),wii=document.getElementById('welcome-icon-img');
+  if(wie&&wii){
+    if(CFG.logo){wii.src=CFG.logo;wii.classList.remove('hidden');wie.classList.add('hidden');}
+    else{wii.classList.add('hidden');wie.classList.remove('hidden');}
+  }
   var c1=document.getElementById('cat-icon-p1'),c2=document.getElementById('cat-icon-p2');
   if(c1)c1.innerHTML=CFG.catImgP1?'<img src="'+CFG.catImgP1+'">':'🫘';
   if(c2)c2.innerHTML=CFG.catImgP2?'<img src="'+CFG.catImgP2+'">':'☕';
