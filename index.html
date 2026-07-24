@@ -71,7 +71,7 @@ header::after{content:'';position:absolute;left:0;right:0;bottom:0;height:2px;ba
 .cat-card:hover,.cat-card.active{border-color:var(--gold);background:#0f2010;box-shadow:0 0 20px rgba(201,168,76,.1);}
 .cat-card.active .cat-label{color:var(--gold);}
 .cat-icon{font-size:2.2rem;margin-bottom:8px;}
-.cat-icon img{width:46px;height:46px;object-fit:cover;border-radius:10px;margin:0 auto;display:block;}
+.cat-icon img{width:72px;height:72px;object-fit:cover;border-radius:12px;margin:0 auto;display:block;}
 .cat-label{font-size:.85rem;font-weight:700;}
 .cat-sub{font-size:.73rem;color:#556655;margin-top:4px;}
 /* PRODUCTS */
@@ -160,7 +160,7 @@ header::after{content:'';position:absolute;left:0;right:0;bottom:0;height:2px;ba
 .site-footer{text-align:center;padding:24px 20px 6px;color:var(--text2);font-size:.78rem;border-top:1px solid var(--border);}
 .footer-gear-btn{display:block;margin:0 auto;background:none;border:none;cursor:pointer;opacity:.25;font-size:1.2rem;padding:10px;transition:opacity .3s;color:var(--text2);}
 .footer-gear-btn:hover{opacity:.6;}
-.support-bubble{position:fixed;bottom:20px;left:16px;width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 18px rgba(0,0,0,.5);z-index:400;transition:.2s;}
+.support-bubble{position:fixed;bottom:100px;left:16px;width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 18px rgba(0,0,0,.5);z-index:400;transition:.2s;}
 .support-bubble:hover{transform:translateY(-3px);}
 </style>
 <style>
@@ -231,6 +231,36 @@ header::after{content:'';position:absolute;left:0;right:0;bottom:0;height:2px;ba
 .dash-tag{font-size:.68rem;background:rgba(201,168,76,.14);color:var(--gold);border:1px solid rgba(201,168,76,.3);padding:2px 10px;border-radius:20px;}
 input[type=text],input[type=password],input[type=number],select,textarea{direction:rtl;}
 @keyframes fadeInUp{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+/* SUPPORT CHOICE POPUP */
+.support-choice{position:fixed;bottom:162px;left:16px;background:var(--dark3);border:1px solid var(--gold);border-radius:14px;padding:10px;z-index:401;box-shadow:0 8px 26px rgba(0,0,0,.5);display:flex;flex-direction:column;gap:6px;min-width:190px;}
+.support-choice button{display:flex;align-items:center;gap:8px;background:var(--dark4);border:1px solid var(--border);color:var(--text);padding:10px 14px;border-radius:10px;cursor:pointer;font-size:.85rem;font-family:var(--font-family);transition:.2s;text-align:right;}
+.support-choice button:hover{border-color:var(--gold);color:var(--gold);}
+/* CHAT WINDOW (customer) */
+.chat-window{position:fixed;bottom:100px;left:16px;width:330px;max-width:92vw;height:460px;max-height:78vh;background:var(--dark3);border:1px solid var(--gold);border-radius:16px;box-shadow:0 10px 34px rgba(0,0,0,.55);z-index:402;display:flex;flex-direction:column;overflow:hidden;}
+.chat-window-header{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:#000;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;font-weight:800;font-size:.9rem;}
+.chat-window-header button{background:none;border:none;color:#000;font-size:1.2rem;cursor:pointer;}
+.chat-window-messages{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:8px;}
+.chat-bubble{max-width:80%;padding:9px 13px;border-radius:12px;font-size:.83rem;line-height:1.7;word-break:break-word;}
+.chat-bubble.user{align-self:flex-end;background:var(--gold);color:#000;border-bottom-left-radius:3px;}
+.chat-bubble.admin{align-self:flex-start;background:var(--dark4);color:var(--text);border-bottom-right-radius:3px;}
+.chat-bubble .chat-time{display:block;font-size:.65rem;opacity:.6;margin-top:3px;}
+.chat-window-input{display:flex;gap:8px;padding:10px;border-top:1px solid var(--border);}
+.chat-window-input input{flex:1;background:var(--dark4);border:1px solid var(--border);color:var(--text);padding:9px 12px;border-radius:10px;font-size:.85rem;outline:none;direction:rtl;}
+.chat-window-input button{background:var(--gold);border:none;color:#000;border-radius:10px;padding:0 16px;font-weight:800;cursor:pointer;}
+.chat-empty{color:var(--text2);text-align:center;padding:30px 10px;font-size:.82rem;}
+/* ADMIN CHAT TAB */
+.chat-admin-wrap{display:flex;gap:16px;min-height:460px;}
+.chat-conv-list{width:230px;flex-shrink:0;border:1px solid #222;border-radius:12px;overflow:hidden;max-height:560px;overflow-y:auto;}
+.chat-conv-item{padding:12px 14px;border-bottom:1px solid #1c1c1c;cursor:pointer;transition:.15s;}
+.chat-conv-item:hover,.chat-conv-item.active{background:#161616;}
+.chat-conv-item .cci-name{font-size:.85rem;font-weight:700;color:#ddd;}
+.chat-conv-item .cci-preview{font-size:.74rem;color:#666;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.chat-conv-item .cci-badge{display:inline-block;background:#c62828;color:#fff;font-size:.65rem;padding:1px 7px;border-radius:10px;margin-right:6px;}
+.chat-thread{flex:1;display:flex;flex-direction:column;border:1px solid #222;border-radius:12px;overflow:hidden;}
+.chat-thread-messages{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:8px;max-height:480px;}
+.chat-thread-input{display:flex;gap:8px;padding:10px;border-top:1px solid #222;}
+.chat-thread-input input{flex:1;background:#0a0a0a;border:1px solid #2a2a2a;color:#e0e0e0;padding:9px 12px;border-radius:8px;font-size:.85rem;outline:none;direction:rtl;}
+@media (max-width:640px){.chat-admin-wrap{flex-direction:column;}.chat-conv-list{width:100%;max-height:200px;}}
 </style>
 </head>
 <body>
@@ -332,7 +362,7 @@ input[type=text],input[type=password],input[type=number],select,textarea{directi
 
   <div class="site-footer reveal" id="site-footer-text">کلیه حقوق سایت محفوظ است — کافه بنجامین</div>
   <button class="footer-gear-btn" onclick="openHackerLogin()" title="Admin Panel">⚙</button>
-  <a class="support-bubble" id="support-bubble" href="#" target="_blank" title="پشتیبانی">
+  <div class="support-bubble" id="support-bubble" title="پشتیبانی" style="cursor:pointer;" onclick="toggleSupportChoice()">
     <svg width="30" height="30" viewBox="0 0 100 100">
       <circle cx="50" cy="50" r="50" fill="#0d0d0d"/>
       <g fill="none" stroke="#c9a84c" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round">
@@ -346,7 +376,24 @@ input[type=text],input[type=password],input[type=number],select,textarea{directi
         <path d="M40 61h20"/>
       </g>
     </svg>
-  </a>
+  </div>
+  <div class="support-choice hidden" id="support-choice">
+    <button onclick="openOnlineChat()">💬 چت آنلاین</button>
+    <button onclick="openTelegramSupport()">📨 پشتیبانی تلگرام</button>
+  </div>
+</div>
+
+<!-- ONLINE CHAT WINDOW (customer-facing) -->
+<div class="chat-window hidden" id="chat-window">
+  <div class="chat-window-header">
+    <span>💬 چت آنلاین پشتیبانی</span>
+    <button onclick="closeOnlineChat()">✕</button>
+  </div>
+  <div class="chat-window-messages" id="chat-window-messages"></div>
+  <div class="chat-window-input">
+    <input type="text" id="chat-window-input" placeholder="پیام خود را بنویسید..." onkeydown="if(event.key==='Enter')sendChatMsg()">
+    <button onclick="sendChatMsg()">ارسال</button>
+  </div>
 </div>
 
 <!-- PRODUCT MODAL -->
@@ -441,6 +488,28 @@ input[type=text],input[type=password],input[type=number],select,textarea{directi
   </div>
 </div>
 
+<!-- EDIT PRODUCT MODAL -->
+<div id="edit-product-modal" class="modal-overlay hidden">
+  <div class="modal-box" style="max-width:460px;">
+    <div class="modal-header"><h3>✏️ ویرایش محصول</h3><button class="modal-close" onclick="closeModal('edit-product-modal')">✕</button></div>
+    <div class="modal-body">
+      <input type="hidden" id="ep-id">
+      <div class="form-group"><label style="color:#666;">نام محصول *</label><input type="text" class="admin-form-input" id="ep-name" placeholder="مثلاً: قهوه اسپرسو ویژه"></div>
+      <div class="form-group"><label style="color:#666;">دسته‌بندی</label>
+        <select id="ep-cat" class="admin-form-input"><option value="p1" id="ep-cat-opt-p1">محصول ۱</option><option value="p2" id="ep-cat-opt-p2">محصول ۲</option></select>
+      </div>
+      <div class="form-group"><label style="color:#666;">قیمت (تومان)</label><input type="number" class="admin-form-input" id="ep-price" placeholder="1500000"></div>
+      <div class="form-group"><label style="color:#666;">توضیحات</label><textarea class="admin-form-input" id="ep-desc" style="min-height:65px;resize:vertical;" placeholder="توضیح کوتاه..."></textarea></div>
+      <div class="form-group">
+        <label style="color:#666;">عکس محصول</label>
+        <input type="file" id="ep-img" accept="image/*" onchange="previewImg(this,'ep-img-preview')" style="background:#0a0a0a;border:1px solid #2a2a2a;color:#888;padding:8px;border-radius:8px;width:100%;">
+        <img id="ep-img-preview" src="" style="max-height:100px;margin-top:8px;border-radius:8px;display:none;">
+      </div>
+      <button class="btn-white" style="width:100%;" onclick="saveEditProduct()">ذخیره تغییرات</button>
+    </div>
+  </div>
+</div>
+
 <!-- ADMIN -->
 <div id="admin-section" class="hidden">
   <div class="admin-nav">
@@ -449,6 +518,7 @@ input[type=text],input[type=password],input[type=number],select,textarea{directi
     <button class="admin-tab" id="tab-btn-orders" onclick="adminTab('orders',this)">🧾 سفارش‌ها</button>
     <button class="admin-tab" id="tab-btn-accounting" onclick="adminTab('accounting',this)">💰 حسابداری</button>
     <button class="admin-tab" id="tab-btn-crm" onclick="adminTab('crm',this)">👥 CRM</button>
+    <button class="admin-tab" id="tab-btn-chat" onclick="adminTab('chat',this)">💬 چت آنلاین</button>
     <button class="admin-tab" id="tab-btn-settings" onclick="adminTab('settings',this)">⚙ تنظیمات</button>
     <div style="display:flex;align-items:center;gap:8px;margin-right:auto;">
       <img id="admin-logo-img" src="" class="hidden" style="width:28px;height:28px;border-radius:50%;object-fit:cover;box-shadow:0 0 10px rgba(201,168,76,.35);">
@@ -476,6 +546,7 @@ input[type=text],input[type=password],input[type=number],select,textarea{directi
       <div class="stat-card-v2 stat-gold"><div class="stat-icon-v2">💰</div><div><div class="stat-val" id="st-revenue">۰</div><div class="stat-lbl">فروش نهایی (تومان)</div></div></div>
     </div>
     <div class="admin-box dash-orders-box"><h3><span>🧾 آخرین سفارش‌ها</span><span class="dash-tag" id="dash-orders-count">۰ سفارش</span></h3><div id="dashboard-orders"></div></div>
+    <div class="admin-box dash-orders-box"><h3><span>💬 چت‌های اخیر</span><span class="dash-tag" id="dash-chat-count">۰ گفتگو</span></h3><div id="dashboard-chats"></div></div>
   </div>
 
   <div id="tab-products" class="admin-content hidden">
@@ -498,6 +569,11 @@ input[type=text],input[type=password],input[type=number],select,textarea{directi
     <div class="admin-box">
       <h3>🗂️ تنظیمات دسته‌بندی</h3>
       <div style="font-size:.8rem;color:#555;margin-bottom:14px;">نام هر دسته‌بندی را ویرایش کنید (مثلاً به‌جای «محصول ۱»)، برای هر دسته یک تصویر آپلود کنید تا به‌جای آیکون پیش‌فرض نمایش داده شود، و متن بخش محصولات را ویرایش کنید.</div>
+      <div class="form-group">
+        <label style="color:#666;">تصویر «همه محصولات»</label>
+        <input type="file" id="cfg-cat-all-input" accept="image/*" onchange="previewImg(this,'cfg-cat-all-preview')" style="background:#0a0a0a;border:1px solid #2a2a2a;color:#888;padding:8px;border-radius:8px;width:100%;">
+        <img id="cfg-cat-all-preview" src="" style="max-height:80px;margin-top:8px;border-radius:10px;display:none;">
+      </div>
       <div class="form-group">
         <label style="color:#666;">نام دسته‌بندی اول</label>
         <input type="text" class="admin-form-input" id="cfg-cat-p1-name" placeholder="محصول ۱">
@@ -560,6 +636,24 @@ input[type=text],input[type=password],input[type=number],select,textarea{directi
         <input type="text" class="admin-form-input" id="crm-search" placeholder="جستجو نام / موبایل..." oninput="renderCRM()" style="width:220px;">
       </div>
       <div id="crm-list"></div>
+    </div>
+  </div>
+
+  <div id="tab-chat" class="admin-content hidden">
+    <div class="admin-box">
+      <h3>💬 چت آنلاین</h3>
+      <div style="font-size:.8rem;color:#555;margin-bottom:14px;">گفتگوهای مشتریانی که روی سایت از دکمه «چت آنلاین» استفاده کرده‌اند، اینجا نمایش داده می‌شود. روی هر گفتگو کلیک کنید تا پاسخ دهید.</div>
+      <div class="chat-admin-wrap">
+        <div class="chat-conv-list" id="chat-conv-list"></div>
+        <div class="chat-thread">
+          <div style="padding:12px 16px;border-bottom:1px solid #222;font-weight:700;font-size:.88rem;color:#ddd;" id="chat-thread-title">گفتگویی انتخاب نشده</div>
+          <div class="chat-thread-messages" id="chat-thread-messages"><div class="chat-empty">یک گفتگو را از لیست انتخاب کنید</div></div>
+          <div class="chat-thread-input">
+            <input type="text" id="chat-thread-input" placeholder="پاسخ خود را بنویسید..." onkeydown="if(event.key==='Enter')sendAdminReply()">
+            <button class="btn-white" onclick="sendAdminReply()">ارسال</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -649,6 +743,35 @@ input[type=text],input[type=password],input[type=number],select,textarea{directi
   fine for a small shop dashboard, but note it is not access-restricted
   at the database level; the site's own admin password is what gates
   the dashboard UI.)
+
+  Two more tables are required for accurate cross-device visit stats and
+  for the online chat feature. Run this in the same SQL editor:
+
+    create table if not exists site_visits (
+      day text not null,
+      visitor text not null,
+      created_at timestamptz default now(),
+      primary key (day, visitor)
+    );
+    alter table site_visits enable row level security;
+    create policy "public read visits" on site_visits for select using (true);
+    create policy "public write visits" on site_visits for insert with check (true);
+
+    create table if not exists site_chats (
+      id uuid primary key default gen_random_uuid(),
+      visitor text not null,
+      sender text not null,
+      message text not null,
+      created_at timestamptz default now()
+    );
+    alter table site_chats enable row level security;
+    create policy "public read chats" on site_chats for select using (true);
+    create policy "public write chats" on site_chats for insert with check (true);
+    alter publication supabase_realtime add table site_chats;
+
+  Without these two tables, visit stats fall back to per-browser local
+  numbers and the online chat button will show a notice asking you to
+  finish this setup.
 ============================================================= -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
@@ -699,7 +822,7 @@ var db={
 </script>
 
 <script>
-var CFG={siteName:'کافه بنجامین',tgId:'https://t.me/+WbbJSx66mMk5Mzgy',adminPass:'admin123',opPass:'op123',accPass:'acc123',logo:'',catImgP1:'',catImgP2:'',heroBadge:'✦ Benjamin',heroSubtitle:'خریدی مطمئن و معتبر',productsTitle:'محصولات',fontFamily:'Vazirmatn',catNameP1:'محصول ۱',catNameP2:'محصول ۲',welcomeTitle:'خوش آمدید به کافه بن!',welcomeText:'ارسال سفارش‌ها در سطح شهر <strong style="color:#c9a84c;">مشهد</strong> انجام می‌شود.\nزمان تحویل زیر <strong style="color:#c9a84c;">۳ ساعت</strong> — هزینه ارسال بر اساس منطقه شما متفاوت است.',adminBrandName:'BNE'};
+var CFG={siteName:'کافه بنجامین',tgId:'https://t.me/+WbbJSx66mMk5Mzgy',adminPass:'admin123',opPass:'op123',accPass:'acc123',logo:'',catImgAll:'',catImgP1:'',catImgP2:'',heroBadge:'✦ Benjamin',heroSubtitle:'خریدی مطمئن و معتبر',productsTitle:'محصولات',fontFamily:'Vazirmatn',catNameP1:'محصول ۱',catNameP2:'محصول ۲',welcomeTitle:'خوش آمدید به کافه بن!',welcomeText:'ارسال سفارش‌ها در سطح شهر <strong style="color:#c9a84c;">مشهد</strong> انجام می‌شود.\nزمان تحویل زیر <strong style="color:#c9a84c;">۳ ساعت</strong> — هزینه ارسال بر اساس منطقه شما متفاوت است.',adminBrandName:'BNE'};
 var FONT_OPTIONS=[
   {val:'Vazirmatn',label:'وزیرمتن (مدرن و پرکاربرد)'},
   {val:'IBM Plex Sans Arabic',label:'IBM Plex Sans Arabic'},
@@ -751,6 +874,9 @@ function init(){
     var dd=document.getElementById('delivery-dropdown');
     var src=document.getElementById('delivery-search');
     if(dd&&src&&!src.contains(e.target)&&!dd.contains(e.target))dd.classList.remove('open');
+    var sc=document.getElementById('support-choice');
+    var sb=document.getElementById('support-bubble');
+    if(sc&&sb&&!sc.contains(e.target)&&!sb.contains(e.target))sc.classList.add('hidden');
   });
 
   // Realtime cloud sync: whenever ANY device writes an order or product
@@ -835,19 +961,213 @@ function showToast(msg){
   setTimeout(function(){if(t.parentNode)t.parentNode.removeChild(t);},2200);
 }
 
-function trackVisit(){
+function getFp(){
   var fp=localStorage.getItem('ben_fp');
   if(!fp){fp=Math.random().toString(36).slice(2)+Date.now().toString(36);localStorage.setItem('ben_fp',fp);}
-  var tk='ben_today_'+new Date().toDateString();
+  return fp;
+}
+function todayKey(){return new Date().toISOString().slice(0,10);}
+function trackVisit(){
+  var fp=getFp();
+  var day=todayKey();
+  // Local fallback so something sensible still shows if cloud sync is off.
+  var tk='ben_today_'+day;
   var today=JSON.parse(localStorage.getItem(tk)||'[]');
   var all=JSON.parse(localStorage.getItem('ben_all_visitors')||'[]');
   if(!today.includes(fp)){today.push(fp);localStorage.setItem(tk,JSON.stringify(today));}
   if(!all.includes(fp)){all.push(fp);localStorage.setItem('ben_all_visitors',JSON.stringify(all));}
+  // Real cross-device tracking: one row per unique visitor per day, shared
+  // across every device via Supabase, so the dashboard shows the real
+  // traffic to the site instead of only what happened on the admin's own browser.
+  if(cloudEnabled){
+    supabaseClient.from('site_visits').upsert({day:day,visitor:fp},{onConflict:'day,visitor',ignoreDuplicates:true})
+      .catch(function(e){console.warn('visit tracking failed (site_visits table missing?)',e);});
+  }
 }
-function getTodayV(){return JSON.parse(localStorage.getItem('ben_today_'+new Date().toDateString())||'[]').length;}
+function getTodayV(){return JSON.parse(localStorage.getItem('ben_today_'+todayKey())||'[]').length;}
 function getTotalV(){return JSON.parse(localStorage.getItem('ben_all_visitors')||'[]').length;}
+function loadVisitStats(){
+  var te=document.getElementById('st-today'),to=document.getElementById('st-total');
+  if(!cloudEnabled){
+    if(te)te.textContent=getTodayV().toLocaleString('fa-IR');
+    if(to)to.textContent=getTotalV().toLocaleString('fa-IR');
+    return;
+  }
+  supabaseClient.from('site_visits').select('day',{count:'exact',head:true}).eq('day',todayKey())
+    .then(function(res){ if(te)te.textContent=(res.count||0).toLocaleString('fa-IR'); })
+    .catch(function(e){console.warn('today visit stat failed',e); if(te)te.textContent=getTodayV().toLocaleString('fa-IR'); });
+  supabaseClient.from('site_visits').select('day',{count:'exact',head:true})
+    .then(function(res){ if(to)to.textContent=(res.count||0).toLocaleString('fa-IR'); })
+    .catch(function(e){console.warn('total visit stat failed',e); if(to)to.textContent=getTotalV().toLocaleString('fa-IR'); });
+}
 
 function closeWelcome(){sessionStorage.setItem('ben_welcome','1');hide('welcome-modal');}
+
+/* ============ ONLINE CHAT (customer side) ============ */
+var chatRenderedIds={}, chatChannelSubscribed=false;
+function toggleSupportChoice(){
+  var el=document.getElementById('support-choice');
+  el.classList.toggle('hidden');
+}
+function openTelegramSupport(){
+  document.getElementById('support-choice').classList.add('hidden');
+  window.open(getSupportLink(),'_blank');
+}
+function chatTimeStr(iso){
+  try{return new Date(iso).toLocaleTimeString('fa-IR',{hour:'2-digit',minute:'2-digit'});}catch(e){return '';}
+}
+function chatBubbleHtml(m){
+  return '<div class="chat-bubble '+(m.sender==='admin'?'admin':'user')+'">'+String(m.message).replace(/</g,'&lt;')+'<span class="chat-time">'+chatTimeStr(m.created_at)+'</span></div>';
+}
+function openOnlineChat(){
+  document.getElementById('support-choice').classList.add('hidden');
+  if(!cloudEnabled){showToast('چت آنلاین نیاز به همگام‌سازی ابری (Supabase) دارد که هنوز فعال نشده');return;}
+  show('chat-window');
+  loadMyChatHistory();
+  if(!chatChannelSubscribed){
+    chatChannelSubscribed=true;
+    try{
+      supabaseClient.channel('site_chats_'+getFp())
+        .on('postgres_changes',{event:'INSERT',schema:'public',table:'site_chats',filter:'visitor=eq.'+getFp()},function(payload){
+          var m=payload.new;
+          if(chatRenderedIds[m.id])return;
+          chatRenderedIds[m.id]=true;
+          var box=document.getElementById('chat-window-messages');
+          box.innerHTML+=chatBubbleHtml(m); box.scrollTop=box.scrollHeight;
+        }).subscribe();
+    }catch(e){console.warn('chat realtime subscribe failed',e);}
+  }
+}
+function closeOnlineChat(){hide('chat-window');}
+function loadMyChatHistory(){
+  var box=document.getElementById('chat-window-messages');
+  box.innerHTML='<div class="chat-empty">در حال بارگذاری...</div>';
+  supabaseClient.from('site_chats').select('*').eq('visitor',getFp()).order('created_at',{ascending:true})
+    .then(function(res){
+      var list=res.data||[];
+      if(!list.length){box.innerHTML='<div class="chat-empty">سلام 👋 سوال یا پیامی دارید؟ همین‌جا بنویسید.</div>';return;}
+      chatRenderedIds={};
+      list.forEach(function(m){chatRenderedIds[m.id]=true;});
+      box.innerHTML=list.map(chatBubbleHtml).join('');
+      box.scrollTop=box.scrollHeight;
+    })
+    .catch(function(e){console.warn('load chat history failed',e);box.innerHTML='<div class="chat-empty">خطا در بارگذاری چت</div>';});
+}
+function sendChatMsg(){
+  var input=document.getElementById('chat-window-input');
+  var text=input.value.trim(); if(!text)return;
+  input.value='';
+  supabaseClient.from('site_chats').insert({visitor:getFp(),sender:'user',message:text}).select().single()
+    .then(function(res){
+      var m=res.data;
+      if(m){
+        chatRenderedIds[m.id]=true;
+        var box=document.getElementById('chat-window-messages');
+        var empty=box.querySelector('.chat-empty'); if(empty)box.innerHTML='';
+        box.innerHTML+=chatBubbleHtml(m); box.scrollTop=box.scrollHeight;
+      }
+    })
+    .catch(function(e){console.warn('send chat failed',e);showToast('ارسال پیام ناموفق بود');});
+}
+
+/* ============ ONLINE CHAT (admin side) ============ */
+var adminChatConvs=[], adminChatSelected=null, adminChatRenderedIds={}, adminChatChannelSubscribed=false;
+function renderDashboardChats(){
+  var el=document.getElementById('dashboard-chats'); if(!el)return;
+  if(!cloudEnabled){el.innerHTML='<div style="color:#444;text-align:center;padding:20px;">چت آنلاین نیاز به فعال‌سازی Supabase دارد</div>';return;}
+  supabaseClient.from('site_chats').select('*').order('created_at',{ascending:false}).limit(50)
+    .then(function(res){
+      var list=res.data||[];
+      var byVisitor={};
+      list.forEach(function(m){ if(!byVisitor[m.visitor])byVisitor[m.visitor]=m; });
+      var convs=Object.keys(byVisitor).map(function(v){return byVisitor[v];}).slice(0,5);
+      var cc=document.getElementById('dash-chat-count'); if(cc)cc.textContent=Object.keys(byVisitor).length.toLocaleString('fa-IR')+' گفتگو';
+      if(!convs.length){el.innerHTML='<div style="color:#444;text-align:center;padding:20px;">پیامی ثبت نشده</div>';return;}
+      el.innerHTML=convs.map(function(m){
+        return '<div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #1c1c1c;">'
+          +'<div><div style="font-size:.83rem;font-weight:700;color:#ddd;">مشتری '+String(m.visitor).slice(0,6)+'</div>'
+          +'<div style="font-size:.75rem;color:#666;max-width:260px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">'+(m.sender==='admin'?'شما: ':'')+String(m.message).replace(/</g,'&lt;')+'</div></div>'
+          +'<span style="font-size:.7rem;color:#555;">'+chatTimeStr(m.created_at)+'</span></div>';
+      }).join('');
+    })
+    .catch(function(e){console.warn('dashboard chats load failed',e);el.innerHTML='<div style="color:#444;text-align:center;padding:20px;">خطا در بارگذاری</div>';});
+}
+function renderChatAdmin(){
+  var listEl=document.getElementById('chat-conv-list'); if(!listEl)return;
+  if(!cloudEnabled){listEl.innerHTML='<div style="color:#444;text-align:center;padding:20px;">چت آنلاین نیاز به فعال‌سازی Supabase دارد</div>';return;}
+  supabaseClient.from('site_chats').select('*').order('created_at',{ascending:false})
+    .then(function(res){
+      var list=res.data||[];
+      var byVisitor={};
+      list.forEach(function(m){ if(!byVisitor[m.visitor])byVisitor[m.visitor]=[]; byVisitor[m.visitor].push(m); });
+      adminChatConvs=Object.keys(byVisitor).map(function(v){
+        var msgs=byVisitor[v]; var last=msgs[0];
+        var unread=msgs.findIndex(function(m){return m.sender==='admin';});
+        var unreadCount=unread===-1?msgs.length:unread;
+        return {visitor:v,last:last,unreadCount:unreadCount};
+      });
+      renderChatConvList();
+      if(!adminChatSelected&&adminChatConvs.length)selectChatConv(adminChatConvs[0].visitor);
+      subscribeAdminChatRealtime();
+    })
+    .catch(function(e){console.warn('admin chat list load failed',e);listEl.innerHTML='<div style="color:#444;text-align:center;padding:20px;">خطا در بارگذاری</div>';});
+}
+function renderChatConvList(){
+  var listEl=document.getElementById('chat-conv-list'); if(!listEl)return;
+  if(!adminChatConvs.length){listEl.innerHTML='<div style="color:#444;text-align:center;padding:20px;">گفتگویی ثبت نشده</div>';return;}
+  listEl.innerHTML=adminChatConvs.map(function(c){
+    return '<div class="chat-conv-item'+(adminChatSelected===c.visitor?' active':'')+'" onclick="selectChatConv(\''+c.visitor+'\')">'
+      +'<div class="cci-name">'+(c.unreadCount>0?'<span class="cci-badge">'+c.unreadCount+'</span>':'')+'مشتری '+c.visitor.slice(0,6)+'</div>'
+      +'<div class="cci-preview">'+(c.last.sender==='admin'?'شما: ':'')+String(c.last.message).replace(/</g,'&lt;')+'</div></div>';
+  }).join('');
+}
+function selectChatConv(visitor){
+  adminChatSelected=visitor;
+  renderChatConvList();
+  var box=document.getElementById('chat-thread-messages');
+  var title=document.getElementById('chat-thread-title'); if(title)title.textContent='مشتری '+visitor.slice(0,6);
+  box.innerHTML='<div class="chat-empty">در حال بارگذاری...</div>';
+  supabaseClient.from('site_chats').select('*').eq('visitor',visitor).order('created_at',{ascending:true})
+    .then(function(res){
+      var list=res.data||[];
+      adminChatRenderedIds={};
+      list.forEach(function(m){adminChatRenderedIds[m.id]=true;});
+      box.innerHTML=list.length?list.map(chatBubbleHtml).join(''):'<div class="chat-empty">پیامی ثبت نشده</div>';
+      box.scrollTop=box.scrollHeight;
+    })
+    .catch(function(e){console.warn('thread load failed',e);});
+}
+function subscribeAdminChatRealtime(){
+  if(adminChatChannelSubscribed)return;
+  adminChatChannelSubscribed=true;
+  try{
+    supabaseClient.channel('site_chats_admin_all')
+      .on('postgres_changes',{event:'INSERT',schema:'public',table:'site_chats'},function(payload){
+        var m=payload.new;
+        if(m.visitor===adminChatSelected&&!adminChatRenderedIds[m.id]){
+          adminChatRenderedIds[m.id]=true;
+          var box=document.getElementById('chat-thread-messages');
+          if(box){ var empty=box.querySelector('.chat-empty'); if(empty)box.innerHTML=''; box.innerHTML+=chatBubbleHtml(m); box.scrollTop=box.scrollHeight; }
+        }
+        renderChatAdmin(); renderDashboardChats();
+      }).subscribe();
+  }catch(e){console.warn('admin chat realtime subscribe failed',e);}
+}
+function sendAdminReply(){
+  var input=document.getElementById('chat-thread-input');
+  var text=input.value.trim(); if(!text||!adminChatSelected)return;
+  input.value='';
+  supabaseClient.from('site_chats').insert({visitor:adminChatSelected,sender:'admin',message:text}).select().single()
+    .then(function(res){
+      var m=res.data;
+      if(m){
+        adminChatRenderedIds[m.id]=true;
+        var box=document.getElementById('chat-thread-messages');
+        box.innerHTML+=chatBubbleHtml(m); box.scrollTop=box.scrollHeight;
+      }
+    })
+    .catch(function(e){console.warn('admin reply failed',e);showToast('ارسال پاسخ ناموفق بود');});
+}
 
 function renderProducts(cat){
   var grid=document.getElementById('products-grid');
@@ -1111,7 +1431,7 @@ document.addEventListener('keydown',function(e){
 
 function enterAdmin(){
   hide('shop-section'); show('admin-section');
-  var all=['dashboard','products','orders','accounting','crm','settings'];
+  var all=['dashboard','products','orders','accounting','crm','chat','settings'];
   var allowed=all;
   if(currentRole==='operator')allowed=['products'];
   else if(currentRole==='accountant')allowed=['accounting','crm'];
@@ -1123,14 +1443,14 @@ function enterAdmin(){
 }
 function exitAdmin(){
   currentRole=null; hide('admin-section'); show('shop-section');
-  ['dashboard','products','orders','accounting','crm','settings'].forEach(function(t){
+  ['dashboard','products','orders','accounting','crm','chat','settings'].forEach(function(t){
     var btn=document.getElementById('tab-btn-'+t); if(btn)btn.style.display='';
   });
 }
 function adminTab(name,el){
   document.querySelectorAll('.admin-tab').forEach(function(t){t.classList.remove('active');});
   if(el)el.classList.add('active');
-  ['dashboard','products','orders','accounting','crm','settings'].forEach(function(t){
+  ['dashboard','products','orders','accounting','crm','chat','settings'].forEach(function(t){
     var p=document.getElementById('tab-'+t); if(p)p.classList.add('hidden');
   });
   var tgt=document.getElementById('tab-'+name); if(tgt)tgt.classList.remove('hidden');
@@ -1139,6 +1459,7 @@ function adminTab(name,el){
   if(name==='orders')renderOrders();
   if(name==='accounting')renderAccounting();
   if(name==='crm')renderCRM();
+  if(name==='chat')renderChatAdmin();
   if(name==='settings')loadSettings();
 }
 function renderDash(){
@@ -1149,21 +1470,21 @@ function renderDash(){
       sb.innerHTML='🟢 <strong>همگام‌سازی ابری فعال است</strong> — سفارش‌های ثبت‌شده از هر گوشی یا سیستمی، همین‌جا و در همه دستگاه‌ها نمایش داده می‌شود.';
     }else{
       sb.style.background='rgba(220,80,60,.1)';sb.style.border='1px solid rgba(220,80,60,.4)';sb.style.color='#e08a7a';
-      sb.innerHTML='🔴 <strong>همگام‌سازی ابری غیرفعال است</strong> — سفارش‌ها فقط روی همین مرورگر/دستگاه ذخیره می‌شوند و به داشبورد شما روی دستگاه دیگر نمی‌رسند. برای رفع قطعی این مشکل باید SUPABASE_URL و SUPABASE_KEY را در فایل سایت با اطلاعات پروژه Supabase خودتان پر کنید و جدول site_data را بسازید (راهنما در بالای همین فایل، قسمت CLOUD SYNC).';
+      sb.innerHTML='🔴 <strong>همگام‌سازی ابری غیرفعال است</strong> — سفارش‌ها، آمار بازدید و چت آنلاین فقط روی همین مرورگر/دستگاه ذخیره می‌شوند و به داشبورد شما روی دستگاه دیگر نمی‌رسند. برای رفع قطعی این مشکل باید SUPABASE_URL و SUPABASE_KEY را در فایل سایت با اطلاعات پروژه Supabase خودتان پر کنید و جدول‌های site_data، site_visits و site_chats را بسازید (راهنما در بالای همین فایل، قسمت CLOUD SYNC).';
     }
   }
-  document.getElementById('st-today').textContent=getTodayV().toLocaleString('fa-IR');
-  document.getElementById('st-total').textContent=getTotalV().toLocaleString('fa-IR');
+  loadVisitStats();
   var pending=orders.filter(function(o){return o.status==='pending';}).length;
   var done=orders.filter(function(o){return o.status==='done';}).length;
   var rev=orders.filter(function(o){return o.status==='done';}).reduce(function(s,o){return s+o.total;},0);
   document.getElementById('st-pending').textContent=pending.toLocaleString('fa-IR');
   document.getElementById('st-done').textContent=done.toLocaleString('fa-IR');
   document.getElementById('st-revenue').textContent=formatPrice(rev);
-  var db=document.getElementById('dash-date-badge'); if(db)db.textContent=new Date().toLocaleDateString('fa-IR',{year:'numeric',month:'long',day:'numeric'});
+  var dateBadge=document.getElementById('dash-date-badge'); if(dateBadge)dateBadge.textContent=new Date().toLocaleDateString('fa-IR',{year:'numeric',month:'long',day:'numeric'});
   var dc=document.getElementById('dash-orders-count'); if(dc)dc.textContent=orders.length.toLocaleString('fa-IR')+' سفارش';
   var el=document.getElementById('dashboard-orders');
   el.innerHTML=orders.slice(0,5).length?buildOrderTable(orders.slice(0,5),true):'<div style="color:#444;text-align:center;padding:20px;">سفارشی ثبت نشده</div>';
+  renderDashboardChats();
 }
 function buildOrderTable(list,mini){
   return '<div style="overflow-x:auto;"><table class="admin-table" style="width:100%;min-width:480px"><thead><tr>'
@@ -1275,7 +1596,7 @@ function renderAdminProducts(){
       return '<tr><td>'+(p.img?'<img src="'+p.img+'" style="width:40px;height:40px;object-fit:cover;border-radius:6px;">':getCatEmoji(p.cat))+'</td>'
         +'<td>'+p.name+'</td><td>'+catName(p.cat)+'</td>'
         +'<td>'+formatPrice(p.price)+'</td>'
-        +'<td><button class="btn-red" onclick="deleteProd('+p.id+')">حذف</button></td></tr>';
+        +'<td style="display:flex;gap:6px;"><button class="btn-white" style="padding:6px 13px;font-size:.78rem;" onclick="editProd('+p.id+')">ویرایش</button><button class="btn-red" onclick="deleteProd('+p.id+')">حذف</button></td></tr>';
     }).join('')+'</tbody></table></div>';
 }
 function addProduct(){
@@ -1300,6 +1621,34 @@ function deleteProd(id){
   products=products.filter(function(p){return p.id!==id;}); saveProducts();
   renderAdminProducts(); renderProducts('all'); updateFeatured();
   showToast('محصول حذف شد');
+}
+function editProd(id){
+  var p=products.find(function(x){return x.id===id;}); if(!p)return;
+  document.getElementById('ep-id').value=p.id;
+  document.getElementById('ep-name').value=p.name;
+  document.getElementById('ep-cat').value=p.cat;
+  document.getElementById('ep-price').value=p.price;
+  document.getElementById('ep-desc').value=p.desc||'';
+  var prev=document.getElementById('ep-img-preview');
+  if(p.img){prev.src=p.img;prev.style.display='block';}else{prev.src='';prev.style.display='none';}
+  document.getElementById('ep-img').value='';
+  openModal('edit-product-modal');
+}
+function saveEditProduct(){
+  var id=parseInt(document.getElementById('ep-id').value);
+  var p=products.find(function(x){return x.id===id;}); if(!p)return;
+  var name=document.getElementById('ep-name').value.trim();
+  if(!name){showToast('نام محصول الزامی است');return;}
+  p.name=name;
+  p.cat=document.getElementById('ep-cat').value;
+  p.price=parseInt(document.getElementById('ep-price').value)||0;
+  p.desc=document.getElementById('ep-desc').value.trim();
+  var prev=document.getElementById('ep-img-preview');
+  if(prev&&prev.style.display!=='none'&&prev.src)p.img=prev.src;
+  saveProducts();
+  renderAdminProducts(); renderProducts('all'); updateFeatured();
+  closeModal('edit-product-modal');
+  showToast('✓ محصول ویرایش شد');
 }
 function previewImg(input,prevId){
   var prev=document.getElementById(prevId);
@@ -1362,7 +1711,8 @@ function saveLogo(){
   setTimeout(function(){m.style.display='none';},2500);
 }
 function saveCatImages(){
-  var p1=document.getElementById('cfg-cat-p1-preview'),p2=document.getElementById('cfg-cat-p2-preview');
+  var pa=document.getElementById('cfg-cat-all-preview'),p1=document.getElementById('cfg-cat-p1-preview'),p2=document.getElementById('cfg-cat-p2-preview');
+  if(pa&&pa.style.display!=='none'&&pa.src)CFG.catImgAll=pa.src;
   if(p1&&p1.style.display!=='none'&&p1.src)CFG.catImgP1=p1.src;
   if(p2&&p2.style.display!=='none'&&p2.src)CFG.catImgP2=p2.src;
   var n1=document.getElementById('cfg-cat-p1-name'); if(n1&&n1.value.trim())CFG.catNameP1=n1.value.trim();
@@ -1390,7 +1740,8 @@ function applyBranding(){
     if(CFG.logo){wii.src=CFG.logo;wii.classList.remove('hidden');wie.classList.add('hidden');}
     else{wii.classList.add('hidden');wie.classList.remove('hidden');}
   }
-  var c1=document.getElementById('cat-icon-p1'),c2=document.getElementById('cat-icon-p2');
+  var ca=document.getElementById('cat-icon-all'),c1=document.getElementById('cat-icon-p1'),c2=document.getElementById('cat-icon-p2');
+  if(ca)ca.innerHTML=CFG.catImgAll?'<img src="'+CFG.catImgAll+'">':'☕';
   if(c1)c1.innerHTML=CFG.catImgP1?'<img src="'+CFG.catImgP1+'">':'🫘';
   if(c2)c2.innerHTML=CFG.catImgP2?'<img src="'+CFG.catImgP2+'">':'☕';
   var hb=document.getElementById('hero-badge-text'); if(hb)hb.textContent=CFG.heroBadge;
@@ -1400,12 +1751,14 @@ function applyBranding(){
   var cl2=document.getElementById('cat-label-p2'); if(cl2)cl2.textContent=CFG.catNameP2;
   var op1=document.getElementById('ap-cat-opt-p1'); if(op1)op1.textContent=CFG.catNameP1;
   var op2=document.getElementById('ap-cat-opt-p2'); if(op2)op2.textContent=CFG.catNameP2;
+  var eop1=document.getElementById('ep-cat-opt-p1'); if(eop1)eop1.textContent=CFG.catNameP1;
+  var eop2=document.getElementById('ep-cat-opt-p2'); if(eop2)eop2.textContent=CFG.catNameP2;
   var wt=document.getElementById('welcome-title-text'); if(wt)wt.textContent=CFG.welcomeTitle;
   var wb=document.getElementById('welcome-body-text'); if(wb)wb.innerHTML=(CFG.welcomeText||'').replace(/\n/g,'<br>');
   var abn=document.getElementById('admin-brand-name'); if(abn)abn.textContent=CFG.adminBrandName+' — پنل مدیریت';
   var ali=document.getElementById('admin-logo-img');
   if(ali){ if(CFG.logo){ali.src=CFG.logo;ali.classList.remove('hidden');} else {ali.classList.add('hidden');} }
-  var sb=document.getElementById('support-bubble'); if(sb)sb.href=getSupportLink();
+
 }
 function exportData(){
   var data={products:products,orders:orders,cfg:CFG,exported:new Date().toLocaleString('fa-IR')};
